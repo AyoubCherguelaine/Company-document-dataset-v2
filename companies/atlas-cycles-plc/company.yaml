@@ -1,0 +1,63 @@
+slug: atlas-cycles-plc
+locale: en
+currency: GBP
+party:
+  name: Atlas Cycles PLC
+  address:
+    line1: 223 King's Road
+    line2: ''
+    city: Leeds
+    region: ''
+    postal_code: LS1 5AA
+    country: United Kingdom
+  phone: +44 20 2043225
+  email: accounts@atlascycles.co.uk
+  website: www.atlascycles.co.uk
+  tax_id: VAT GB656081621
+  code: UK
+  bank:
+    bank_name: City Savings Bank
+    iban: GB63 4972 3807 3692 9463 4824
+    bic: ATLAGB75
+sector: bikes
+brand:
+  initials: AC
+  color: '#7c2d12'
+  shape: rounded
+design:
+  default:
+    layout: classic
+    theme: corporate
+colors:
+  primary: '#7c2d12'
+options:
+  show_contact: true
+  show_bank: true
+  show_item_details: false
+numbering:
+  invoice: INV{key:07d}
+  quote: QT{key:06d}
+  credit_note: AC-CR-{key}
+  purchase_order: AC-PO-{key}
+  packing_slip: AC-BL-{key}
+  shipping_order: AC-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: AC{yy}{key:06d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Ride Further, Built Strong
+  about: We design and distribute high‑performance bicycles and gear for cyclists of all levels.
+  payment_instructions: Please settle invoices via bank transfer to the account details provided on the statement
+    within 30 days.
+  footer: Thank you for choosing Atlas Cycles.
+  notes:
+  - Thank you for your purchase; we appreciate your support.
+  - Orders are shipped within 2 business days; tracking details will be emailed.
+  - Unused items may be returned within 14 days for a full refund.
+  - Late payments incur a 1.5% monthly interest after the due date.
+  - Frames carry a limited lifetime warranty; components are covered for 2 years.
+  - Keep your bike clean, lubricate the chain regularly, and store it dry.

@@ -1,0 +1,17 @@
+{#- Statement of account: running balance, aging buckets and a tear-off remittance slip. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block summary_left %}
+  {% if doc.extra.aging %}
+    <table class="meta">
+      {% for label, value in doc.extra.aging %}<tr><th>{{ t(label) }}</th><td>{{ value | money }}</td></tr>{% endfor %}
+    </table>
+  {% endif %}
+{% endblock %}
+{% block notes %}
+  {% if opts.show_remittance %}
+    {{ c.remittance([(t('account_number'), doc.refs.account_number), (t('statement_date'), doc.issue_date | date),
+                     (t('amount_due'), doc.summary[-1].value | money), (t('amount_enclosed'), '')]) }}
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,62 @@
+slug: iris-distribution-inc
+locale: en
+currency: USD
+party:
+  name: Iris Distribution Inc.
+  address:
+    line1: 189 Oak Street
+    line2: ''
+    city: Boston
+    region: MA
+    postal_code: '02110'
+    country: USA
+  phone: (949) 555-4560
+  email: accounts@irisdistribution.com
+  website: www.irisdistribution.com
+  tax_id: EIN 22-7405469
+  code: US
+  bank:
+    bank_name: Crédit Régional
+    account: '8144664127'
+    routing: '983007418'
+sector: food
+brand:
+  initials: ID
+  color: '#4c1d95'
+  shape: circle
+design:
+  default:
+    layout: classic
+    theme: corporate
+colors:
+  primary: '#4c1d95'
+options:
+  show_tax_column: false
+  show_bank: false
+  show_contact: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: PS-{key}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: STM{key:06d}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Fresh supplies, reliable delivery nationwide.
+  about: Wholesale food and beverage distribution to shops and restaurants across the country.
+  payment_instructions: Invoices can be paid via wire transfer or check within thirty days.
+  footer: Thank you for your business.
+  notes:
+  - Payment due within thirty days.
+  - Our warehouse operates 24/7 Monday-Sunday.
+  - All food meets strict safety standards.
+  - Returns accepted within fourteen days of purchase.
+  - Late payments incur a two percent interest charge.
+  - Warranty covers manufacturing defects for one year.

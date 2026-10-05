@@ -1,0 +1,178 @@
+[19:16:36] pipeline: venv -> download -> index -> companies -> texts -> generate -> augment -> export  (log: logs/pipeline-20261005-191636.log)
+[19:16:36] === venv ===
+[19:16:37] venv: ok
+[19:16:37] === download ===
+[19:16:37] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python /home/ayoub/Desktop/repos/Company-document/scripts/download_sources.py
+  [download] northwind: present (24,124 KB), skipped
+  [download] chinook: present (1,016 KB), skipped
+  [download] sakila: present (5,484 KB), skipped
+  [download] adventureworks: present (106,300 KB), skipped
+  [download] all sources ready
+[19:16:38] === index ===
+[19:16:38] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python /home/ayoub/Desktop/repos/Company-document/scripts/prepare_sources.py
+  [ok] adventureworks: 23 indexes in 0.1s
+  [ok] sakila: 3 indexes in 0.1s
+  [ok] chinook: 1 indexes in 0.0s
+[19:16:39] === companies ===
+[19:16:39] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen companies init --count 15
+  [skip] bikes: 15 companies already (use --force to add more)
+  [skip] food: 15 companies already (use --force to add more)
+  [skip] music: 15 companies already (use --force to add more)
+  [skip] video: 15 companies already (use --force to add more)
+[19:16:39] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen companies rebalance
+  60 companies, 20/20 layout x theme combinations used
+[19:16:41] === texts ===
+[19:16:41] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen texts generate
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] texts for atlas-cycles-plc
+  [llm] texts for atlas-records-inc
+  [llm] texts for boreal-audio-plc
+  [llm] texts for boreal-components-co
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] texts for harbor-beats-llc
+  [llm] texts for harbor-films-sarl
+  [llm] texts for harbor-movies-srl
+  [llm] texts for harbor-velo-co
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] texts for northgate-rentals-srl
+  [llm] texts for pioneer-records-srl
+  [llm] texts for quarry-entertainment-ltd
+  [llm] texts for quarry-films-ltd
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 4s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 8s
+  [llm] giving up on nvidia/nemotron-3-super-120b-a12b:free, trying next model
+  [llm] giving up on qwen/qwen3.8-27b:free, trying next model
+  [llm] batch 4: all models failed:
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    qwen/qwen3.8-27b:free: HTTP 404 {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b","code":404},"user_id":"user_30K9fXVmjCpULSQIbgzwNcYEYOU"}
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 4s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 8s
+  [llm] giving up on nvidia/nemotron-3-super-120b-a12b:free, trying next model
+  [llm] giving up on qwen/qwen3.8-27b:free, trying next model
+  [llm] products en batch 1: all models failed:
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    qwen/qwen3.8-27b:free: HTTP 404 {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b","code":404},"user_id":"user_30K9fXVmjCpULSQIbgzwNcYEYOU"}
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 4s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 8s
+  [llm] giving up on nvidia/nemotron-3-super-120b-a12b:free, trying next model
+  [llm] giving up on qwen/qwen3.8-27b:free, trying next model
+  [llm] products en batch 2: all models failed:
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    qwen/qwen3.8-27b:free: HTTP 404 {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b","code":404},"user_id":"user_30K9fXVmjCpULSQIbgzwNcYEYOU"}
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 4s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 8s
+  [llm] giving up on nvidia/nemotron-3-super-120b-a12b:free, trying next model
+  [llm] giving up on qwen/qwen3.8-27b:free, trying next model
+  [llm] products en batch 3: all models failed:
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    qwen/qwen3.8-27b:free: HTTP 404 {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b","code":404},"user_id":"user_30K9fXVmjCpULSQIbgzwNcYEYOU"}
+  /home/ayoub/Desktop/repos/Company-document/data/textbank/products.en.json
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 4s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 8s
+  [llm] giving up on nvidia/nemotron-3-super-120b-a12b:free, trying next model
+  [llm] giving up on qwen/qwen3.8-27b:free, trying next model
+  [llm] products fr batch 1: all models failed:
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    qwen/qwen3.8-27b:free: HTTP 404 {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b","code":404},"user_id":"user_30K9fXVmjCpULSQIbgzwNcYEYOU"}
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 4s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 8s
+  [llm] giving up on nvidia/nemotron-3-super-120b-a12b:free, trying next model
+  [llm] giving up on qwen/qwen3.8-27b:free, trying next model
+  [llm] products fr batch 2: all models failed:
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    qwen/qwen3.8-27b:free: HTTP 404 {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b","code":404},"user_id":"user_30K9fXVmjCpULSQIbgzwNcYEYOU"}
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 4s
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 8s
+  [llm] giving up on nvidia/nemotron-3-super-120b-a12b:free, trying next model
+  [llm] giving up on qwen/qwen3.8-27b:free, trying next model
+  [llm] products fr batch 3: all models failed:
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    google/gemma-4-31b-it:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    nvidia/nemotron-3-super-120b-a12b:free: HTTP 429 {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1791244800000"},"limit_source":"openrouter_free_tier_daily","remedy_hi
+    qwen/qwen3.8-27b:free: HTTP 404 {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b","code":404},"user_id":"user_30K9fXVmjCpULSQIbgzwNcYEYOU"}
+  [llm] openrouter/free: not JSON, trying the next model
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 2s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 4s
+  [llm] google/gemma-4-31b-it:free HTTP 429, retry in 8s
+  [llm] giving up on google/gemma-4-31b-it:free, trying next model
+  [llm] nvidia/nemotron-3-super-120b-a12b:free HTTP 429, retry in 2s

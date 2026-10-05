@@ -1,0 +1,61 @@
+slug: tidewater-rentals-sarl
+locale: fr
+currency: EUR
+party:
+  name: Tidewater Rentals SARL
+  address:
+    line1: 238, boulevard Voltaire
+    line2: Suite 791
+    city: Lille
+    region: ''
+    postal_code: '59000'
+    country: France
+  phone: +33 4 50 67 55 11
+  email: billing@tidewaterrentals.fr
+  website: www.tidewaterrentals.fr
+  tax_id: TVA FR76900262454
+  code: FR
+  bank:
+    bank_name: City Savings Bank
+    iban: FR34 8495 5092 9277 5147 7367
+    bic: TIDEFR07
+sector: video
+brand:
+  initials: TR
+  color: '#0f766e'
+  shape: rounded
+design:
+  default:
+    layout: sidebar
+    theme: mono
+colors: {}
+options:
+  show_contact: false
+  show_signature: false
+  show_tax_column: true
+numbering:
+  invoice: TR-{yy}{key:06d}
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: RCPT{key:07d}
+  work_order: OF{yy}{key:06d}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Films à louer, soirées réussies
+  about: Chaîne de location de films proposant DVD et streaming aux particuliers.
+  payment_instructions: Règlement en magasin ou par carte à la location.
+  footer: Bon visionnage et à bientôt.
+  notes:
+  - Merci de louer chez nous, bon film.
+  - Retour sous 48 h, frais de retard appliqués.
+  - Disques rayés ? Échange gratuit sous 7 jours.
+  - 'Paiement accepté : espèces, carte, mobile.'
+  - Conservez les boîtiers pour éviter les dommages.
+  - Abonnez-vous pour des réductions exclusives.

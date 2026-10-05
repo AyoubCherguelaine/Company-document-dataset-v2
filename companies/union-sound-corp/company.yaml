@@ -1,0 +1,61 @@
+slug: union-sound-corp
+locale: en
+currency: USD
+party:
+  name: Union Sound Corp.
+  address:
+    line1: 67 Oak Street
+    line2: ''
+    city: Portland
+    region: OR
+    postal_code: '97205'
+    country: USA
+  phone: (660) 555-2470
+  email: contact@unionsound.com
+  website: www.unionsound.com
+  tax_id: EIN 90-5556556
+  code: US
+  bank:
+    bank_name: Northern Trust Bank
+    account: '1878350506'
+    routing: '167700016'
+sector: music
+brand:
+  initials: US
+  color: '#1f4e79'
+  shape: circle
+design:
+  default:
+    layout: sidebar
+    theme: mono
+colors: {}
+options:
+  show_item_details: true
+  show_discount: true
+  show_contact: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: US-DEV-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: US-PO-{key}
+  packing_slip: US-BL-{key}
+  shipping_order: US-EXP-{key}
+  goods_received_note: GRN-{key}
+  account_statement: US-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: R-{key}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Music at your fingertips, anytime
+  about: We sell digital tracks and albums online to listeners worldwide.
+  payment_instructions: Invoice payment due within 14 days via PayPal or credit card.
+  footer: Enjoy the beat, support the sound.
+  notes:
+  - Thank you for downloading – your support matters.
+  - Instant access after payment confirmation.
+  - Refunds processed within 7 business days.
+  - Late fees apply at 2% per month after due date.
+  - All digital downloads are protected by a 90‑day guarantee.
+  - Store music files for easy streaming on all devices.

@@ -1,0 +1,15 @@
+{#- Purchase order: our company buys; terms, instructions and an approval signature. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block summary_left %}
+  <div class="label">{{ t('payment_terms') }}</div>
+  <div>{{ doc.extra.payment_terms }}</div>
+  <p class="muted">{{ doc.extra.instructions }}</p>
+{% endblock %}
+{% block notes %}
+  {% if opts.show_notes %}{{ c.notes_block(doc.notes) }}{% endif %}
+  <section class="signatures">
+    {{ c.signature_block(t('approved_by')) }}
+  </section>
+{% endblock %}

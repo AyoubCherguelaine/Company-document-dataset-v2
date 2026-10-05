@@ -1,0 +1,51 @@
+slug: zenith-video-corp
+locale: en
+currency: USD
+party:
+  name: Zenith Video Corp.
+  address:
+    line1: 71 Elm Avenue
+    line2: Building A
+    city: Boston
+    region: MA
+    postal_code: '02110'
+    country: USA
+  phone: (341) 555-8207
+  email: billing@zenithvideo.com
+  website: www.zenithvideo.com
+  tax_id: EIN 53-5436425
+  code: US
+  bank:
+    bank_name: First Commerce Bank
+    account: '2070297050'
+    routing: '938315274'
+sector: video
+brand:
+  initials: ZV
+  color: '#1f4e79'
+  shape: circle
+design:
+  default:
+    layout: classic
+    theme: warm
+colors:
+  primary: '#1f4e79'
+options:
+  show_contact: true
+  show_discount: true
+  show_bank: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: ZV-DEV-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: ZV-PO-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: ZV-REC-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: ZV{yy}{key:06d}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts: {}

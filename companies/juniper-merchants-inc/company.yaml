@@ -1,0 +1,54 @@
+slug: juniper-merchants-inc
+locale: en
+currency: USD
+party:
+  name: Juniper Merchants Inc.
+  address:
+    line1: 380 Industrial Pkwy
+    line2: Suite 598
+    city: Denver
+    region: CO
+    postal_code: '80202'
+    country: USA
+  phone: (265) 555-8123
+  email: contact@junipermerchants.com
+  website: www.junipermerchants.com
+  tax_id: EIN 50-5310160
+  code: US
+  bank:
+    bank_name: First Commerce Bank
+    account: '2806065378'
+    routing: '651371533'
+sector: food
+brand:
+  initials: JM
+  color: '#78350f'
+  shape: circle
+design:
+  default:
+    layout: sidebar
+    theme: plain
+colors:
+  primary: '#78350f'
+options:
+  show_tax_column: true
+  show_discount: true
+  show_bank: false
+numbering:
+  invoice: JM-{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: JM-BL-{key}
+texts:
+  tagline: Supplying your shelves, satisfying your customers
+  about: Juniper Merchants Inc. distributes wholesale food and beverage products to grocery stores, restaurants,
+    and catering businesses throughout Colorado and the Rockies.
+  payment_instructions: Pay invoices net thirty days via check, ACH transfer, or credit card through your account
+    manager or our online billing system.
+  footer: Fresh stock, fresh relationships
+  notes:
+  - Thank you for partnering with Juniper Merchants this season.
+  - Standard delivery within two business days across Denver metro.
+  - Returns must be reported within seven days and kept at 10% or less of order value.
+  - Past-due balances subject to one and a half percent monthly interest.
+  - Perishable items are not returnable after delivery confirmation.
+  - Keep frozen goods below zero degrees until ready to stock.

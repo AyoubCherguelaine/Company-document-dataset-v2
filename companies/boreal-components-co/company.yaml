@@ -1,0 +1,63 @@
+slug: boreal-components-co
+locale: en
+currency: USD
+party:
+  name: Boreal Components Co.
+  address:
+    line1: 36 Industrial Pkwy
+    line2: ''
+    city: Denver
+    region: CO
+    postal_code: '80202'
+    country: USA
+  phone: (493) 555-3234
+  email: billing@borealcomponents.com
+  website: www.borealcomponents.com
+  tax_id: EIN 59-2005511
+  code: US
+  bank:
+    bank_name: Northern Trust Bank
+    account: '8815694933'
+    routing: 079558108
+sector: bikes
+brand:
+  initials: BC
+  color: '#78350f'
+  shape: rounded
+design:
+  default:
+    layout: letterhead
+    theme: mono
+colors: {}
+options:
+  show_item_details: true
+  show_contact: false
+  show_discount: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: QT{key:06d}
+  credit_note: BC-CR-{key}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: BC{yy}{key:06d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Pedal Power, Precision Built
+  about: We manufacture and distribute durable bike frames, parts, and accessories for riders seeking performance
+    and reliability.
+  payment_instructions: Please pay invoices by ACH transfer or credit card; payment is due within 30 days of invoice
+    date.
+  footer: Ride on, thanks for choosing Boreal Components.
+  notes:
+  - Thank you for your order; we value your trust in our products.
+  - Items ship from our Denver warehouse within 3 business days with tracking provided.
+  - Unused parts may be returned within 30 days for exchange or refund, subject to inspection.
+  - Overdue invoices attract a 2% monthly interest charge after the due date.
+  - Frames are covered by a 5‑year limited warranty; components have a 2‑year guarantee.
+  - Clean your bike after each ride, lubricate the chain, and check tire pressure regularly.

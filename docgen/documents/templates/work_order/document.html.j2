@@ -1,0 +1,12 @@
+{#- Work order: product and quantities, then the routing operations with planned vs actual. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block parties %}{% endblock %}
+{% block before_items %}
+  <section class="info-grid">
+    {% for label, value in doc.extra.product %}<div class="cell"><div class="label">{{ t(label) }}</div><div class="value">{{ value }}</div></div>{% endfor %}
+  </section>
+{% endblock %}
+{% block summary_left %}{% endblock %}
+{% block notes %}{{ c.signatures(['approved_by', 'signature']) }}{% endblock %}

@@ -1,0 +1,50 @@
+{#- Sidebar: a full-height colour column on every page holding the issuer identity and bank
+    details; the document itself flows in the right-hand column. -#}
+{% extends "base.html.j2" %}
+{% import "components.html.j2" as c with context %}
+{% set side = '40mm' if page_size == 'A5' else '58mm' %}
+
+{% block layout_css %}
+@page { margin-left: calc({{ side }} + 10mm); }
+.layout-sidebar aside.side { position: fixed; top: -16mm; left: calc(-{{ side }} - 10mm); width: {{ side }};
+  height: 400mm; background: var(--c-primary); color: #fff; padding: 16mm 5mm 0 6mm; font-size: .92em; }
+.layout-sidebar aside.side .issuer, .layout-sidebar aside.side .tax-id, .layout-sidebar aside.side .tagline,
+.layout-sidebar aside.side .label, .layout-sidebar aside.side .muted { color: #fff; opacity: .9; }
+.layout-sidebar aside.side .issuer-name { font-size: 1.15em; margin-top: 3mm; }
+.layout-sidebar aside.side .bank { margin-top: 8mm; }
+.layout-sidebar .doc-header { display: block; margin-bottom: var(--gap); }
+.layout-sidebar h1 { margin-bottom: 3mm; }
+.layout-sidebar .doc-footer { text-align: left; }
+{% endblock %}
+
+{% block page %}
+  <aside class="side">
+    {{ logo_svg(issuer, theme, 40) }}
+    {{ c.issuer_block(issuer, opts.show_contact) }}
+    {% if opts.show_bank and issuer.bank and page_size != 'A5' %}{{ c.bank_block(issuer) }}{% endif %}
+  </aside>
+  {{ super() }}
+{% endblock %}
+
+{% block header %}
+  <h1>{{ title }}</h1>
+  {{ c.meta_table(meta_rows) }}
+{% endblock %}
+
+{% block parties %}{{ c.parties_row(party_blocks, opts.show_contact) }}{% endblock %}
+
+{% block items %}{% if doc.items %}{{ c.line_table(doc.items, columns) }}{% endif %}{% endblock %}
+
+{% block summary %}
+<section class="summary">
+  <div>{% block summary_left %}{% endblock %}</div>
+  {% if doc.totals %}{{ c.totals_table(doc.totals) }}{% elif doc.summary %}{{ c.summary_table(doc.summary) }}{% endif %}
+</section>
+{% endblock %}
+
+{% block notes %}
+  {% if opts.show_notes %}{{ c.notes_block(doc.notes) }}{% endif %}
+  {% if opts.show_signature %}{{ c.signature_block() }}{% endif %}
+{% endblock %}
+
+{% block footer %}{% if ctext("footer") %}<div>{{ ctext("footer") }}</div>{% endif %}{% endblock %}

@@ -1,0 +1,61 @@
+slug: iris-sports-corp
+locale: en
+currency: USD
+party:
+  name: Iris Sports Corp.
+  address:
+    line1: 279 Harbor Blvd
+    line2: ''
+    city: Denver
+    region: CO
+    postal_code: '80202'
+    country: USA
+  phone: (989) 555-7243
+  email: accounts@irissports.com
+  website: www.irissports.com
+  tax_id: EIN 79-2440607
+  code: US
+  bank:
+    bank_name: Banque Populaire du Centre
+    account: '9560169082'
+    routing: 056844191
+sector: bikes
+brand:
+  initials: IS
+  color: '#9d174d'
+  shape: circle
+design:
+  default:
+    layout: modern
+    theme: warm
+colors: {}
+options:
+  show_bank: true
+  show_discount: true
+  show_item_details: false
+numbering:
+  invoice: IS-{yy}{key:06d}
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: IS-PO-{key}
+  packing_slip: IS-BL-{key}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: IS-REC-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: OF{yy}{key:06d}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Pedal power. Ride the future.
+  about: Manufacturer and distributor of bicycles and cycling gear for athletes and enthusiasts everywhere.
+  payment_instructions: Settle invoices by credit transfer or corporate account payment method.
+  footer: Gear up strong and ride safely today.
+  notes:
+  - Mountain bikes built for long-distance riders.
+  - Protective equipment includes helmets rated for high speeds.
+  - Annual maintenance kits included with full sets.
+  - Customer support available seven days a week.
+  - Warranty covers frame defects for twelve months.
+  - Use proper technique to maximize performance benefits.

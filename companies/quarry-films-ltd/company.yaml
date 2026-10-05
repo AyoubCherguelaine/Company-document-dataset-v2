@@ -1,0 +1,63 @@
+slug: quarry-films-ltd
+locale: en
+currency: GBP
+party:
+  name: Quarry Films Ltd
+  address:
+    line1: 6 Mill Lane
+    line2: Suite 563
+    city: Leeds
+    region: ''
+    postal_code: LS1 5AA
+    country: United Kingdom
+  phone: +44 20 4617908
+  email: sales@quarryfilms.co.uk
+  website: www.quarryfilms.co.uk
+  tax_id: VAT GB057766084
+  code: UK
+  bank:
+    bank_name: First Commerce Bank
+    iban: GB34 6200 3242 8010 1688 7876
+    bic: QUARGB63
+sector: video
+brand:
+  initials: QF
+  color: '#7c2d12'
+  shape: square
+design:
+  default:
+    layout: modern
+    theme: warm
+colors:
+  primary: '#7c2d12'
+options:
+  show_tax_column: false
+  show_signature: false
+  show_contact: false
+numbering:
+  invoice: QF-{yy}{key:06d}
+  quote: QT{key:06d}
+  credit_note: QF-CR-{key}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: QF-BL-{key}
+  shipping_order: QF-EXP-{key}
+  goods_received_note: GRN-{key}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Your local hub for movie magic
+  about: We offer a curated collection of films for rent, catering to families, students, and cinephiles in Leeds
+    and surrounding areas.
+  payment_instructions: Pay your bill by card, cash, or online bank transfer within 10 days of issuance.
+  footer: Thanks for supporting Quarry Films Ltd.
+  notes:
+  - Thank you for choosing Quarry Films; we hope you enjoy every film.
+  - Collect your rental in-store for free, or opt for home delivery at £3 per order.
+  - Return discs to the drop‑box within 5 days; late returns attract a £1 daily fee.
+  - Unpaid invoices after 14 days incur a £5 charge plus 2% monthly interest.
+  - Keep discs away from heat, moisture, and magnets to preserve playback quality.
+  - Report any playback issues within 24 hours for an immediate exchange.

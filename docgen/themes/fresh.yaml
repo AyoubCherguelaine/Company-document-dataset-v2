@@ -1,0 +1,16 @@
+# Light teal look: sentence-case title, rounded logo, striped table, airy spacing.
+font_family: "'Liberation Sans', 'DejaVu Sans', sans-serif"
+base_size: 9pt
+title_size: 26pt
+title_transform: none
+table_style: striped
+logo_shape: rounded
+spacing: 1.15
+colors:
+  primary: "#0f766e"
+  accent: "#14b8a6"
+  header_bg: "#ccfbf1"
+  header_fg: "#134e4a"
+  stripe: "#f0fdfa"
+  surface: "#f0fdfa"
+  border: "#99f6e4"

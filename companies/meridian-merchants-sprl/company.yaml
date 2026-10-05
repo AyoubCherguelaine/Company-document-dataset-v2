@@ -1,0 +1,51 @@
+slug: meridian-merchants-sprl
+locale: fr
+currency: EUR
+party:
+  name: Meridian Merchants SPRL
+  address:
+    line1: 169, rue Neuve
+    line2: Building C
+    city: Namur
+    region: ''
+    postal_code: '5000'
+    country: Belgique
+  phone: +32 2 992 75 69
+  email: accounts@meridianmerchants.be
+  website: www.meridianmerchants.be
+  tax_id: TVA BE0787493767
+  code: BE
+  bank:
+    bank_name: First Commerce Bank
+    iban: BE98 5068 1487 4292 6336 8089
+    bic: MERIBE11
+sector: food
+brand:
+  initials: MM
+  color: '#9d174d'
+  shape: circle
+design:
+  default:
+    layout: sidebar
+    theme: fresh
+colors: {}
+options:
+  show_tax_column: true
+  show_signature: false
+  show_discount: true
+numbering:
+  invoice: INV{key:07d}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+texts:
+  tagline: Des produits frais pour votre commerce.
+  about: Nous distribuons des denrées alimentaires et boissons aux détaillants et restaurants.
+  payment_instructions: Le règlement est dû à réception par virement bancaire.
+  footer: Votre partenaire alimentation de confiance.
+  notes:
+  - Merci de votre commande.
+  - Livraison garantie avant dix heures du matin.
+  - Produits non conformes peuvent être retournés sous quarante-huit heures.
+  - Les factures impayées après trente jours sont majorées.
+  - Conservez les produits au froid avant utilisation.
+  - Vérifiez la marchandise lors de la livraison.

@@ -1,0 +1,26 @@
+{#- Inventory report: rows grouped by family with a group header row; low stock highlighted. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block parties %}{% endblock %}
+{% block items %}
+<table class="lines">
+  <thead><tr>
+    {% for col in columns %}<th class="a-{{ col.align }}"{% if col.width %} style="width:{{ col.width }}"{% endif %}>{{ t(col.label) }}</th>{% endfor %}
+  </tr></thead>
+  <tbody>
+  {% for item in doc.items %}
+    {% if opts.group_rows and (loop.first or item.extra.group != doc.items[loop.index0 - 1].extra.group) %}
+      <tr class="group-row"><td colspan="{{ columns | length }}">{{ item.extra.group }}</td></tr>
+    {% endif %}
+    <tr>
+    {% for col in columns %}
+      <td class="a-{{ col.align }}{% if col.key == 'extra.status' %} {{ item.extra.status_key | replace('_', '-') }}{% endif %}">{{ cell(item, col) }}</td>
+    {% endfor %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+{% block summary_left %}{% endblock %}
+{% block notes %}{{ c.signatures(['prepared_by']) }}{% endblock %}

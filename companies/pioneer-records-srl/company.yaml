@@ -1,0 +1,64 @@
+slug: pioneer-records-srl
+locale: fr
+currency: EUR
+party:
+  name: Pioneer Records SRL
+  address:
+    line1: 128, rue Neuve
+    line2: Suite 878
+    city: Namur
+    region: ''
+    postal_code: '5000'
+    country: Belgique
+  phone: +32 2 820 39 46
+  email: accounts@pioneerrecords.be
+  website: www.pioneerrecords.be
+  tax_id: TVA BE0069550923
+  code: BE
+  bank:
+    bank_name: City Savings Bank
+    iban: BE45 6365 7724 6228 1221 3311
+    bic: PIONBE25
+sector: music
+brand:
+  initials: PR
+  color: '#9d174d'
+  shape: rounded
+design:
+  default:
+    layout: classic
+    theme: mono
+colors:
+  primary: '#9d174d'
+options:
+  show_item_details: true
+  show_signature: false
+  show_tax_column: false
+numbering:
+  invoice: PR-{yy}{key:06d}
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: PR-REC-{key}
+  account_statement: PR-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Votre musique, vos envies, en un clic
+  about: Nous proposons un catalogue numérique de morceaux et d'albums à télécharger légalement pour les amateurs
+    de musique du monde entier.
+  payment_instructions: Réglez vos achats par carte bancaire, PayPal ou virement SEPA, réception immédiate du contenu
+    après paiement.
+  footer: Merci d'écouter avec Pioneer Records SRL.
+  notes:
+  - Merci pour votre achat, profitez de votre musique où que vous soyez.
+  - Le téléchargement débute immédiatement après confirmation du paiement, accessible depuis votre compte.
+  - Les fichiers numériques ne sont ni échangeables ni remboursables, sauf en cas d'erreur de fichier.
+  - En cas de facture impayée, un rappel sera envoyé après 15 jours, puis une pénalité de 1,5 % mensuelle.
+  - Sauvegardez vos fichiers sur un support externe pour éviter toute perte accidentelle.
+  - Nos pistes sont compatibles avec tous les lecteurs MP3, smartphones et plateformes de streaming courants.

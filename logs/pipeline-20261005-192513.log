@@ -1,0 +1,116 @@
+[19:25:13] pipeline: venv -> download -> index -> companies -> generate -> augment -> export  (log: logs/pipeline-20261005-192513.log)
+[19:25:13] disk: 26,000 documents need ~7.1 GB (generate 0.8 GB, augment + scans export 3.7 GB, export 0.6 GB); free 17.5 GB
+[19:25:13] === venv ===
+[19:25:14] venv: ok
+[19:25:15] === download ===
+[19:25:15] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python /home/ayoub/Desktop/repos/Company-document/scripts/download_sources.py
+  [download] northwind: present (24,124 KB), skipped
+  [download] chinook: present (1,016 KB), skipped
+  [download] sakila: present (5,484 KB), skipped
+  [download] adventureworks: present (106,300 KB), skipped
+  [download] all sources ready
+[19:25:15] === index ===
+[19:25:15] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python /home/ayoub/Desktop/repos/Company-document/scripts/prepare_sources.py
+  [ok] adventureworks: 23 indexes in 0.0s
+  [ok] sakila: 3 indexes in 0.0s
+  [ok] chinook: 1 indexes in 0.0s
+[19:25:16] === companies ===
+[19:25:16] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen companies init --count 15
+  [skip] bikes: 15 companies already (use --force to add more)
+  [skip] food: 15 companies already (use --force to add more)
+  [skip] music: 15 companies already (use --force to add more)
+  [skip] video: 15 companies already (use --force to add more)
+[19:25:17] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen companies rebalance
+  60 companies, 20/20 layout x theme combinations used
+[19:25:18] === generate ===
+[19:25:18] config: 13 types x 2000 -> logs/pipeline-config-v2.yaml
+[19:25:18] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen generate /home/ayoub/Desktop/repos/Company-document/logs/pipeline-config-v2.yaml
+  [plan] 26000 documents -> /home/ayoub/Desktop/repos/Company-document/output/v2
+  [failed] inventory_report.adventureworks key=60 {'items.7.description': 'LL Spindle/Axle', 'items.35.description': 'LL Road Seat/Saddle', 'items.37.description': 'ML Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.12.description': 'ML Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.55.description': 'HL Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.17.description': 'HL Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.8.description': 'LL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=60 {'items.52.description': 'ML Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.13.description': 'LL Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.28.description': 'LL Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.36.description': 'LL Mountain Seat/Saddle', 'items.37.description': 'LL Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.21.description': 'LL Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.45.description': 'LL Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.13.description': 'ML Mountain Seat/Saddle', 'items.14.description': 'ML Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.22.description': 'HL Touring Seat/Saddle', 'items.23.description': 'ML Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.46.description': 'HL Touring Seat/Saddle', 'items.47.description': 'LL Mountain Seat/Saddle', 'items.49.description': 'ML Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.3.description': 'HL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=60 {'items.45.description': 'HL Mountain Seat/Saddle', 'items.49.description': 'ML Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.18.description': 'HL Touring Seat/Saddle', 'items.19.description': 'ML Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.3.description': 'HL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=6 {'items.33.description': 'HL Mountain Seat/Saddle', 'items.34.description': 'LL Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.11.description': 'LL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=60 {'items.48.description': 'HL Road Seat/Saddle', 'items.50.description': 'ML Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.10.description': 'LL Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.3.description': 'LL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=50 {'items.55.description': 'HL Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.4.description': 'HL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=60 {'items.49.description': 'HL Touring Seat/Saddle', 'items.51.description': 'LL Road Seat/Saddle', 'items.53.description': 'ML Road Seat/Saddle', 'items.54.description': 'ML Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.17.description': 'LL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=6 {'items.55.description': 'ML Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.34.description': 'HL Road Seat/Saddle', 'items.35.description': 'LL Mountain Seat/Saddle', 'items.36.description': 'ML Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.13.description': 'LL Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.18.description': 'ML Mountain Seat/Saddle', 'items.19.description': 'ML Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.25.description': 'LL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=60 {'items.5.description': 'HL Spindle/Axle', 'items.7.description': 'LL Spindle/Axle'}
+  [failed] inventory_report.adventureworks key=50 {'items.53.description': 'LL Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.23.description': 'ML Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.21.description': 'HL Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.18.description': 'ML Road Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=60 {'items.32.description': 'LL Road Seat/Saddle', 'items.33.description': 'LL Touring Seat/Saddle', 'items.34.description': 'ML Touring Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=6 {'items.14.description': 'ML Mountain Seat/Saddle'}
+  [failed] inventory_report.adventureworks key=50 {'items.52.description': 'LL Mountain Seat/Saddle'}
+  [failed] inventory_report.northwind key=all {'items.0.line_total': '645,84 €', 'items.1.line_total': '297,16 €', 'items.2.line_total': '4 121,14 €', 'items.3.line_total': '82,80 €', 'items.4.line_total': '719,44 €', 'items.5.line_total': '943,92 €', 'items.6.line_total': '669,76 €', 'items.7.line_total': '207,00 €', 'items.8.line_total': '119,60 €', 'items.9.line_total': '1 072,72 €', 'items.10.line_total': '556,14 €', 'items.11.line_total': '483,03 €', 'items.12.line_total': '62,56 €', 'items.13.line_total': '220,80 €', 'items.14.line_total': '382,72 €', 'items.15.line_total': '2 962,86 €', 'items.16.line_total': '969,36 €', 'items.17.line_total': '175,95 €', 'items.18.line_total': '430,95 €', 'items.19.line_total': '184,00 €', 'items.20.line_total': '69,00 €', 'items.21.line_total': '2 980,80 €', 'items.23.line_total': '771,12 €', 'items.24.line_total': '971,75 €', 'items.25.line_total': '314,64 €', 'items.26.line_total': '514,28 €', 'items.27.line_total': '257,60 €', 'items.28.line_total': '0,00 €', 'items.29.line_total': '861,12 €', 'items.30.line_total': '264,96 €', 'items.31.line_total': '448,28 €', 'items.32.line_total': '425,04 €', 'items.33.line_total': '3 006,56 €', 'items.34.line_total': '3 997,40 €', 'items.35.line_total': '244,72 €', 'items.36.line_total': '2 009,28 €', 'items.37.line_total': '645,84 €', 'items.38.line_total': '334,88 €', 'items.39.line_total': '505,08 €', 'items.40.line_total': '672,98 €', 'items.41.line_total': '0,00 €', 'items.42.line_total': '2 587,96 €', 'items.43.line_total': '0,00 €', 'items.44.line_total': '2 539,20 €', 'items.45.line_total': '0,00 €', 'items.46.line_total': '143,85 €', 'items.48.line_total': '1 090,70 €', 'items.49.line_total': '748,65 €', 'items.50.line_total': '414,00 €', 'items.51.line_total': '2 415,00 €', 'items.52.line_total': '755,78 €', 'items.53.line_total': '884,12 €', 'items.54.line_total': '1 957,76 €', 'items.55.line_total': '754,80 €', 'items.56.line_total': '132,48 €', 'items.57.line_total': '238,20 €', 'items.58.line_total': '43,70 €', 'items.59.line_total': '1 393,80 €'}
+  [failed] inventory_report.northwind key=category:4 {'items.0.line_total': '425,04 €', 'items.1.line_total': '3 006,56 €', 'items.2.line_total': '0,00 €', 'items.3.line_total': '264,96 €', 'items.4.line_total': '448,28 €', 'items.5.line_total': '594,32 €', 'items.6.line_total': '3 997,40 €', 'items.7.line_total': '514,28 €', 'items.8.line_total': '257,60 €', 'items.9.line_total': '861,12 €'}
+  [failed] inventory_report.northwind key=category:4 {'items.0.line_total': '425,04 €', 'items.1.line_total': '3 006,56 €', 'items.2.line_total': '0,00 €', 'items.3.line_total': '264,96 €', 'items.4.line_total': '448,28 €', 'items.5.line_total': '594,32 €', 'items.6.line_total': '3 997,40 €', 'items.7.line_total': '514,28 €', 'items.8.line_total': '257,60 €', 'items.9.line_total': '861,12 €'}
+    account_statement.adventureworks     ok=1271
+    account_statement.northwind          ok=729
+    credit_note.adventureworks           ok=1000
+    credit_note.northwind                ok=1000
+    employment_certificate.adventureworks ok=2000
+    goods_received_note.adventureworks   ok=2000
+    inventory_report.adventureworks      failed=40 ok=948
+    inventory_report.northwind           failed=3 ok=1009
+    invoice.adventureworks               ok=794
+    invoice.chinook                      ok=412
+    invoice.northwind                    ok=794
+    packing_slip.adventureworks          ok=1000
+    packing_slip.northwind               ok=1000
+    payslip.adventureworks               ok=2000
+    purchase_order.adventureworks        ok=1000
+    purchase_order.northwind             ok=1000
+    quote.adventureworks                 ok=1000
+    quote.northwind                      ok=1000
+    receipt.chinook                      ok=412
+    receipt.sakila                       ok=1588
+    shipping_order.adventureworks        ok=1000
+    shipping_order.northwind             ok=1000
+    work_order.adventureworks            ok=2000
+  [done] {'ok': 25957, 'failed': 43} in 1161.5s
+[19:44:45] === augment ===
+[19:44:45] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen augment output/v2 --fraction 0.3 --workers 8 --seed 42
+  [augment] 7738 of 25957 documents, profile=mixed, dpi=150
+  [augment] 1000/7738
+  [augment] 2000/7738
+  [augment] 3000/7738
+  [augment] 4000/7738
+  [augment] 5000/7738
+  [augment] 6000/7738
+  [augment] 7000/7738
+  [augment] 9659 page images in 1214s
+[20:05:00] === export ===
+[20:05:00] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python -m docgen export output/v2 dataset/v2 --seed 42
+  [export] 5,000/25,957
+  [export] 10,000/25,957
+  [export] 15,000/25,957
+  [export] 20,000/25,957
+  [export] 25,000/25,957
+  [export] {'validation': 3463, 'train': 19040, 'test': 3454} documents, {'train': 7125, 'validation': 1287, 'test': 1247} scan pages -> /home/ayoub/Desktop/repos/Company-document/dataset/v2
+[20:09:11] done: venv 1s, download 0s, index 0s, companies 1s, generate 1166s, augment 1215s, export 251s
+[20:09:11] dataset: dataset/v2/  (README.md, stats.json, data/*.parquet)

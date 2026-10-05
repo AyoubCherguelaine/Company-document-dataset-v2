@@ -1,0 +1,52 @@
+slug: boreal-wholesale-ltd
+locale: en
+currency: GBP
+party:
+  name: Boreal Wholesale Ltd
+  address:
+    line1: 166 King's Road
+    line2: Suite 427
+    city: London
+    region: ''
+    postal_code: EC1A 1BB
+    country: United Kingdom
+  phone: +44 20 3818781
+  email: contact@borealwholesale.co.uk
+  website: www.borealwholesale.co.uk
+  tax_id: VAT GB731067270
+  code: UK
+  bank:
+    bank_name: First Commerce Bank
+    iban: GB98 9089 2121 3487 4449 2441
+    bic: BOREGB84
+sector: food
+brand:
+  initials: BW
+  color: '#14532d'
+  shape: rounded
+design:
+  default:
+    layout: letterhead
+    theme: fresh
+colors: {}
+options:
+  show_bank: true
+  show_discount: true
+  show_item_details: false
+numbering:
+  invoice: BW-{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: BW-BL-{key}
+texts:
+  tagline: Supplying Quality Food & Drink Across the Nation.
+  about: We distribute a broad range of fresh, frozen, and pantry food and beverage products to retailers and hospitality
+    venues.
+  payment_instructions: Settle invoices via bank transfer or corporate credit card within 30 days of receipt.
+  footer: Thank you for partnering with Boreal Wholesale Ltd.
+  notes:
+  - Thank you for choosing us as your trusted food and beverage supplier.
+  - We deliver orders within 48 hours to your specified address using temperature‑controlled vehicles.
+  - Perishable items may be returned within 24 hours if received damaged or spoiled.
+  - Late payments after 30 days attract a 1.5% monthly interest charge.
+  - Store dry goods in a cool, dry place; keep refrigerated items at recommended temperatures.
+  - All products comply with UK food safety regulations; request certificates upon delivery.

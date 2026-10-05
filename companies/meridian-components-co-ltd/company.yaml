@@ -1,0 +1,62 @@
+slug: meridian-components-co-ltd
+locale: en
+currency: GBP
+party:
+  name: Meridian Components & Co. Ltd
+  address:
+    line1: 274 High Street
+    line2: ''
+    city: Manchester
+    region: ''
+    postal_code: M1 2AB
+    country: United Kingdom
+  phone: +44 20 2401437
+  email: contact@meridiancomponents.co.uk
+  website: www.meridiancomponents.co.uk
+  tax_id: VAT GB248674625
+  code: UK
+  bank:
+    bank_name: City Savings Bank
+    iban: GB25 5280 4215 1335 2083 1302
+    bic: MERIGB76
+sector: bikes
+brand:
+  initials: MC
+  color: '#1e3a8a'
+  shape: rounded
+design:
+  default:
+    layout: sidebar
+    theme: plain
+colors:
+  primary: '#1e3a8a'
+options:
+  show_contact: true
+  show_tax_column: false
+  show_item_details: false
+numbering:
+  invoice: MC-{yy}{key:06d}
+  quote: QT{key:06d}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: MC-REC-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: MC-WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Engineered for the ride, built to last.
+  about: We manufacture and distribute high quality bicycle parts to shops and riders.
+  payment_instructions: Settle invoices within thirty days via bank transfer to our account.
+  footer: Ride safe, stay sharp, Meridian Components.
+  notes:
+  - Thank you for your order today.
+  - Standard delivery takes five to seven business days.
+  - Defective parts may be returned within ninety days.
+  - Overdue balances attract interest at five percent annually.
+  - Apply grease regularly to maintain chain performance.
+  - Please retain packaging until installation is complete.

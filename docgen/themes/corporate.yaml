@@ -1,0 +1,12 @@
+# Blue corporate look, striped table.
+font_family: "'DejaVu Sans', sans-serif"
+base_size: 8.6pt
+table_style: striped
+logo_shape: auto          # use the issuer's own logo shape
+colors:
+  primary: "#1f4e79"
+  accent: "#2e75b6"
+  header_bg: "#1f4e79"
+  header_fg: "#ffffff"
+  stripe: "#eef3f8"
+  surface: "#f5f8fb"

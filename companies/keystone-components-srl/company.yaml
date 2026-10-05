@@ -1,0 +1,61 @@
+slug: keystone-components-srl
+locale: fr
+currency: EUR
+party:
+  name: Keystone Components SRL
+  address:
+    line1: 317, rue des Bouchers
+    line2: ''
+    city: Namur
+    region: ''
+    postal_code: '5000'
+    country: Belgique
+  phone: +32 2 023 27 70
+  email: sales@keystonecomponents.be
+  website: www.keystonecomponents.be
+  tax_id: TVA BE0819538581
+  code: BE
+  bank:
+    bank_name: Crédit Régional
+    iban: BE31 1373 2727 2768 3284 7869
+    bic: KEYSBE07
+sector: bikes
+brand:
+  initials: KC
+  color: '#14532d'
+  shape: circle
+design:
+  default:
+    layout: letterhead
+    theme: warm
+colors: {}
+options:
+  show_item_details: false
+  show_signature: false
+  show_tax_column: true
+numbering:
+  invoice: INV{key:07d}
+  quote: Q-{yyyy}-{key}
+  credit_note: KC-CR-{key}
+  purchase_order: KC-PO-{key}
+  packing_slip: PS-{key}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GRN-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Pièces et passion pour cyclistes.
+  about: Fabrication et distribution d'équipements vélo, des composants aux accessoires pour tous niveaux.
+  payment_instructions: Règlez vos factures par virement bancaire ou carte, avant le 15 du mois suivant.
+  footer: Nous pédalons ensemble vers l'excellence.
+  notes:
+  - Merci pour votre confiance, votre prochaine commande vous attend.
+  - Livraison gratuite dès 100 € d'achat en Belgique.
+  - Retours acceptés sous 14 jours, article en état neuf.
+  - 'Retard de paiement : 2 % d’intérêt mensuel appliqué.'
+  - Garantie deux ans sur tous les composants mécaniques.
+  - 'Entretien du vélo : nettoyez les chaînes régulièrement.'

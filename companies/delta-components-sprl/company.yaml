@@ -1,0 +1,61 @@
+slug: delta-components-sprl
+locale: fr
+currency: EUR
+party:
+  name: Delta Components SPRL
+  address:
+    line1: 7, chaussée de Wavre
+    line2: ''
+    city: Liège
+    region: ''
+    postal_code: '4000'
+    country: Belgique
+  phone: +32 2 448 45 40
+  email: accounts@deltacomponents.be
+  website: www.deltacomponents.be
+  tax_id: TVA BE0188066225
+  code: BE
+  bank:
+    bank_name: Northern Trust Bank
+    iban: BE65 5010 1450 0539 6982 5783
+    bic: DELTBE23
+sector: bikes
+brand:
+  initials: DC
+  color: '#78350f'
+  shape: rounded
+design:
+  default:
+    layout: modern
+    theme: mono
+colors: {}
+options:
+  show_tax_column: false
+  show_signature: false
+  show_bank: true
+numbering:
+  invoice: F{yy}-{key}
+  quote: QT{key:06d}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: PS-{key}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GRN-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: R-{key}
+  work_order: OF{yy}{key:06d}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Performance sur deux roues, garantie
+  about: Nous concevons et distribuons des vélos et équipements cyclistes de qualité pour professionnels et amateurs.
+  payment_instructions: Payez vos factures par prélèvement SEPA ou virement, référence obligatoire sous 30 jours.
+  footer: Roulez en confiance, nous sommes à votre service.
+  notes:
+  - Merci de choisir Delta Components ; votre satisfaction est notre priorité.
+  - Expédition sous 3 à 5 jours ouvrés, suivi disponible en ligne.
+  - Retours acceptés sous 30 jours, produit non utilisé et dans son emballage d'origine.
+  - En cas de retard de paiement, une pénalité de 2 % sera appliquée mensuellement.
+  - Garantie constructeur 2 ans sur cadres et fourchettes, pièces d'usure exclues.
+  - 'Entretien régulier recommandé : vérifiez pression des pneus et serrage des boulons chaque mois.'

@@ -1,0 +1,250 @@
+code: fr
+currency: EUR
+decimal_sep: ","
+group_sep: " "
+currency_format: "{amount} {symbol}"
+date_formats: ["{d} {month} {yyyy}", "{dd}/{mm}/{yyyy}", "{dd}.{mm}.{yyyy}"]
+months: [janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+tax:
+  label: TVA
+  standard: "0.20"
+  reduced: "0.055"
+  reduced_categories: [Dairy Products, Grains/Cereals, Meat/Poultry, Produce, Seafood, Condiments, Confections]
+payroll:
+  hours: {1: "151.67", 2: "70"}
+  overtime_factor: "1.25"
+  deductions:
+    - {label: securite_sociale, rate: "0.069"}
+    - {label: csg_crds, rate: "0.0955"}
+    - {label: retraite_complementaire, rate: "0.0401"}
+    - {label: prelevement_source, rate: "0.075"}
+  fixed:
+    - {label: mutuelle, amount: "45.00"}
+certificate:
+  salutation: ["À qui de droit,", "Madame, Monsieur,", ""]
+  body:
+    - "Nous soussignés, {company}, certifions que {name}, né(e) le {birth_date}, est employé(e) au sein de notre société depuis le {hire_date} et occupe actuellement le poste de {job_title} au sein du service {department}."
+    - "La société {company} atteste que {name} fait partie de son personnel depuis le {hire_date}, en qualité de {job_title} (service {department})."
+    - "Par la présente, {company} certifie employer {name} depuis le {hire_date} au poste de {job_title}, rattaché(e) au service {department}."
+  extra:
+    - "{name} travaille en équipe de {shift} et fait toujours partie de nos effectifs à la date de la présente."
+    - "Le contrat de travail est à durée indéterminée et toujours en cours à ce jour."
+  closing:
+    - "La présente attestation est délivrée à la demande de l'intéressé(e) pour servir et valoir ce que de droit."
+    - "Attestation établie à la demande du salarié pour faire valoir ce que de droit."
+  issued: "Fait à {city}, le {date}."
+labels:
+  invoice: Facture
+  quote: Devis
+  credit_note: Avoir
+  purchase_order: Bon de commande
+  packing_slip: Bordereau de livraison
+  shipping_order: Ordre d'expédition
+  goods_received_note: Bon de réception
+  account_statement: Relevé de compte
+  inventory_report: État des stocks
+  receipt: Reçu
+  work_order: Ordre de fabrication
+  payslip: Bulletin de paie
+  employment_certificate: Attestation d'emploi
+  number: Numéro
+  date: Date
+  due_date: Échéance
+  order_date: Date de commande
+  ship_date: Date d'expédition
+  required_date: Livraison souhaitée
+  delivery_date: Date de livraison
+  valid_until: Valable jusqu'au
+  order_id: N° de commande
+  customer_id: Code client
+  account_number: N° de compte
+  po_number: Réf. commande client
+  po_reference: Réf. bon de commande
+  original_invoice: Facture d'origine
+  salesperson: Commercial
+  payment_terms: Conditions de paiement
+  carrier: Transporteur
+  tracking_number: N° de suivi
+  issuer: Émetteur
+  bill_to: Facturer à
+  ship_to: Livrer à
+  deliver_to: Adresse de livraison
+  supplier: Fournisseur
+  vendor: Fournisseur
+  buyer: Acheteur
+  customer: Client
+  shipper: Expéditeur
+  consignee: Destinataire
+  employee: Salarié
+  sku: Réf.
+  description: Désignation
+  product: Produit
+  quantity: Qté
+  unit: Conditionnement
+  unit_price: Prix unitaire
+  discount: Remise
+  tax_rate: TVA
+  amount: Montant HT
+  gross: Montant brut
+  discount_total: Remise
+  subtotal: Total HT
+  freight: Frais de port
+  total: Total TTC
+  notes: Remarques
+  bank_details: Coordonnées bancaires
+  bank_name: Banque
+  iban: IBAN
+  bic: BIC
+  account: Compte
+  routing: Code banque
+  phone: Tél.
+  attn: "À l'attention de"
+  reference: Référence
+  signature: Signature autorisée
+  page: Page
+  net_days: "{days} jours net"
+  thank_you: Merci de votre confiance.
+  paid: Payée
+  paid_by_card: Payé par carte bancaire
+  quote_validity: "Ce devis est valable {days} jours. Prix hors taxes sauf mention contraire."
+  accepted_by: Bon pour accord (nom, date, signature)
+  estimated_freight: Frais de port estimés
+  reason: Motif
+  credit_reason_damaged: Marchandise endommagée pendant le transport
+  credit_reason_wrong_item: Erreur d'article livré
+  credit_reason_expired: Date limite dépassée
+  credit_reason_price: Ajustement de prix
+  credit_reason_return: Retour client
+  credit_applied: Cet avoir sera déduit de votre prochaine facture ou remboursé sur demande.
+  requested_by: Demandé par
+  approved_by: Approuvé par
+  po_instructions: Merci de confirmer cette commande et de rappeler notre numéro sur vos factures et bons de livraison.
+  ordered: Commandé
+  shipped: Expédié
+  backordered: Reliquat
+  received: Reçu
+  rejected: Refusé
+  accepted: Accepté
+  stocked: Stocké
+  packages: Colis
+  total_weight: Poids total
+  weight: Poids (kg)
+  packed_by: Préparé par
+  received_by: Reçu par
+  inspected_by: Contrôlé par
+  received_date: Date de réception
+  total_ordered: Total commandé
+  total_received: Total reçu
+  total_rejected: Total refusé
+  total_accepted: Total accepté
+  service: Service
+  pickup_date: Date d'enlèvement
+  deliver_by: Livrer avant le
+  declared_value: Valeur déclarée
+  freight_terms: Conditions de transport
+  freight_prepaid: Port payé
+  freight_collect: Port dû
+  handling: Instructions de manutention
+  handling_text: Fragile. Craint l'humidité. Ne pas gerber sur plus de 3 niveaux.
+  shipper_signature: Signature expéditeur
+  carrier_signature: Signature transporteur
+  statement_date: Date du relevé
+  period: Période
+  opening_balance: Solde initial
+  invoiced: Facturé
+  payments: Règlements reçus
+  closing_balance: Solde final
+  amount_due: Montant dû
+  balance: Solde
+  debit: Débit
+  credit: Crédit
+  invoice_entry: "Facture {ref}"
+  payment_entry: "Règlement reçu, merci"
+  remittance: Talon de règlement
+  remittance_text: Merci de joindre ce talon à votre règlement.
+  amount_enclosed: Montant joint
+  aging_current: Non échu
+  aging_30: 1 à 30 jours
+  aging_60: 31 à 60 jours
+  aging_90: Plus de 60 jours
+  as_of: Au
+  scope: Périmètre
+  all_products: Tous les produits
+  group: Famille
+  location: Emplacement
+  on_hand: En stock
+  on_order: En commande
+  reorder_level: Seuil
+  unit_cost: Coût unitaire
+  stock_value: Valeur
+  status: Statut
+  status_ok: OK
+  status_reorder: À commander
+  status_out: Rupture
+  status_discontinued: Arrêté
+  total_items: Produits
+  total_units: Unités en stock
+  total_value: Valeur du stock
+  items_to_reorder: Produits à commander
+  prepared_by: Établi par
+  transaction: Transaction
+  time: Heure
+  payment_method: Moyen de paiement
+  card: Carte
+  cash: Espèces
+  amount_paid: Montant payé
+  amount_tendered: Montant remis
+  change: Rendu
+  served_by: Servi par
+  store: Magasin
+  rental_date: Loué le
+  return_date: Rendu le
+  late_fee: Pénalité de retard
+  rating: Classification
+  online_order: Commande en ligne
+  receipt_footer: Conservez ce reçu.
+  product_number: Réf. produit
+  order_qty: Quantité lancée
+  stocked_qty: Quantité stockée
+  scrapped_qty: Quantité rebutée
+  scrap_reason: Motif de rebut
+  start_date: Date de début
+  end_date: Date de fin
+  operation: Op.
+  planned_start: Début prévu
+  planned_end: Fin prévue
+  actual_start: Début réel
+  actual_end: Fin réelle
+  hours: Heures
+  planned_cost: Coût prévu
+  actual_cost: Coût réel
+  total_hours: Total heures
+  total_planned_cost: Coût prévu total
+  total_actual_cost: Coût réel total
+  variance: Écart
+  employee_id: Matricule
+  national_id: N° de sécurité sociale
+  job_title: Emploi
+  department: Service
+  hire_date: Date d'entrée
+  shift: Équipe
+  pay_period: Période
+  pay_date: Date de paiement
+  earnings: Rémunération
+  deductions: Cotisations et retenues
+  rate: Taux
+  regular_pay: Salaire de base
+  overtime_pay: Heures supplémentaires
+  bonus: Prime
+  gross_pay: Salaire brut
+  total_deductions: Total des retenues
+  net_pay: Net à payer
+  securite_sociale: Sécurité sociale
+  csg_crds: CSG / CRDS
+  retraite_complementaire: Retraite complémentaire
+  prelevement_source: Prélèvement à la source
+  mutuelle: Mutuelle
+  paid_by_transfer: Payé par virement
+  vacation_balance: Solde congés (h)
+  sick_balance: Solde maladie (h)
+  signatory: Signataire

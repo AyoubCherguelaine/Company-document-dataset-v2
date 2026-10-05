@@ -1,0 +1,51 @@
+slug: riverside-commerce-sa
+locale: fr
+currency: EUR
+party:
+  name: Riverside Commerce SA
+  address:
+    line1: 186, rue du Commerce
+    line2: ''
+    city: Paris
+    region: ''
+    postal_code: '75011'
+    country: France
+  phone: +33 4 46 16 12 65
+  email: sales@riversidecommerce.fr
+  website: www.riversidecommerce.fr
+  tax_id: TVA FR74936119826
+  code: FR
+  bank:
+    bank_name: First Commerce Bank
+    iban: FR17 4988 8298 5797 6547 0987
+    bic: RIVEFR33
+sector: food
+brand:
+  initials: RC
+  color: '#1f4e79'
+  shape: circle
+design:
+  default:
+    layout: sidebar
+    theme: warm
+colors: {}
+options:
+  show_item_details: true
+  show_signature: false
+  show_tax_column: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: DN{yy}{key:06d}
+texts:
+  tagline: Votre partenaire gourmand au quotidien
+  about: Distributeur en gros d’aliments et boissons pour magasins et restaurants.
+  payment_instructions: Règlement par virement bancaire sous 30 jours.
+  footer: Merci de votre confiance.
+  notes:
+  - Merci pour votre commande, nous préparons l’expédition.
+  - Livraison gratuite dès 500 € d’achat.
+  - Retours acceptés sous 7 jours, produits non ouverts.
+  - Pénalités de 1,5 % par mois après échéance.
+  - Conservez les produits au frais selon étiquette.
+  - Contactez-nous pour toute question ou réclamation.

@@ -1,0 +1,13 @@
+{#- Certificate of employment: a letter. No table; body paragraphs and a named signatory. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block parties %}{% endblock %}
+{% block extra_css %}
+.letter-body { margin-top: 14mm; }
+h1 { font-size: calc(var(--title-size) * .8); }
+{% endblock %}
+{% block summary %}{% endblock %}
+{% block notes %}
+  {{ c.signature_block(t('signatory'), doc.extra.signatory.name, doc.extra.signatory.role) }}
+{% endblock %}

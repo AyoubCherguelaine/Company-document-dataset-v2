@@ -1,0 +1,11 @@
+{#- Credit note: the reason and original invoice are stated before the credited lines. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block before_items %}
+  <section class="info-grid">
+    <div class="cell"><div class="label">{{ t('original_invoice') }}</div><div class="value">{{ doc.refs.original_invoice }}</div></div>
+    <div class="cell"><div class="label">{{ t('reason') }}</div><div class="value">{{ doc.extra.reason }}</div></div>
+  </section>
+{% endblock %}
+{% block summary_left %}{% endblock %}

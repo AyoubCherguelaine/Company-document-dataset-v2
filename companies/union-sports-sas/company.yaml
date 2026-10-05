@@ -1,0 +1,62 @@
+slug: union-sports-sas
+locale: fr
+currency: EUR
+party:
+  name: Union Sports SAS
+  address:
+    line1: 145, quai des Chartrons
+    line2: Suite 510
+    city: Bordeaux
+    region: ''
+    postal_code: '33000'
+    country: France
+  phone: +33 4 59 25 52 80
+  email: billing@unionsports.fr
+  website: www.unionsports.fr
+  tax_id: TVA FR51130276767
+  code: FR
+  bank:
+    bank_name: City Savings Bank
+    iban: FR36 2698 8576 7790 4761 2783
+    bic: UNIOFR52
+sector: bikes
+brand:
+  initials: US
+  color: '#14532d'
+  shape: rounded
+design:
+  default:
+    layout: sidebar
+    theme: corporate
+colors:
+  primary: '#14532d'
+options:
+  show_bank: false
+  show_discount: true
+  show_signature: false
+numbering:
+  invoice: INV-{yyyy}-{key}
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: PS-{key}
+  shipping_order: US-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: US-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: R-{key}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Pédalez vers l'excellence, avec nous
+  about: Nous fabriquons et distribuons vélos et équipements cyclistes de qualité.
+  payment_instructions: Veuillez régler la facture sous 30 jours par virement bancaire.
+  footer: Au plaisir de vous accompagner sur la route.
+  notes:
+  - Merci pour votre achat – nous apprécions votre confiance.
+  - Livraison rapide à domicile ou en point relais.
+  - Retours acceptés sous 14 jours, condition neuf.
+  - 'Paiement tardif : 1.5% de pénalité mensuelle appliquée.'
+  - 'Garantie cadre : 5 ans, pièces et main-d''œuvre.'
+  - 'Astuce : nettoyez la chaîne régulièrement pour une longue durée de vie.'

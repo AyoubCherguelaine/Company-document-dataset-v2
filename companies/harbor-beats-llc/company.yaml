@@ -1,0 +1,63 @@
+slug: harbor-beats-llc
+locale: en
+currency: USD
+party:
+  name: Harbor Beats LLC
+  address:
+    line1: 357 5th Avenue
+    line2: Building A
+    city: Portland
+    region: OR
+    postal_code: '97205'
+    country: USA
+  phone: (336) 555-5729
+  email: accounts@harborbeats.com
+  website: www.harborbeats.com
+  tax_id: EIN 36-1669785
+  code: US
+  bank:
+    bank_name: Crédit Régional
+    account: '2254876164'
+    routing: '295157172'
+sector: music
+brand:
+  initials: HB
+  color: '#0f766e'
+  shape: square
+design:
+  default:
+    layout: classic
+    theme: warm
+colors:
+  primary: '#0f766e'
+options:
+  show_tax_column: false
+  show_bank: false
+  show_signature: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+  shipping_order: SHP{key:07d}
+  goods_received_note: HB-REC-{key}
+  account_statement: STM{key:06d}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Your soundtrack, delivered instantly.
+  about: We sell high‑quality digital tracks and albums to music lovers worldwide via instant download.
+  payment_instructions: Pay invoices securely online using credit card, PayPal, or bank transfer within 15 days
+    of receipt.
+  footer: Thank you for choosing Harbor Beats LLC.
+  notes:
+  - Thanks for your purchase – enjoy your music instantly.
+  - Your download link is available in your account immediately after payment.
+  - Digital purchases are non‑refundable, except for files that fail to download correctly.
+  - Invoices unpaid after 30 days incur a 1.5% monthly interest charge.
+  - We guarantee file integrity; if a file is corrupted, we’ll provide a free replacement download.
+  - Please back up your purchased tracks to avoid loss; we recommend cloud storage.

@@ -1,0 +1,61 @@
+slug: atlas-records-inc
+locale: en
+currency: USD
+party:
+  name: Atlas Records Inc.
+  address:
+    line1: 92 Oak Street
+    line2: ''
+    city: Denver
+    region: CO
+    postal_code: '80202'
+    country: USA
+  phone: (758) 555-5904
+  email: contact@atlasrecords.com
+  website: www.atlasrecords.com
+  tax_id: EIN 19-7234226
+  code: US
+  bank:
+    bank_name: Crédit Régional
+    account: '8070394773'
+    routing: '598319595'
+sector: music
+brand:
+  initials: AR
+  color: '#14532d'
+  shape: circle
+design:
+  default:
+    layout: modern
+    theme: corporate
+colors: {}
+options:
+  show_contact: true
+  show_signature: true
+  show_item_details: false
+numbering:
+  invoice: INV{key:07d}
+  quote: Q-{yyyy}-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: AR{yy}{key:06d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Your Soundtrack, Instantly Delivered
+  about: We sell DRM‑free digital tracks and albums to music lovers worldwide via instant download.
+  payment_instructions: Pay invoices securely with credit card or PayPal; funds are captured upon order confirmation.
+  footer: Enjoy the music, thanks for shopping with us.
+  notes:
+  - Thank you for your purchase; enjoy your new music instantly.
+  - Your download link is emailed immediately after payment is confirmed.
+  - Digital purchases are non‑refundable except where legally required; contact support for issues.
+  - Invoices are due upon receipt; overdue amounts attract a 2% monthly fee.
+  - We guarantee file integrity; corrupted downloads can be re‑issued at no charge.
+  - Back up your purchased files to avoid loss; keep your media library organized.

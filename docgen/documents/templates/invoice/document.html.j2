@@ -1,0 +1,11 @@
+{#- Invoice = the company's layout + payment terms, bank details and an optional PAID stamp. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block summary_left %}
+  <div class="label">{{ t('payment_terms') }}</div>
+  <div>{{ doc.extra.payment_terms }}</div>
+  {% if doc.extra.get('payment_instructions') %}<div class="muted">{{ doc.extra.payment_instructions }}</div>{% endif %}
+  {% if opts.show_bank and doc.dates.get('due_date') %}<div style="margin-top:3mm">{{ c.bank_block(issuer) }}</div>{% endif %}
+  {% if opts.paid_stamp %}<div style="margin-top:5mm">{{ c.stamp(t('paid')) }}</div>{% endif %}
+{% endblock %}

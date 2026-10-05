@@ -1,0 +1,10 @@
+# Minimal black-and-white look.
+font_family: "'Liberation Sans', 'DejaVu Sans', sans-serif"
+table_style: plain
+logo_shape: square
+title_transform: none
+colors:
+  primary: "#111111"
+  accent: "#111111"
+  header_bg: "#ffffff"
+  header_fg: "#111111"

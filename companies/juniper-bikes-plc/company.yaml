@@ -1,0 +1,63 @@
+slug: juniper-bikes-plc
+locale: en
+currency: GBP
+party:
+  name: Juniper Bikes PLC
+  address:
+    line1: 144 High Street
+    line2: ''
+    city: Bristol
+    region: ''
+    postal_code: BS1 4DJ
+    country: United Kingdom
+  phone: +44 20 7361891
+  email: contact@juniperbikes.co.uk
+  website: www.juniperbikes.co.uk
+  tax_id: VAT GB883310779
+  code: UK
+  bank:
+    bank_name: Crédit Régional
+    iban: GB14 8176 5608 1621 8634 9723
+    bic: JUNIGB80
+sector: bikes
+brand:
+  initials: JB
+  color: '#4c1d95'
+  shape: square
+design:
+  default:
+    layout: letterhead
+    theme: plain
+colors: {}
+options:
+  show_contact: false
+  show_discount: true
+  show_signature: false
+numbering:
+  invoice: F{yy}-{key}
+  quote: JB-DEV-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: JB-BL-{key}
+  shipping_order: JB-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: JB-WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Built for every ride
+  about: Juniper Bikes PLC manufactures and distributes high-performance bicycles and cycling gear for commuters,
+    racers, and outdoor enthusiasts across the UK.
+  payment_instructions: Please settle invoices via bank transfer using the details provided on your statement or
+    through our secure online portal.
+  footer: Pedal on, from all of us
+  notes:
+  - Thanks for choosing Juniper Bikes for your next adventure.
+  - Free standard delivery on orders over fifty pounds.
+  - Returns accepted within 30 days of purchase with proof of receipt.
+  - Late payments incur a fee of four percent per month.
+  - All frames come with a lifetime warranty against manufacturing defects.
+  - Store your bike indoors and avoid exposure to heavy rain.

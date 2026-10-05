@@ -1,0 +1,62 @@
+slug: boreal-films-inc
+locale: en
+currency: USD
+party:
+  name: Boreal Films Inc.
+  address:
+    line1: 34 Market St
+    line2: Suite 393
+    city: Austin
+    region: TX
+    postal_code: '78701'
+    country: USA
+  phone: (285) 555-1314
+  email: accounts@borealfilms.com
+  website: www.borealfilms.com
+  tax_id: EIN 42-3723575
+  code: US
+  bank:
+    bank_name: First Commerce Bank
+    account: '2211884582'
+    routing: '758847315'
+sector: video
+brand:
+  initials: BF
+  color: '#9d174d'
+  shape: square
+design:
+  default:
+    layout: letterhead
+    theme: corporate
+colors: {}
+options:
+  show_tax_column: true
+  show_contact: true
+  show_item_details: true
+numbering:
+  invoice: F{yy}-{key}
+  quote: QT{key:06d}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: BF-PO-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: BF-EXP-{key}
+  goods_received_note: BF-REC-{key}
+  account_statement: BF-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: R-{key}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Your Neighborhood Movie Night, Delivered.
+  about: We rent a wide selection of recent and classic films to households and individuals seeking home entertainment.
+  payment_instructions: Pay invoices online via our secure portal using credit card, debit card, or bank transfer
+    within 15 days.
+  footer: Thank you for choosing Boreal Films Inc.
+  notes:
+  - Thank you for supporting local entertainment; we appreciate your continued patronage.
+  - All rentals are available for same‑day pickup at any Boreal Films location.
+  - Return rented films within seven days to avoid late fees; please rewind before returning.
+  - Invoices overdue after fifteen days incur a two percent monthly service charge.
+  - Handle discs gently; store in original case away from direct sunlight and heat.
+  - Ask about our loyalty program for discounts on frequent rentals.

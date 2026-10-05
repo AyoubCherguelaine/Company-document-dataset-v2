@@ -1,0 +1,51 @@
+slug: summit-partners-ltd
+locale: en
+currency: GBP
+party:
+  name: Summit Partners Ltd
+  address:
+    line1: 158 High Street
+    line2: ''
+    city: London
+    region: ''
+    postal_code: EC1A 1BB
+    country: United Kingdom
+  phone: +44 20 5776256
+  email: billing@summitpartners.co.uk
+  website: www.summitpartners.co.uk
+  tax_id: VAT GB885128445
+  code: UK
+  bank:
+    bank_name: Crédit Régional
+    iban: GB80 0103 0546 6329 7739 3851
+    bic: SUMMGB62
+sector: food
+brand:
+  initials: SP
+  color: '#9d174d'
+  shape: circle
+design:
+  default:
+    layout: classic
+    theme: fresh
+colors: {}
+options:
+  show_discount: false
+  show_signature: false
+  show_contact: false
+numbering:
+  invoice: INV{key:07d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: SP-BL-{key}
+texts:
+  tagline: Elevating your shelves with quality supplies
+  about: Wholesale food and beverage distributor serving shops and restaurants.
+  payment_instructions: Pay invoices by bank transfer within 30 days.
+  footer: Thank you for your business.
+  notes:
+  - Thank you for your order; we’re processing it now.
+  - Free delivery on orders over £500.
+  - Returns accepted within 7 days, unopened items only.
+  - Late payments incur 1.5% monthly interest after due date.
+  - Store products chilled as indicated on packaging.
+  - Contact us for any queries or concerns.

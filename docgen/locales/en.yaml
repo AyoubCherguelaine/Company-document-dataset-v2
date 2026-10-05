@@ -1,0 +1,261 @@
+code: en
+currency: USD
+decimal_sep: "."
+group_sep: ","
+currency_format: "{symbol}{amount}"
+date_formats: ["{month} {d}, {yyyy}", "{mm}/{dd}/{yyyy}", "{yyyy}-{mm}-{dd}", "{d} {mon} {yyyy}"]
+months: [January, February, March, April, May, June, July, August, September, October, November, December]
+tax:
+  label: Tax
+  standard: "0.0825"
+  reduced: "0.04"
+  reduced_categories: [Dairy Products, Grains/Cereals, Meat/Poultry, Produce, Seafood]
+payroll:
+  hours: {1: "173.33", 2: "80"}          # by AdventureWorks PayFrequency: 1 monthly, 2 biweekly
+  overtime_factor: "1.5"
+  deductions:                            # rate on gross pay
+    - {label: federal_income_tax, rate: "0.12"}
+    - {label: state_income_tax, rate: "0.045"}
+    - {label: social_security, rate: "0.062"}
+    - {label: medicare, rate: "0.0145"}
+  fixed:
+    - {label: health_insurance, amount: "85.00"}
+    - {label: retirement_401k, rate: "0.04"}
+certificate:
+  salutation: ["To whom it may concern,", "To whom it may concern:", ""]
+  body:
+    - "We hereby certify that {name}, born on {birth_date}, has been employed by {company} since {hire_date} and currently holds the position of {job_title} in the {department} department."
+    - "This is to certify that {name} has been working for {company} on a full-time basis since {hire_date}, and is currently employed as {job_title} within the {department} department."
+    - "{company} confirms that {name} joined the company on {hire_date} and is presently employed as {job_title} ({department})."
+  extra:
+    - "{name} works on the {shift} shift and remains an active member of our staff at the date of this letter."
+    - "The employment is permanent and ongoing at the date of issue."
+  closing:
+    - "This certificate is issued at the request of the employee for whatever purpose it may serve."
+    - "This letter is provided upon request and does not constitute a reference."
+  issued: "Issued in {city} on {date}."
+labels:
+  invoice: Invoice
+  quote: Quotation
+  credit_note: Credit Note
+  purchase_order: Purchase Order
+  packing_slip: Packing Slip
+  shipping_order: Shipping Order
+  goods_received_note: Goods Received Note
+  account_statement: Statement of Account
+  inventory_report: Inventory Report
+  receipt: Receipt
+  work_order: Work Order
+  payslip: Payslip
+  employment_certificate: Certificate of Employment
+  number: Number
+  date: Date
+  due_date: Due date
+  order_date: Order date
+  ship_date: Ship date
+  required_date: Required by
+  delivery_date: Delivery date
+  valid_until: Valid until
+  order_id: Order no.
+  customer_id: Customer ID
+  account_number: Account no.
+  po_number: PO number
+  po_reference: PO reference
+  original_invoice: Original invoice
+  salesperson: Salesperson
+  payment_terms: Payment terms
+  carrier: Carrier
+  tracking_number: Tracking no.
+  issuer: From
+  bill_to: Bill to
+  ship_to: Ship to
+  deliver_to: Deliver to
+  supplier: Supplier
+  vendor: Vendor
+  buyer: Buyer
+  customer: Customer
+  shipper: Shipper
+  consignee: Consignee
+  employee: Employee
+  sku: Item
+  description: Description
+  product: Product
+  quantity: Qty
+  unit: Unit
+  unit_price: Unit price
+  discount: Disc.
+  tax_rate: Tax
+  amount: Amount
+  gross: Gross amount
+  discount_total: Discount
+  subtotal: Subtotal
+  freight: Freight
+  total: Total
+  notes: Notes
+  bank_details: Bank details
+  bank_name: Bank
+  iban: IBAN
+  bic: BIC/SWIFT
+  account: Account
+  routing: Routing no.
+  phone: Phone
+  attn: "Attn:"
+  reference: Reference
+  signature: Authorized signature
+  page: Page
+  net_days: "Net {days} days"
+  thank_you: Thank you for your business.
+  paid: Paid
+  paid_by_card: Paid by credit card
+  # quote
+  quote_validity: "This quotation is valid for {days} days. Prices exclude taxes unless stated."
+  accepted_by: Accepted by (name, date, signature)
+  estimated_freight: Estimated freight
+  # credit note
+  reason: Reason
+  credit_reason_damaged: Goods damaged in transit
+  credit_reason_wrong_item: Wrong item delivered
+  credit_reason_expired: Goods past best-before date
+  credit_reason_price: Price adjustment
+  credit_reason_return: Customer return
+  credit_applied: This credit will be applied to your account or refunded on request.
+  # purchasing / logistics
+  requested_by: Requested by
+  approved_by: Approved by
+  po_instructions: Please confirm this order and quote our PO number on all invoices and delivery notes.
+  ordered: Ordered
+  shipped: Shipped
+  backordered: Backordered
+  received: Received
+  rejected: Rejected
+  accepted: Accepted
+  stocked: Stocked
+  packages: Packages
+  total_weight: Total weight
+  weight: Weight (kg)
+  packed_by: Packed by
+  received_by: Received by
+  inspected_by: Inspected by
+  received_date: Date received
+  total_ordered: Total ordered
+  total_received: Total received
+  total_rejected: Total rejected
+  total_accepted: Total accepted
+  service: Service
+  pickup_date: Pickup date
+  deliver_by: Deliver by
+  declared_value: Declared value
+  freight_terms: Freight terms
+  freight_prepaid: Prepaid
+  freight_collect: Collect
+  handling: Handling instructions
+  handling_text: Handle with care. Keep dry. Do not stack more than 3 high.
+  shipper_signature: Shipper signature
+  carrier_signature: Carrier signature
+  # statement
+  statement_date: Statement date
+  period: Period
+  opening_balance: Opening balance
+  invoiced: Invoiced
+  payments: Payments received
+  closing_balance: Closing balance
+  amount_due: Amount due
+  balance: Balance
+  debit: Debit
+  credit: Credit
+  invoice_entry: "Invoice {ref}"
+  payment_entry: "Payment received, thank you"
+  remittance: Remittance advice
+  remittance_text: Please detach and return this slip with your payment.
+  amount_enclosed: Amount enclosed
+  aging_current: Current
+  aging_30: 1-30 days
+  aging_60: 31-60 days
+  aging_90: Over 60 days
+  # inventory
+  as_of: As of
+  scope: Scope
+  all_products: All products
+  group: Group
+  location: Location
+  on_hand: On hand
+  on_order: On order
+  reorder_level: Reorder level
+  unit_cost: Unit cost
+  stock_value: Value
+  status: Status
+  status_ok: OK
+  status_reorder: Reorder
+  status_out: Out of stock
+  status_discontinued: Discontinued
+  total_items: Products
+  total_units: Units on hand
+  total_value: Stock value
+  items_to_reorder: Products to reorder
+  prepared_by: Prepared by
+  # receipt
+  transaction: Transaction
+  time: Time
+  payment_method: Payment method
+  card: Card
+  cash: Cash
+  amount_paid: Amount paid
+  amount_tendered: Amount tendered
+  change: Change
+  served_by: Served by
+  store: Store
+  rental_date: Rented on
+  return_date: Returned on
+  late_fee: Late return fee
+  rating: Rating
+  online_order: Online order
+  receipt_footer: Keep this receipt for your records.
+  # work order
+  product_number: Product no.
+  order_qty: Quantity ordered
+  stocked_qty: Quantity stocked
+  scrapped_qty: Quantity scrapped
+  scrap_reason: Scrap reason
+  start_date: Start date
+  end_date: End date
+  operation: Op.
+  planned_start: Planned start
+  planned_end: Planned end
+  actual_start: Actual start
+  actual_end: Actual end
+  hours: Hours
+  planned_cost: Planned cost
+  actual_cost: Actual cost
+  total_hours: Total hours
+  total_planned_cost: Total planned cost
+  total_actual_cost: Total actual cost
+  variance: Variance
+  # payslip
+  employee_id: Employee ID
+  national_id: National ID
+  job_title: Job title
+  department: Department
+  hire_date: Hire date
+  shift: Shift
+  pay_period: Pay period
+  pay_date: Pay date
+  earnings: Earnings
+  deductions: Deductions
+  rate: Rate
+  regular_pay: Regular pay
+  overtime_pay: Overtime
+  bonus: Performance bonus
+  gross_pay: Gross pay
+  total_deductions: Total deductions
+  net_pay: Net pay
+  federal_income_tax: Federal income tax
+  state_income_tax: State income tax
+  social_security: Social Security
+  medicare: Medicare
+  health_insurance: Health insurance
+  retirement_401k: 401(k) contribution
+  paid_by_transfer: Paid by bank transfer
+  vacation_balance: Vacation balance (h)
+  sick_balance: Sick leave balance (h)
+  # certificate
+  signatory: Signatory

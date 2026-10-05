@@ -1,0 +1,14 @@
+output/
+__pycache__/
+venv/
+.env
+data/llm_cache.db
+dataset
+
+.kilo
+# source databases: rebuilt by scripts/download_sources.py
+data/sample_dbs_*/sqlite/
+data/northwind.db
+data/northwind/
+data/company-documents/
+data

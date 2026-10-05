@@ -1,0 +1,68 @@
+{
+  "run_name": "v2",
+  "seed": 42,
+  "out_dir": "output/v2",
+  "workers": 8,
+  "fx": {
+    "USD": "1",
+    "EUR": "0.92",
+    "GBP": "0.79"
+  },
+  "self_check": true,
+  "boxes": true,
+  "resume": true,
+  "documents": [
+    {
+      "type": "account_statement",
+      "count": 2000
+    },
+    {
+      "type": "credit_note",
+      "count": 2000
+    },
+    {
+      "type": "employment_certificate",
+      "count": 2000
+    },
+    {
+      "type": "goods_received_note",
+      "count": 2000
+    },
+    {
+      "type": "inventory_report",
+      "count": 2000
+    },
+    {
+      "type": "invoice",
+      "count": 2000
+    },
+    {
+      "type": "packing_slip",
+      "count": 2000
+    },
+    {
+      "type": "payslip",
+      "count": 2000
+    },
+    {
+      "type": "purchase_order",
+      "count": 2000
+    },
+    {
+      "type": "quote",
+      "count": 2000
+    },
+    {
+      "type": "receipt",
+      "count": 2000
+    },
+    {
+      "type": "shipping_order",
+      "count": 2000
+    },
+    {
+      "type": "work_order",
+      "count": 2000
+    }
+  ]
+}

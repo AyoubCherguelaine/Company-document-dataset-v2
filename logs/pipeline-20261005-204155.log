@@ -1,0 +1,20 @@
+[20:41:55] pipeline: venv -> download -> index  (log: logs/pipeline-20261005-204155.log)
+[20:41:55] === venv ===
+[20:41:56] venv: ok
+[20:41:57] === download ===
+[20:41:57] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python /home/ayoub/Desktop/repos/Company-document/scripts/download_sources.py
+  [download] northwind: downloading...
+  [download] northwind: 16282 orders
+  [download] chinook: downloading...
+  [download] chinook: 412 invoices
+  [download] sakila: downloading...
+  [download] sakila: 16049 payments
+  [download] adventureworks: downloading...
+  [download] adventureworks: 68 tables, 31465 sales orders, rows skipped: [('Production_ProductReview', 31)]
+  [download] all sources ready
+[20:42:26] === index ===
+[20:42:26] $ /home/ayoub/Desktop/repos/Company-document/venv/bin/python /home/ayoub/Desktop/repos/Company-document/scripts/prepare_sources.py
+  [ok] adventureworks: 23 indexes in 0.8s
+  [ok] sakila: 3 indexes in 0.1s
+  [ok] chinook: 1 indexes in 0.0s
+[20:42:27] done: venv 1s, download 28s, index 1s

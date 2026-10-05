@@ -1,0 +1,62 @@
+slug: boreal-audio-plc
+locale: en
+currency: GBP
+party:
+  name: Boreal Audio PLC
+  address:
+    line1: 142 Victoria Street
+    line2: ''
+    city: Bristol
+    region: ''
+    postal_code: BS1 4DJ
+    country: United Kingdom
+  phone: +44 20 3995996
+  email: sales@borealaudio.co.uk
+  website: www.borealaudio.co.uk
+  tax_id: VAT GB189910675
+  code: UK
+  bank:
+    bank_name: City Savings Bank
+    iban: GB00 3232 1906 4247 5033 8954
+    bic: BOREGB11
+sector: music
+brand:
+  initials: BA
+  color: '#1e3a8a'
+  shape: square
+design:
+  default:
+    layout: classic
+    theme: fresh
+colors:
+  primary: '#1e3a8a'
+options:
+  show_item_details: false
+  show_signature: false
+  show_discount: false
+numbering:
+  invoice: F{yy}-{key}
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GRN-{key}
+  account_statement: STM{key:06d}
+  inventory_report: STK{yy}{key:05d}
+  receipt: BA{yy}{key:06d}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Sound That Moves You
+  about: We provide high‑quality digital music tracks and albums for streaming and download to audiophiles.
+  payment_instructions: Settle invoices via online banking or card; payment must be received before content release.
+  footer: Thanks for listening, stay tuned.
+  notes:
+  - Thank you for your purchase; we hope you enjoy every beat.
+  - Your download link arrives instantly after payment confirmation via email.
+  - Digital sales are final; please contact us if the file is corrupted or missing.
+  - Invoices are payable within 15 days; late payments incur a 1.8% monthly surcharge.
+  - We guarantee flawless audio files; defective files will be replaced promptly.
+  - Store your music collection on a reliable backup drive to prevent data loss.

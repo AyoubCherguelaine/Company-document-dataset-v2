@@ -1,0 +1,64 @@
+slug: juniper-audio-sas
+locale: fr
+currency: EUR
+party:
+  name: Juniper Audio SAS
+  address:
+    line1: 292, rue du Commerce
+    line2: Suite 732
+    city: Lyon
+    region: ''
+    postal_code: '69002'
+    country: France
+  phone: +33 4 89 90 21 45
+  email: sales@juniperaudio.fr
+  website: www.juniperaudio.fr
+  tax_id: TVA FR62553710783
+  code: FR
+  bank:
+    bank_name: City Savings Bank
+    iban: FR65 4243 9883 5601 2980 1169
+    bic: JUNIFR06
+sector: music
+brand:
+  initials: JA
+  color: '#1e3a8a'
+  shape: square
+design:
+  default:
+    layout: letterhead
+    theme: fresh
+colors:
+  primary: '#1e3a8a'
+options:
+  show_item_details: true
+  show_signature: true
+  show_bank: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: JA-DEV-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: JA-PO-{key}
+  packing_slip: PS-{key}
+  shipping_order: JA-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: STM{key:06d}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Musique qui vous ressemble
+  about: Juniper Audio SAS vend des titres et albums numériques en ligne aux amateurs de musique de Lyon et de toute
+    la France.
+  payment_instructions: Payez votre facture par carte bancaire ou virement bancaire en utilisant les coordonnées
+    indiquées sur notre site web.
+  footer: Merci de votre confiance musicale
+  notes:
+  - Merci d'avoir choisi nos sons pour votre quotidien musical.
+  - Téléchargement disponible immédiatement après paiement accepté.
+  - Retours acceptés dans les 14 jours suivant l'achat.
+  - Paiement en retard génère des frais de 1,5% par mois.
+  - Conservez vos fichiers musicaux en lieu sûr.
+  - Contactez-nous pour toute question sur votre commande.

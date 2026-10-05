@@ -1,0 +1,62 @@
+slug: northgate-rentals-srl
+locale: fr
+currency: EUR
+party:
+  name: Northgate Rentals SRL
+  address:
+    line1: 427, avenue Louise
+    line2: Suite 398
+    city: Namur
+    region: ''
+    postal_code: '5000'
+    country: Belgique
+  phone: +32 2 025 55 52
+  email: contact@northgaterentals.be
+  website: www.northgaterentals.be
+  tax_id: TVA BE0647968888
+  code: BE
+  bank:
+    bank_name: Northern Trust Bank
+    iban: BE26 3211 8951 1391 5312 6972
+    bic: NORTBE32
+sector: video
+brand:
+  initials: NR
+  color: '#1e3a8a'
+  shape: rounded
+design:
+  default:
+    layout: classic
+    theme: mono
+colors: {}
+options:
+  show_item_details: false
+  show_tax_column: false
+  show_discount: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: Q-{yyyy}-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: NR-REC-{key}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: NR-WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Des films, du plaisir, à portée de main
+  about: Nous louons une vaste sélection de films récents et classiques aux particuliers et aux familles de Namur
+    et alentours.
+  payment_instructions: Payez votre facture par virement bancaire, carte bancaire ou espèces en agence sous 15 jours.
+  footer: Merci de choisir Northgate Rentals SRL.
+  notes:
+  - Merci de votre confiance, profitez bien de votre soirée cinéma.
+  - Livraison gratuite à domicile pour les commandes supérieures à 20 €, sous 48h.
+  - Retournez les disques dans leur boîte d'origine sous 7 jours pour éviter les frais.
+  - En cas de retard de paiement, une pénalité de 2 % du montant sera appliquée chaque mois.
+  - Veuillez manipuler les disques avec soin, éviter les rayures et les exposer à la chaleur.
+  - Si un disque est défectueux, rapportez-le en magasin pour un échange immédiat.

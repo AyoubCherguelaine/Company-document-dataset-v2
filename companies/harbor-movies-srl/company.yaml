@@ -1,0 +1,63 @@
+slug: harbor-movies-srl
+locale: fr
+currency: EUR
+party:
+  name: Harbor Movies SRL
+  address:
+    line1: 198, chaussée de Wavre
+    line2: ''
+    city: Bruxelles
+    region: ''
+    postal_code: '1000'
+    country: Belgique
+  phone: +32 2 923 98 69
+  email: sales@harbormovies.be
+  website: www.harbormovies.be
+  tax_id: TVA BE0196313963
+  code: BE
+  bank:
+    bank_name: Crédit Régional
+    iban: BE50 2031 8983 6289 4652 8361
+    bic: HARBBE62
+sector: video
+brand:
+  initials: HM
+  color: '#0f766e'
+  shape: rounded
+design:
+  default:
+    layout: modern
+    theme: mono
+colors: {}
+options:
+  show_signature: false
+  show_item_details: false
+  show_contact: false
+numbering:
+  invoice: F{yy}-{key}
+  quote: HM-DEV-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: HM-PO-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: HM-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: HM-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: HM-WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Des films pour tous les goûts.
+  about: Nous proposons en location une large gamme de films, des nouveautés aux classiques, accessible aux habitants
+    de Bruxelles et environs.
+  payment_instructions: Payez votre facture en espèces, carte ou virement bancaire sous 10 jours suivant la date
+    d’émission.
+  footer: Merci de choisir Harbor Movies SRL pour vos soirées cinéma.
+  notes:
+  - Merci de votre location – profitez bien du film !
+  - Les cassettes et disques sont prêts à être retirés en magasin après confirmation de réservation.
+  - Les retours doivent être effectués dans les 5 jours suivant la location, sinon frais de retard.
+  - Facture non réglée après 20 jours entraîne une majoration de 1,5% par mois.
+  - Nous assurons que les supports sont lisibles ; remplacement gratuit en cas de défaut détecté.
+  - Stockez vos locations à l’abri de la poussière et de l’humidité pour garantir une bonne lecture.

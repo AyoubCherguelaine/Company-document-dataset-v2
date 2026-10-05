@@ -1,0 +1,62 @@
+slug: union-reels-srl
+locale: fr
+currency: EUR
+party:
+  name: Union Reels SRL
+  address:
+    line1: 88, chaussée de Wavre
+    line2: ''
+    city: Bruxelles
+    region: ''
+    postal_code: '1000'
+    country: Belgique
+  phone: +32 2 968 10 56
+  email: accounts@unionreels.be
+  website: www.unionreels.be
+  tax_id: TVA BE0189511391
+  code: BE
+  bank:
+    bank_name: Crédit Régional
+    iban: BE31 2697 2329 8668 0787 9621
+    bic: UNIOBE14
+sector: video
+brand:
+  initials: UR
+  color: '#78350f'
+  shape: circle
+design:
+  default:
+    layout: letterhead
+    theme: plain
+colors:
+  primary: '#78350f'
+options:
+  show_item_details: true
+  show_contact: false
+  show_tax_column: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: Q-{yyyy}-{key}
+  credit_note: UR-CR-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: UR{yy}{key:06d}
+  work_order: UR-WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Films à portée de main, toujours
+  about: Nous louons des films en magasin pour le public à Bruxelles et en ligne.
+  payment_instructions: Veuillez payer la facture sous 10 jours via virement bancaire.
+  footer: Merci pour votre confiance – au plaisir de vous servir.
+  notes:
+  - Merci pour votre commande – nous apprécions votre confiance.
+  - Livraison rapide à domicile ou en point de retrait.
+  - Retours acceptés sous 14 jours après réception.
+  - 'Paiement tardif : 2% de pénalité mensuelle appliquée.'
+  - 'Garantie produit : 12 mois sur tous les articles loués.'
+  - 'Conseil : stockez les DVD à l''abri de la lumière directe.'

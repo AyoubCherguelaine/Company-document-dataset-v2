@@ -1,0 +1,63 @@
+slug: ember-bikes-sarl
+locale: fr
+currency: EUR
+party:
+  name: Ember Bikes SARL
+  address:
+    line1: 397, avenue Jean Jaurès
+    line2: Building C
+    city: Bordeaux
+    region: ''
+    postal_code: '33000'
+    country: France
+  phone: +33 4 91 33 48 55
+  email: accounts@emberbikes.fr
+  website: www.emberbikes.fr
+  tax_id: TVA FR10271352005
+  code: FR
+  bank:
+    bank_name: Crédit Régional
+    iban: FR83 8390 5916 0870 4173 9196
+    bic: EMBEFR76
+sector: bikes
+brand:
+  initials: EB
+  color: '#78350f'
+  shape: rounded
+design:
+  default:
+    layout: modern
+    theme: plain
+colors: {}
+options:
+  show_item_details: true
+  show_discount: false
+  show_bank: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: QT{key:06d}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GRN-{key}
+  account_statement: EB-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: EB{yy}{key:06d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Pedal your passion forward
+  about: Nous concevons et distribuons des vélos et accessoires de cyclisme haut de gamme aux cyclistes de Bordeaux
+    et ses environs.
+  payment_instructions: Payez votre facture par virement bancaire sur le compte indiqué ou par chèque à l'ordre
+    de Ember Bikes SARL.
+  footer: Merci de rouler avec nous, à bientôt sur la route.
+  notes:
+  - Merci d'avoir choisi Ember Bikes pour votre deux roues.
+  - Livraison offerte à Bordeaux dans un délai de 48h ouvrées.
+  - Retours possibles sous 30 jours avec preuve d'achat et produit neuf.
+  - Paiement dû dans 30 jours après date de facturation, intérêt de retard de 1,5% mensuel.
+  - Tous nos vélos bénéficient d'une garantie décennale fabricant.
+  - Nettoyez votre vélo avec une brosse douce et une huile spéciale chaîne.

@@ -1,0 +1,31 @@
+# One run = one config. Same config + same seed + same companies/texts => byte-identical document set.
+run_name: all-documents-demo
+seed: 42
+out_dir: output/all-documents-demo
+workers: 4
+companies_dir: companies        # one folder per issuer: company.yaml (+ optional templates/)
+textbank_dir: data/textbank     # LLM-written product descriptions (python -m docgen texts generate)
+fx: {USD: "1", EUR: "0.92", GBP: "0.79"}   # every source is in USD; converted once per amount
+# sources:                      # defaults to the bundled databases
+#   northwind: data/northwind.db            # e.g. the classic 830-order Northwind instead
+# date_shift: {sakila: 19}      # Sakila's 2005-2006 activity moved to 2024-2025 (default)
+self_check: true      # drop documents whose PDF text misses a gold field or whose numbers don't add up
+boxes: true           # word boxes + gold-field boxes from the rendered PDF
+keep_html: false
+documents:
+  # a type expands to every source that supports it; "*" means every type
+  - {type: invoice, count: 60}                                   # northwind, adventureworks, chinook
+  - {type: quote, count: 20}
+  - {type: credit_note, count: 20}
+  - {type: purchase_order, count: 20}
+  - {type: packing_slip, count: 20}
+  - {type: shipping_order, count: 20}
+  - {type: goods_received_note, count: 15}
+  - {type: account_statement, count: 20}
+  - {type: inventory_report, count: 15}
+  - {type: receipt, count: 30}                                   # chinook, sakila
+  - {type: work_order, count: 15}
+  - {type: payslip, count: 20}
+  - {type: employment_certificate, count: 15}
+  # - {type: invoice, count: 10, sources: [adventureworks], locales: [fr]}
+  # - {type: "*", count: 100, companies: [boreal-wholesale-ltd]}

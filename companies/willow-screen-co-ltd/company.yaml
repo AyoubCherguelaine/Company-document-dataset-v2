@@ -1,0 +1,51 @@
+slug: willow-screen-co-ltd
+locale: en
+currency: GBP
+party:
+  name: Willow Screen & Co. Ltd
+  address:
+    line1: 459 Station Road
+    line2: Suite 671
+    city: Leeds
+    region: ''
+    postal_code: LS1 5AA
+    country: United Kingdom
+  phone: +44 20 8182130
+  email: contact@willowscreen.co.uk
+  website: www.willowscreen.co.uk
+  tax_id: VAT GB089662393
+  code: UK
+  bank:
+    bank_name: Northern Trust Bank
+    iban: GB56 7594 3123 9253 1442 6681
+    bic: WILLGB92
+sector: video
+brand:
+  initials: WS
+  color: '#1f4e79'
+  shape: square
+design:
+  default:
+    layout: classic
+    theme: corporate
+colors:
+  primary: '#1f4e79'
+options:
+  show_item_details: true
+  show_discount: true
+  show_bank: false
+numbering:
+  invoice: WS-{yy}{key:06d}
+  quote: QT{key:06d}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+  shipping_order: WS-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: WS-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: WS{yy}{key:06d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts: {}

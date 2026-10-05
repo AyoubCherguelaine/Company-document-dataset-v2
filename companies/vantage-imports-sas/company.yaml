@@ -1,0 +1,52 @@
+slug: vantage-imports-sas
+locale: fr
+currency: EUR
+party:
+  name: Vantage Imports SAS
+  address:
+    line1: 433, rue de la République
+    line2: ''
+    city: Lyon
+    region: ''
+    postal_code: '69002'
+    country: France
+  phone: +33 4 63 81 13 70
+  email: contact@vantageimports.fr
+  website: www.vantageimports.fr
+  tax_id: TVA FR13057946825
+  code: FR
+  bank:
+    bank_name: First Commerce Bank
+    iban: FR40 9200 6112 7986 8780 8601
+    bic: VANTFR75
+sector: food
+brand:
+  initials: VI
+  color: '#1f4e79'
+  shape: rounded
+design:
+  default:
+    layout: sidebar
+    theme: corporate
+colors:
+  primary: '#1f4e79'
+options:
+  show_discount: true
+  show_bank: false
+  show_signature: true
+numbering:
+  invoice: VI-{yy}{key:06d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: DN{yy}{key:06d}
+texts:
+  tagline: Qualité et saveurs, livrées rapidement
+  about: Nous distribuons des produits alimentaires et boissons aux boutiques et restaurants de la région lyonnaise.
+  payment_instructions: Paiement par virement bancaire ou chèque dans les 30 jours suivant la facture.
+  footer: Merci de votre confiance.
+  notes:
+  - Merci pour votre commande; la livraison se fait sous 48 heures.
+  - Retours acceptés dans les 14 jours avec emballage d'origine.
+  - Paiement tardif entraîne des pénalités de 2 % mensuel après échéance.
+  - Tous les produits sont garantis 12 mois contre les défauts de fabrication.
+  - Livraison gratuite pour les commandes supérieures à 100 €.
+  - Service client disponible du lundi au vendredi, 9 h–18 h, par téléphone.

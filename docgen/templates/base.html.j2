@@ -1,0 +1,39 @@
+{#- Root skeleton. Layouts extend this; document types extend a layout.
+    Blocks, top to bottom: header, meta, parties, body, before_items, items, summary, notes, footer. -#}
+<!doctype html>
+<html lang="{{ loc.code }}" dir="{{ loc.direction }}">
+<head>
+<meta charset="utf-8">
+<meta name="dcterms.created" content="{{ doc.issue_date.isoformat() }}T09:00:00Z">
+<meta name="dcterms.modified" content="{{ doc.issue_date.isoformat() }}T09:00:00Z">
+<meta name="generator" content="docgen">
+<title>{{ title }} {{ doc.number }}</title>
+<style>
+{{ theme.css_vars() }}
+@page {
+  size: {{ page_size }};
+  margin: 16mm 14mm 20mm 14mm;
+  @bottom-right { content: {{ (t('page') ~ ' ') | css_str }} counter(page) " / " counter(pages); font-size: 7.5pt; color: var(--c-muted); }
+  @bottom-left { content: {{ (title ~ ' ' ~ doc.number) | css_str }}; font-size: 7.5pt; color: var(--c-muted); }
+}
+{% include "css/base.css" %}
+{% block layout_css %}{% endblock %}
+{% block extra_css %}{% endblock %}
+</style>
+</head>
+<body class="layout-{{ layout }} table-{{ theme.table_style }} doc-{{ doc.doc_type }}">
+{% block page %}
+  <header class="doc-header">{% block header %}{% endblock %}</header>
+  {% block meta %}{% endblock %}
+  {% block parties %}{% endblock %}
+  {% block body %}
+    {% if doc.body %}<section class="letter-body">{% for p in doc.body %}<p>{{ p }}</p>{% endfor %}</section>{% endif %}
+  {% endblock %}
+  {% block before_items %}{% endblock %}
+  {% block items %}{% endblock %}
+  {% block summary %}{% endblock %}
+  {% block notes %}{% endblock %}
+  <footer class="doc-footer">{% block footer %}{% endblock %}</footer>
+{% endblock %}
+</body>
+</html>

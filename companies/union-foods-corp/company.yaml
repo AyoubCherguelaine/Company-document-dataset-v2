@@ -1,0 +1,52 @@
+slug: union-foods-corp
+locale: en
+currency: USD
+party:
+  name: Union Foods Corp.
+  address:
+    line1: 59 Oak Street
+    line2: ''
+    city: Denver
+    region: CO
+    postal_code: '80202'
+    country: USA
+  phone: (988) 555-2120
+  email: sales@unionfoods.com
+  website: www.unionfoods.com
+  tax_id: EIN 42-2910913
+  code: US
+  bank:
+    bank_name: First Commerce Bank
+    account: '8487951414'
+    routing: '274013612'
+sector: food
+brand:
+  initials: UF
+  color: '#0f766e'
+  shape: square
+design:
+  default:
+    layout: classic
+    theme: mono
+colors:
+  primary: '#0f766e'
+options:
+  show_discount: false
+  show_signature: false
+  show_tax_column: false
+numbering:
+  invoice: UF-{yy}{key:06d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: UF-BL-{key}
+texts:
+  tagline: Fresh supplies, faster service
+  about: We distribute wholesale food and beverages to shops and restaurants nationwide.
+  payment_instructions: Pay invoices via bank transfer within 10 days of receipt.
+  footer: Thank you for your business.
+  notes:
+  - Thank you for your order – we appreciate your trust.
+  - Fast delivery to your storefront or kitchen.
+  - Returns accepted within 30 days of delivery.
+  - Late payments incur a 1.5% monthly fee.
+  - All products backed by a 12‑month warranty.
+  - Store our foods at room temperature for optimal flavor.

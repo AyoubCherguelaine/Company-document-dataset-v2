@@ -1,0 +1,63 @@
+slug: juniper-components-sa
+locale: fr
+currency: EUR
+party:
+  name: Juniper Components SA
+  address:
+    line1: 441, chaussée de Wavre
+    line2: Suite 198
+    city: Bruxelles
+    region: ''
+    postal_code: '1000'
+    country: Belgique
+  phone: +32 2 188 29 66
+  email: accounts@junipercomponents.be
+  website: www.junipercomponents.be
+  tax_id: TVA BE0501014500
+  code: BE
+  bank:
+    bank_name: Crédit Régional
+    iban: BE39 6982 5783 2337 8741 9204
+    bic: JUNIBE77
+sector: bikes
+brand:
+  initials: JC
+  color: '#0f766e'
+  shape: circle
+design:
+  default:
+    layout: letterhead
+    theme: corporate
+colors: {}
+options:
+  show_contact: false
+  show_tax_column: false
+  show_bank: false
+numbering:
+  invoice: F{yy}-{key}
+  quote: JC-DEV-{key}
+  credit_note: JC-CR-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: JC-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: JC{yy}{key:06d}
+  work_order: OF{yy}{key:06d}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: La qualité à chaque virage
+  about: Juniper Components SA fabrique et distribue des vélos et accessoires de cyclisme haut de gamme aux commerçants
+    et amateurs de Belgique et d'Europe.
+  payment_instructions: Règlez votre facture par virement bancaire ou chèque en vous référant aux coordonnées fournies
+    sur le document.
+  footer: Cyclons ensemble avec précision
+  notes:
+  - Merci d’avoir choisi Juniper Components pour votre mobilité.
+  - Livraison gratuite dès 200 euros d’achat en Belgique.
+  - Retours possibles sous 30 jours ouvrables avec facture.
+  - Retard de paiement entraîne des pénalités de 5%.
+  - Nos fourches sont garanties dix ans contre défauts de fabrication.
+  - Nettoyez régulièrement vos pièces pour une longue durabilité.

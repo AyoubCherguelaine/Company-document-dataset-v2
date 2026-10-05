@@ -1,0 +1,62 @@
+slug: lumen-media-corp
+locale: en
+currency: USD
+party:
+  name: Lumen Media Corp.
+  address:
+    line1: 236 Elm Avenue
+    line2: ''
+    city: Denver
+    region: CO
+    postal_code: '80202'
+    country: USA
+  phone: (651) 555-5010
+  email: contact@lumenmedia.com
+  website: www.lumenmedia.com
+  tax_id: EIN 63-6698525
+  code: US
+  bank:
+    bank_name: First Commerce Bank
+    account: '9368807563'
+    routing: '925423749'
+sector: music
+brand:
+  initials: LM
+  color: '#1e3a8a'
+  shape: circle
+design:
+  default:
+    layout: letterhead
+    theme: warm
+colors:
+  primary: '#1e3a8a'
+options:
+  show_bank: true
+  show_item_details: true
+  show_discount: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: LM-DEV-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: LM-EXP-{key}
+  goods_received_note: GRN-{key}
+  account_statement: STM{key:06d}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: LM-WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Unlock the soundtrack of your life.
+  about: We sell digital tracks and albums directly to music lovers worldwide.
+  payment_instructions: Pay your invoice securely online using a major credit card.
+  footer: Thank you for choosing Lumen Media Corp.
+  notes:
+  - Thank you for your purchase.
+  - Files are delivered instantly to your email.
+  - Refunds available within thirty days of purchase.
+  - Late payments incur a one percent monthly fee.
+  - This is a digital product with no physical warranty.
+  - Please save your download link for future access.

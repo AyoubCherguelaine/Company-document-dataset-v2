@@ -1,0 +1,13 @@
+{#- Example of a company-specific design. Everything in this folder applies to this company only.
+    It extends the standard invoice, so payment terms, totals etc. are kept, and changes a few blocks. -#}
+{% extends "invoice/document.html.j2" %}
+
+{% block extra_css %}
+.doc-header { border-top: 3mm solid var(--c-primary); padding-top: 4mm; }
+h1 { letter-spacing: .2em; font-weight: normal; }
+.ref-banner { background: var(--c-surface); border-left: 1.5mm solid var(--c-accent); padding: 2mm 3mm; margin-top: var(--gap); }
+{% endblock %}
+
+{% block before_items %}
+  {% if ctext("about") %}<div class="ref-banner">{{ ctext("about") }}</div>{% endif %}
+{% endblock %}

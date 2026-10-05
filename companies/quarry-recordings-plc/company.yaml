@@ -1,0 +1,62 @@
+slug: quarry-recordings-plc
+locale: en
+currency: GBP
+party:
+  name: Quarry Recordings PLC
+  address:
+    line1: 120 Victoria Street
+    line2: ''
+    city: Leeds
+    region: ''
+    postal_code: LS1 5AA
+    country: United Kingdom
+  phone: +44 20 3573285
+  email: sales@quarryrecordings.co.uk
+  website: www.quarryrecordings.co.uk
+  tax_id: VAT GB337983111
+  code: UK
+  bank:
+    bank_name: Northern Trust Bank
+    iban: GB25 7922 5080 4903 6166 9785
+    bic: QUARGB03
+sector: music
+brand:
+  initials: QR
+  color: '#4c1d95'
+  shape: square
+design:
+  default:
+    layout: modern
+    theme: mono
+colors: {}
+options:
+  show_tax_column: false
+  show_bank: true
+  show_item_details: true
+numbering:
+  invoice: QR-{yy}{key:06d}
+  quote: QT{key:06d}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GRN-{key}
+  account_statement: QR-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: R-{key}
+  work_order: QR-WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Capturing Sound, Delivering Emotion – Stream Today
+  about: Quarry Recordings PLC is an online digital music store providing tracks and albums to listeners worldwide,
+    delivering fresh releases daily.
+  payment_instructions: Invoices payable by PayPal or bank transfer within 7 business days.
+  footer: Thanks for sharing the rhythm – we’re proud to support creators.
+  notes:
+  - Thank you for trusting Quarry Recordings – your support fuels new music.
+  - 'Instant digital delivery: your chosen tracks appear instantly after payment.'
+  - All sales are final; please ensure compatibility before purchase.
+  - Late payments incur a $10 surcharge after 10 days from invoice.
+  - Each track includes a perpetual license for personal and commercial use.
+  - Store your music files on encrypted drives – keep your library safe.

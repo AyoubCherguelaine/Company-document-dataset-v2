@@ -1,0 +1,9 @@
+{#- Packing slip: quantities only, no prices; packed-by / received-by signatures. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block summary_left %}{% endblock %}
+{% block notes %}
+  {% if opts.show_notes %}{{ c.notes_block(doc.notes) }}{% endif %}
+  {{ c.signatures(['packed_by', 'received_by']) }}
+{% endblock %}

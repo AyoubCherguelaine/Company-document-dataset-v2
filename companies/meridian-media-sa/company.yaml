@@ -1,0 +1,61 @@
+slug: meridian-media-sa
+locale: fr
+currency: EUR
+party:
+  name: Meridian Media SA
+  address:
+    line1: 223, chaussée de Wavre
+    line2: Building B
+    city: Namur
+    region: ''
+    postal_code: '5000'
+    country: Belgique
+  phone: +32 2 066 56 99
+  email: contact@meridianmedia.be
+  website: www.meridianmedia.be
+  tax_id: TVA BE0532402756
+  code: BE
+  bank:
+    bank_name: Banque Populaire du Centre
+    iban: BE72 9647 9724 9139 0555 6556
+    bic: MERIBE49
+sector: music
+brand:
+  initials: MM
+  color: '#0f766e'
+  shape: rounded
+design:
+  default:
+    layout: letterhead
+    theme: plain
+colors: {}
+options:
+  show_discount: true
+  show_bank: false
+  show_signature: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: MM-DEV-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: MM-PO-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: MM-EXP-{key}
+  goods_received_note: GRN-{key}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: La musique qui vous inspire.
+  about: Nous vendons des titres et albums numériques aux mélomanes du monde entier.
+  payment_instructions: Réglez votre facture par carte bancaire sur notre portail sécurisé.
+  footer: Merci de votre confiance, Meridian Media SA.
+  notes:
+  - Merci pour votre achat.
+  - Vos fichiers sont disponibles immédiatement par email.
+  - Remboursements possibles sous trente jours.
+  - Les paiements retardés engendrent des frais de cinq pour cent.
+  - Produit numérique sans garantie matérielle.
+  - Conservez votre lien de téléchargement pour accès futur.

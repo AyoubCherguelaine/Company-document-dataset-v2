@@ -1,0 +1,53 @@
+slug: cobalt-wholesale-ltd
+locale: en
+currency: GBP
+party:
+  name: Cobalt Wholesale Ltd
+  address:
+    line1: 275 High Street
+    line2: ''
+    city: Bristol
+    region: ''
+    postal_code: BS1 4DJ
+    country: United Kingdom
+  phone: +44 20 8132853
+  email: billing@cobaltwholesale.co.uk
+  website: www.cobaltwholesale.co.uk
+  tax_id: VAT GB117138141
+  code: UK
+  bank:
+    bank_name: Northern Trust Bank
+    iban: GB18 1790 8734 9062 1374 9599
+    bic: COBAGB41
+sector: food
+brand:
+  initials: CW
+  color: '#7c2d12'
+  shape: square
+design:
+  default:
+    layout: modern
+    theme: fresh
+colors:
+  primary: '#7c2d12'
+options:
+  show_contact: true
+  show_signature: false
+  show_tax_column: false
+numbering:
+  invoice: INV-{yyyy}-{key}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: PS-{key}
+texts:
+  tagline: Fresh Supply, Reliable Service, Every Day.
+  about: We supply a diverse range of chilled, ambient, and specialty food and drink products to cafés, pubs, and
+    retail outlets.
+  payment_instructions: Pay invoices via BACS, CHAPS, or corporate card; terms are net 30 from invoice date.
+  footer: Thank you for trusting Cobalt Wholesale Ltd for your supply needs.
+  notes:
+  - Thank you for choosing us as your dependable food and beverage partner.
+  - We deliver within 24‑48 hours using refrigerated trucks to maintain product freshness.
+  - Non‑perishable goods may be returned within 14 days if unopened and in original packaging.
+  - Invoices overdue after 30 days incur a 2% monthly late fee.
+  - Keep chilled items at 0‑4°C and dry goods away from moisture and direct sunlight.
+  - All products meet UK food safety standards; request documentation with each delivery.

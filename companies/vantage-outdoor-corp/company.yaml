@@ -1,0 +1,61 @@
+slug: vantage-outdoor-corp
+locale: en
+currency: USD
+party:
+  name: Vantage Outdoor Corp.
+  address:
+    line1: 304 5th Avenue
+    line2: Suite 542
+    city: Portland
+    region: OR
+    postal_code: '97205'
+    country: USA
+  phone: (442) 555-7651
+  email: sales@vantageoutdoor.com
+  website: www.vantageoutdoor.com
+  tax_id: EIN 43-3439968
+  code: US
+  bank:
+    bank_name: Crédit Régional
+    account: '5113587454'
+    routing: '857881569'
+sector: bikes
+brand:
+  initials: VO
+  color: '#4c1d95'
+  shape: circle
+design:
+  default:
+    layout: modern
+    theme: fresh
+colors: {}
+options:
+  show_item_details: true
+  show_tax_column: false
+  show_signature: true
+numbering:
+  invoice: VO-{yy}{key:06d}
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: VO-PO-{key}
+  packing_slip: VO-BL-{key}
+  shipping_order: VO-EXP-{key}
+  goods_received_note: VO-REC-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: VO-WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Ride Further, Gear Smarter
+  about: We manufacture and distribute bicycles and cycling gear to outdoor enthusiasts and professional riders.
+  payment_instructions: Pay via credit card, PayPal, or bank transfer within 20 days of invoice date.
+  footer: Thanks for trusting our adventure gear.
+  notes:
+  - Thank you for purchasing; your new bike will be ready for immediate use.
+  - Free shipping on orders over $100; please verify address details.
+  - Returns accepted within 30 days with original packaging; exchange eligible.
+  - Late payments incur a 1.5% monthly surcharge after the due date.
+  - All bicycles come with a 2‑year warranty covering frame and component defects.
+  - Customer support available Monday‑Friday 8 am‑6 pm via email or phone.

@@ -1,0 +1,54 @@
+slug: delta-commerce-sarl
+locale: fr
+currency: EUR
+party:
+  name: Delta Commerce SARL
+  address:
+    line1: 46, boulevard Voltaire
+    line2: Building C
+    city: Nantes
+    region: ''
+    postal_code: '44000'
+    country: France
+  phone: +33 4 89 46 58 89
+  email: billing@deltacommerce.fr
+  website: www.deltacommerce.fr
+  tax_id: TVA FR28790269479
+  code: FR
+  bank:
+    bank_name: Banque Populaire du Centre
+    iban: FR14 2145 8330 1530 8887 5346
+    bic: DELTFR52
+sector: food
+brand:
+  initials: DC
+  color: '#78350f'
+  shape: rounded
+design:
+  default:
+    layout: modern
+    theme: warm
+colors:
+  primary: '#78350f'
+options:
+  show_discount: false
+  show_bank: true
+  show_contact: false
+numbering:
+  invoice: INV-{yyyy}-{key}
+  purchase_order: DC-PO-{key}
+  packing_slip: DC-BL-{key}
+texts:
+  tagline: Saveurs fraîches, livrées chez vous
+  about: Nous distribuons en gros des produits alimentaires et boissons destinés aux commerces de détail et restaurants
+    de la région.
+  payment_instructions: Réglez votre facture par virement bancaire sous 30 jours, en indiquant le numéro de facture
+    en référence.
+  footer: Merci de votre confiance et à bientôt.
+  notes:
+  - Merci pour votre commande ; nous apprécions votre partenariat.
+  - Livraison effectuée sous 48 heures ouvrées, selon disponibilité stock.
+  - Retours acceptés sous 14 jours, produits non ouverts et en état neuf.
+  - 'Pénalités de retard : 1,5 % par mois après échéance de 30 jours.'
+  - Conservez les produits au frais et consommez-les avant la date limite indiquée.
+  - Pour toute question, contactez notre service client au 02 40 00 00 00

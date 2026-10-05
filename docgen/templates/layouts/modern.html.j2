@@ -1,0 +1,44 @@
+{#- Modern: full-width colour band with the title, meta as a horizontal strip, parties as cards. -#}
+{% extends "base.html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block layout_css %}
+.layout-modern .band { background: var(--c-primary); color: #fff; margin: -16mm -14mm 0 -14mm; padding: 10mm 14mm 8mm;
+  display: flex; justify-content: space-between; align-items: center; }
+.layout-modern .band h1 { color: #fff; }
+.layout-modern .band .issuer, .layout-modern .band .tax-id { color: #fff; opacity: .92; text-align: right; }
+.layout-modern .doc-header { display: block; margin: 0; }
+.layout-modern .band .tagline { color: #fff; opacity: .8; }
+.layout-modern .party { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 2mm; padding: 3mm; }
+.layout-modern table.totals { background: var(--c-surface); border-radius: 2mm; }
+{% endblock %}
+
+{% block header %}
+  <div class="band">
+    <div style="display:flex;align-items:center;gap:4mm">
+      {{ logo_svg(issuer, theme, 40) }}
+      <h1>{{ title }}</h1>
+    </div>
+    {{ c.issuer_block(issuer, opts.show_contact) }}
+  </div>
+{% endblock %}
+
+{% block meta %}{{ c.meta_strip(meta_rows) }}{% endblock %}
+
+{% block parties %}{{ c.parties_row(party_blocks, opts.show_contact) }}{% endblock %}
+
+{% block items %}{% if doc.items %}{{ c.line_table(doc.items, columns) }}{% endif %}{% endblock %}
+
+{% block summary %}
+<section class="summary">
+  <div>{% block summary_left %}{% if opts.show_bank %}{{ c.bank_block(issuer) }}{% endif %}{% endblock %}</div>
+  {% if doc.totals %}{{ c.totals_table(doc.totals) }}{% elif doc.summary %}{{ c.summary_table(doc.summary) }}{% endif %}
+</section>
+{% endblock %}
+
+{% block notes %}
+  {% if opts.show_notes %}{{ c.notes_block(doc.notes) }}{% endif %}
+  {% if opts.show_signature %}{{ c.signature_block() }}{% endif %}
+{% endblock %}
+
+{% block footer %}{% if ctext("footer") %}<div>{{ ctext("footer") }}</div>{% endif %}{{ issuer.website }}{% if issuer.email %} · {{ issuer.email }}{% endif %}{% if issuer.phone %} · {{ issuer.phone }}{% endif %}{% endblock %}

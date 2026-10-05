@@ -1,0 +1,129 @@
+{#- Reusable building blocks. Import with:
+      {% import "components.html.j2" as c with context %}
+    Every layout composes these differently; a new document type rarely needs new ones. -#}
+
+{% macro address_lines(party) -%}
+  {% for line in party.address.lines() %}<div class="addr-line">{{ line }}</div>{% endfor %}
+{%- endmacro %}
+
+{% macro issuer_block(party, show_contact=true) -%}
+<div class="issuer">
+  <div class="issuer-name">{{ party.name }}</div>
+  {% if party.brand.tagline %}<div class="tagline">{{ party.brand.tagline }}</div>{% endif %}
+  {{ address_lines(party) }}
+  {% if show_contact %}
+    {% if party.phone %}<div>{{ t('phone') }}: {{ party.phone }}</div>{% endif %}
+    {% if party.email %}<div>{{ party.email }}</div>{% endif %}
+    {% if party.website %}<div>{{ party.website }}</div>{% endif %}
+  {% endif %}
+  {% if party.tax_id %}<div class="tax-id">{{ party.tax_id }}</div>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro party_block(label, party, show_contact=true) -%}
+<div class="party">
+  <div class="label">{{ label }}</div>
+  <div class="party-name">{{ party.name }}</div>
+  {% if show_contact and party.contact %}<div>{{ t('attn') }} {{ party.contact }}</div>{% endif %}
+  {{ address_lines(party) }}
+  {% if show_contact and party.phone %}<div>{{ t('phone') }}: {{ party.phone }}</div>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro parties_row(blocks, show_contact=true) -%}
+<section class="parties">
+  {% for label, party in blocks %}{{ party_block(label, party, show_contact) }}{% endfor %}
+</section>
+{%- endmacro %}
+
+{% macro meta_table(rows, cls="meta") -%}
+<table class="{{ cls }}">
+  {% for label, value in rows %}<tr><th>{{ label }}</th><td>{{ value }}</td></tr>{% endfor %}
+</table>
+{%- endmacro %}
+
+{% macro meta_strip(rows) -%}
+<section class="meta-strip">
+  {% for label, value in rows %}<div class="cell"><div class="label">{{ label }}</div><div class="value">{{ value }}</div></div>{% endfor %}
+</section>
+{%- endmacro %}
+
+{% macro line_table(items, columns) -%}
+<table class="lines">
+  <thead><tr>
+    {% for col in columns %}<th class="a-{{ col.align }}"{% if col.width %} style="width:{{ col.width }}"{% endif %}>{{ t(col.label) }}</th>{% endfor %}
+  </tr></thead>
+  <tbody>
+    {% for item in items %}<tr>
+      {% for col in columns %}<td class="a-{{ col.align }} col-{{ col.key | replace('.', '-') }}">{{ cell(item, col) }}
+        {%- if col.key == 'description' and item.extra.get('details') %}<div class="item-details">{{ item.extra.details }}</div>{% endif %}</td>{% endfor %}
+    </tr>{% endfor %}
+  </tbody>
+</table>
+{%- endmacro %}
+
+{% macro totals_table(totals) -%}
+<table class="totals">
+  {% if totals.discount_total and opts.show_discount %}
+    <tr><th>{{ t('gross') }}</th><td>{{ totals.gross | money }}</td></tr>
+    <tr><th>{{ t('discount_total') }}</th><td>-{{ totals.discount_total | money }}</td></tr>
+  {% endif %}
+  <tr><th>{{ t('subtotal') }}</th><td>{{ totals.subtotal | money }}</td></tr>
+  {% if totals.freight %}<tr><th>{{ t('freight') }}</th><td>{{ totals.freight | money }}</td></tr>{% endif %}
+  {% for tax in totals.taxes %}
+    <tr><th>{{ loc.tax.label }} {{ tax.rate | pct }}</th><td>{{ tax.amount | money }}</td></tr>
+  {% endfor %}
+  <tr class="grand"><th>{{ t('total') }}</th><td>{{ totals.total | money }}</td></tr>
+</table>
+{%- endmacro %}
+
+{% macro bank_block(party) -%}
+{% if party.bank %}
+<div class="bank">
+  <div class="label">{{ t('bank_details') }}</div>
+  {% for k, v in party.bank.items() %}<div>{{ t(k) }}: {{ v }}</div>{% endfor %}
+</div>
+{% endif %}
+{%- endmacro %}
+
+{% macro notes_block(text) -%}
+{% if text %}<section class="notes"><div class="label">{{ t('notes') }}</div><p>{{ text }}</p></section>{% endif %}
+{%- endmacro %}
+
+{% macro signature_block(label=none, name=none, role=none) -%}
+<div class="signature"><div class="line"></div>
+  {% if name %}<div class="sig-name">{{ name }}</div>{% endif %}
+  {% if role %}<div>{{ role }}</div>{% endif %}
+  <div class="muted">{{ label or t('signature') }}</div></div>
+{%- endmacro %}
+
+{% macro signatures(labels) -%}
+<section class="signatures">{% for label in labels %}{{ signature_block(t(label)) }}{% endfor %}</section>
+{%- endmacro %}
+
+{% macro summary_table(rows) -%}
+<table class="totals summary-rows">
+  {% for row in rows %}
+    <tr{% if row.strong %} class="grand"{% endif %}><th>{{ t(row.label) }}</th><td>{{ fmtv(row.value, row.fmt) }}</td></tr>
+  {% endfor %}
+</table>
+{%- endmacro %}
+
+{% macro info_grid(rows) -%}
+<section class="info-grid">
+  {% for label, value in rows %}<div class="cell"><div class="label">{{ label }}</div><div class="value">{{ value }}</div></div>{% endfor %}
+</section>
+{%- endmacro %}
+
+{% macro remittance(rows) -%}
+<section class="remittance">
+  <div class="cut">✂</div>
+  <div class="label">{{ t('remittance') }}</div>
+  <div class="muted">{{ t('remittance_text') }}</div>
+  {{ info_grid(rows) }}
+</section>
+{%- endmacro %}
+
+{% macro stamp(text, color=none) -%}
+<div class="stamp"{% if color %} style="color:{{ color }};border-color:{{ color }}"{% endif %}>{{ text }}</div>
+{%- endmacro %}

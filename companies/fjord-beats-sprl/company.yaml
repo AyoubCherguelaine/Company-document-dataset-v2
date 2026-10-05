@@ -1,0 +1,61 @@
+slug: fjord-beats-sprl
+locale: fr
+currency: EUR
+party:
+  name: Fjord Beats SPRL
+  address:
+    line1: 104, rue Neuve
+    line2: Suite 850
+    city: Liège
+    region: ''
+    postal_code: '4000'
+    country: Belgique
+  phone: +32 2 906 47 29
+  email: billing@fjordbeats.be
+  website: www.fjordbeats.be
+  tax_id: TVA BE0057223528
+  code: BE
+  bank:
+    bank_name: Northern Trust Bank
+    iban: BE69 2236 0065 2916 4664 8929
+    bic: FJORBE67
+sector: music
+brand:
+  initials: FB
+  color: '#9d174d'
+  shape: rounded
+design:
+  default:
+    layout: classic
+    theme: corporate
+colors: {}
+options:
+  show_signature: false
+  show_tax_column: false
+  show_bank: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: QT{key:06d}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GRN-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: FB{yy}{key:06d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Music unlocked, instantly yours
+  about: We sell digital music tracks and albums online to listeners in Liège and worldwide.
+  payment_instructions: Pay securely via credit card or PayPal at checkout; invoices issued for business accounts.
+  footer: Let the music move you always.
+  notes:
+  - Thanks for supporting independent digital music.
+  - Download links expire 72 hours after purchase.
+  - No refunds on digital downloads unless faulty.
+  - Late invoice payments incur 12% annual interest.
+  - Files are DRM-free MP3s at 320kbps quality.
+  - Back up your purchases to cloud storage monthly.

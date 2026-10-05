@@ -1,0 +1,63 @@
+slug: riverside-cinema-inc
+locale: en
+currency: USD
+party:
+  name: Riverside Cinema Inc.
+  address:
+    line1: 13 Oak Street
+    line2: Suite 414
+    city: Chicago
+    region: IL
+    postal_code: '60606'
+    country: USA
+  phone: (347) 555-3994
+  email: sales@riversidecinema.com
+  website: www.riversidecinema.com
+  tax_id: EIN 08-4564557
+  code: US
+  bank:
+    bank_name: Crédit Régional
+    account: 0719237264
+    routing: '480109451'
+sector: video
+brand:
+  initials: RC
+  color: '#9d174d'
+  shape: rounded
+design:
+  default:
+    layout: modern
+    theme: corporate
+colors:
+  primary: '#9d174d'
+options:
+  show_signature: true
+  show_tax_column: true
+  show_item_details: false
+numbering:
+  invoice: INV{key:07d}
+  quote: RC-DEV-{key}
+  credit_note: RC-CR-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: RC-BL-{key}
+  shipping_order: RC-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: OF{yy}{key:06d}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Movie Nights Made Easy – Your Theater, Your Rules
+  about: Riverside Cinema Inc. operates a chain of video rental stores, offering films for rent to the public with
+    flexible viewing hours.
+  payment_instructions: Pay rentals via credit card or cash at store within 5 days of due date.
+  footer: Enjoy the show – we’re here to keep you entertained.
+  notes:
+  - Thank you for renting with Riverside Cinema – we love sharing stories.
+  - Free popcorn with rentals over $20 – enjoy the full cinema experience.
+  - Returns accepted within 7 days; bring receipts for hassle‑free returns.
+  - Late returns incur a $3 daily fee after the due date.
+  - All films come with a 30‑day satisfaction guarantee or exchange.
+  - Store DVDs in a cool, dry place to preserve picture quality – care tip.

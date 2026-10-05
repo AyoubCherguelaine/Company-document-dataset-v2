@@ -1,0 +1,9 @@
+{#- Shipping order: instructions to the carrier; consignee and carrier blocks, handling notes. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block summary_left %}
+  <div class="label">{{ t('handling') }}</div>
+  <p style="margin:0">{{ doc.notes }}</p>
+{% endblock %}
+{% block notes %}{{ c.signatures(['shipper_signature', 'carrier_signature']) }}{% endblock %}

@@ -1,0 +1,63 @@
+slug: quarry-music-llc
+locale: en
+currency: USD
+party:
+  name: Quarry Music LLC
+  address:
+    line1: 201 Industrial Pkwy
+    line2: Building D
+    city: Portland
+    region: OR
+    postal_code: '97205'
+    country: USA
+  phone: (397) 555-9348
+  email: contact@quarrymusic.com
+  website: www.quarrymusic.com
+  tax_id: EIN 59-9051418
+  code: US
+  bank:
+    bank_name: Banque Populaire du Centre
+    account: '2674588878'
+    routing: '558070394'
+sector: music
+brand:
+  initials: QM
+  color: '#78350f'
+  shape: circle
+design:
+  default:
+    layout: sidebar
+    theme: plain
+colors:
+  primary: '#78350f'
+options:
+  show_discount: false
+  show_item_details: true
+  show_contact: true
+numbering:
+  invoice: F{yy}-{key}
+  quote: QM-DEV-{key}
+  credit_note: QM-CR-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GRN-{key}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: QM-WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Discover Beats, Stream Instantly – Your Music, Your Way
+  about: Quarry Music LLC offers an online digital music store where customers purchase and stream tracks and albums
+    instantly.
+  payment_instructions: Pay invoices online via credit card within 10 days of receipt.
+  footer: Your soundtrack to success – thanks for supporting local artists.
+  notes:
+  - Thank you for downloading with Quarry Music – enjoy unlimited beats.
+  - 'Instant delivery: tracks appear in your library within seconds of purchase.'
+  - Digital downloads are non‑returnable; please review before purchase.
+  - Late payments incur a $5 fee after 15 days of invoice date.
+  - All purchased tracks come with a lifetime license for personal use.
+  - Store music files on a secure cloud – backup recommended for peace of mind.

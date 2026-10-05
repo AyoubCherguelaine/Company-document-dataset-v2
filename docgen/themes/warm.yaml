@@ -1,0 +1,14 @@
+# Serif headings, warm palette, ruled table.
+font_family: "'Liberation Sans', sans-serif"
+heading_font: "'DejaVu Serif', 'Liberation Serif', serif"
+base_size: 9pt
+title_size: 24pt
+table_style: lines
+logo_shape: circle
+spacing: 1.2
+colors:
+  primary: "#7c2d12"
+  accent: "#c2410c"
+  border: "#e7d8cc"
+  surface: "#fdf8f3"
+  stripe: "#faf1e8"

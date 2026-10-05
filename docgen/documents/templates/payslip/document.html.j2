@@ -1,0 +1,32 @@
+{#- Payslip: employee details, earnings table (the items), deductions table, net pay. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block before_items %}
+  <section class="info-grid">
+    {% for label, value in doc.extra.employee %}<div class="cell"><div class="label">{{ t(label) }}</div><div class="value">{{ value }}</div></div>{% endfor %}
+  </section>
+  <div class="label" style="margin-top:4mm">{{ t('earnings') }}</div>
+{% endblock %}
+{% block summary %}
+  <div class="label" style="margin-top:5mm">{{ t('deductions') }}</div>
+  <table class="lines">
+    <thead><tr><th>{{ t('description') }}</th><th class="a-right" style="width:16%">{{ t('gross_pay') }}</th>
+      <th class="a-right" style="width:12%">{{ t('rate') }}</th><th class="a-right" style="width:18%">{{ t('amount') }}</th></tr></thead>
+    <tbody>
+    {% for d in doc.extra.deductions %}
+      <tr><td>{{ d.label }}</td><td class="a-right">{{ d.base | money if d.base else '' }}</td>
+        <td class="a-right">{{ d.rate | pct if d.rate else '' }}</td><td class="a-right">{{ d.amount | money }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <section class="summary">
+    <div>
+      {% if doc.extra.balances %}<table class="meta">
+        {% for label, value in doc.extra.balances %}<tr><th>{{ t(label) }}</th><td>{{ value }}</td></tr>{% endfor %}
+      </table>{% endif %}
+      <p class="muted">{{ doc.extra.payment_note }}</p>
+    </div>
+    {{ c.summary_table(doc.summary) }}
+  </section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{#- Receipt: A5, compact; payment details instead of terms. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block extra_css %}
+html { font-size: 7.6pt; }
+h1 { font-size: 16pt; }
+{% if layout != 'sidebar' %}@page { margin: 10mm 9mm 14mm 9mm; }{% endif %}
+.layout-modern .band { margin: -10mm -9mm 0 -9mm; padding: 7mm 9mm 6mm; }
+table.totals { width: 55%; }
+{% endblock %}
+{% block summary_left %}
+  <table class="meta">
+    {% for label, value in doc.extra.payment %}<tr><th>{{ t(label) }}</th><td>{{ value }}</td></tr>{% endfor %}
+  </table>
+{% endblock %}

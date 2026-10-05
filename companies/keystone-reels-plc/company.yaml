@@ -1,0 +1,62 @@
+slug: keystone-reels-plc
+locale: en
+currency: GBP
+party:
+  name: Keystone Reels PLC
+  address:
+    line1: 266 High Street
+    line2: Building D
+    city: Leeds
+    region: ''
+    postal_code: LS1 5AA
+    country: United Kingdom
+  phone: +44 20 8161883
+  email: accounts@keystonereels.co.uk
+  website: www.keystonereels.co.uk
+  tax_id: VAT GB837288677
+  code: UK
+  bank:
+    bank_name: City Savings Bank
+    iban: GB90 5777 0896 6239 3756 7594
+    bic: KEYSGB31
+sector: video
+brand:
+  initials: KR
+  color: '#4c1d95'
+  shape: rounded
+design:
+  default:
+    layout: sidebar
+    theme: fresh
+colors:
+  primary: '#4c1d95'
+options:
+  show_contact: true
+  show_bank: false
+  show_signature: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: QT{key:06d}
+  credit_note: KR-CR-{key}
+  purchase_order: KR-PO-{key}
+  packing_slip: PS-{key}
+  shipping_order: KR-EXP-{key}
+  goods_received_note: GRN-{key}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Location de films, l'expérience cinema à portée de main.
+  about: Chaîne de locations vidéo proposant films et séries, avec retrait en magasin ou livraison à domicile.
+  payment_instructions: Payez en espèces, carte ou virement avant la date d'échéance pour éviter les pénalités.
+  footer: Revenons au cinéma ensemble, une histoire à la fois.
+  notes:
+  - Merci pour votre visite, revenez découvrir les nouveautés.
+  - Livraison à domicile possible dans un rayon de 20 km autour de Leeds.
+  - Retours sous 7 jours, films non endommagés et avec boîtier intact.
+  - 'Retard de paiement : 2,5 % d’intérêt mensuel appliqué.'
+  - 'Garantie : films sans défauts techniques, échange gratuit sous 14 jours.'
+  - 'Conseil : conservez les boîtiers dans un endroit sec et à l''abri de la poussière.'

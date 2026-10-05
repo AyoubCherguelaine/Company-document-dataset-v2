@@ -1,0 +1,62 @@
+slug: delta-sound-sa
+locale: fr
+currency: EUR
+party:
+  name: Delta Sound SA
+  address:
+    line1: 270, rue de la République
+    line2: ''
+    city: Paris
+    region: ''
+    postal_code: '75011'
+    country: France
+  phone: +33 4 06 94 66 55
+  email: billing@deltasound.fr
+  website: www.deltasound.fr
+  tax_id: TVA FR06720627253
+  code: FR
+  bank:
+    bank_name: First Commerce Bank
+    iban: FR54 8928 8472 9509 0601 9457
+    bic: DELTFR85
+sector: music
+brand:
+  initials: DS
+  color: '#1f4e79'
+  shape: rounded
+design:
+  default:
+    layout: modern
+    theme: warm
+colors:
+  primary: '#1f4e79'
+options:
+  show_tax_column: true
+  show_contact: true
+  show_discount: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: DS-DEV-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: DS-PO-{key}
+  packing_slip: PS-{key}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: RCPT{key:07d}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Votre musique, instantanément disponible
+  about: Nous proposons en ligne un vaste catalogue de morceaux et d'albums à télécharger légalement.
+  payment_instructions: Réglez vos achats par carte bancaire ou PayPal, reçu envoyé par email immédiatement.
+  footer: Écoutez, partagez, répétez – merci pour votre écoute.
+  notes:
+  - Merci pour votre achat ; profitez d'une écoute sans publicité.
+  - Téléchargement disponible immédiatement après confirmation de paiement.
+  - Les fichiers sont compatibles avec tous les lecteurs audio standard.
+  - En cas de problème de téléchargement, contactez notre support sous 24h.
+  - Aucun remboursement après téléchargement, sauf erreur de fichier corrompu.
+  - Conservez vos fichiers en sauvegarde pour éviter toute perte accidentelle.

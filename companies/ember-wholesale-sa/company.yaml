@@ -1,0 +1,53 @@
+slug: ember-wholesale-sa
+locale: fr
+currency: EUR
+party:
+  name: Ember Wholesale SA
+  address:
+    line1: 189, avenue Louise
+    line2: Building B
+    city: Liège
+    region: ''
+    postal_code: '4000'
+    country: Belgique
+  phone: +32 2 904 08 52
+  email: sales@emberwholesale.be
+  website: www.emberwholesale.be
+  tax_id: TVA BE0693625142
+  code: BE
+  bank:
+    bank_name: Banque Populaire du Centre
+    iban: BE76 8300 3757 0741 2541 6260
+    bic: EMBEBE79
+sector: food
+brand:
+  initials: EW
+  color: '#7c2d12'
+  shape: circle
+design:
+  default:
+    layout: letterhead
+    theme: corporate
+colors:
+  primary: '#7c2d12'
+options:
+  show_tax_column: true
+  show_discount: false
+  show_item_details: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  purchase_order: EW-PO-{key}
+  packing_slip: EW-BL-{key}
+texts:
+  tagline: Your pantry, fully stocked
+  about: We wholesale food and beverage supplies to independent shops and restaurants across Liège and surrounding
+    regions.
+  payment_instructions: Pay invoices via bank transfer within 30 days or contact accounts for card payment options.
+  footer: Stocked with care, delivered with trust.
+  notes:
+  - Thank you for choosing Ember Wholesale SA.
+  - Orders placed by 3 PM ship same business day.
+  - Returns accepted within 7 days, unopened and resalable only.
+  - Late payments subject to 10% monthly fee after 30 days.
+  - Perishable goods must be reported within 24 hours of delivery.
+  - Store dry goods in cool dark places away from heat.

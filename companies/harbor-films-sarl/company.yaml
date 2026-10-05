@@ -1,0 +1,63 @@
+slug: harbor-films-sarl
+locale: fr
+currency: EUR
+party:
+  name: Harbor Films SARL
+  address:
+    line1: 264, quai des Chartrons
+    line2: Building D
+    city: Bordeaux
+    region: ''
+    postal_code: '33000'
+    country: France
+  phone: +33 4 96 98 69 11
+  email: sales@harborfilms.fr
+  website: www.harborfilms.fr
+  tax_id: TVA FR32506755119
+  code: FR
+  bank:
+    bank_name: Northern Trust Bank
+    iban: FR67 6139 0309 9002 6245 4934
+    bic: HARBFR84
+sector: video
+brand:
+  initials: HF
+  color: '#9d174d'
+  shape: circle
+design:
+  default:
+    layout: modern
+    theme: plain
+colors: {}
+options:
+  show_contact: true
+  show_discount: true
+  show_item_details: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: Q-{yyyy}-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+  shipping_order: HF-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: HF-REL-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: HF-WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Le cinéma chez vous, simplement.
+  about: Nous louons une vaste sélection de films récents et classiques aux particuliers et aux entreprises de Bordeaux
+    et alentours.
+  payment_instructions: Réglez votre facture par carte bancaire, chèque ou virement dans les 10 jours suivant la
+    date d’émission.
+  footer: Merci de faire confiance à Harbor Films SARL.
+  notes:
+  - Merci pour votre location – bon visionnage !
+  - Les DVD et Blu‑ray sont disponibles en magasin sous 24 heures après réservation.
+  - Les retours sont acceptés dans les 7 jours suivant la location, en bon état.
+  - Facture impayée après 15 jours entraîne une pénalité de 2% par mois.
+  - Nous garantissons que les disques sont exempts de défauts ; échange immédiat si problème.
+  - Pour préserver la qualité, évitez l’exposition au soleil et aux températures extrêmes.

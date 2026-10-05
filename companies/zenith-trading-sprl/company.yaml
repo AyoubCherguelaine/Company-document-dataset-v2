@@ -1,0 +1,41 @@
+slug: zenith-trading-sprl
+locale: fr
+currency: EUR
+party:
+  name: Zenith Trading SPRL
+  address:
+    line1: 31, rue des Bouchers
+    line2: Building D
+    city: Bruxelles
+    region: ''
+    postal_code: '1000'
+    country: Belgique
+  phone: +32 2 000 15 29
+  email: contact@zenithtrading.be
+  website: www.zenithtrading.be
+  tax_id: TVA BE0364528519
+  code: BE
+  bank:
+    bank_name: Crédit Régional
+    iban: BE24 3837 4601 1852 2650 1661
+    bic: ZENIBE27
+sector: food
+brand:
+  initials: ZT
+  color: '#7c2d12'
+  shape: circle
+design:
+  default:
+    layout: letterhead
+    theme: warm
+colors:
+  primary: '#7c2d12'
+options:
+  show_bank: false
+  show_contact: false
+  show_tax_column: true
+numbering:
+  invoice: F{yy}-{key}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: ZT-BL-{key}
+texts: {}

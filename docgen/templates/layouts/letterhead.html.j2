@@ -1,0 +1,55 @@
+{#- Letterhead: centred company heading with a double rule, title and meta on one row, boxed
+    address blocks, and a three-column footer (contact, bank, legal). -#}
+{% extends "base.html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block layout_css %}
+.layout-letterhead .doc-header { display: block; text-align: center; border-bottom: 3px double var(--c-primary);
+  padding-bottom: 3mm; }
+.layout-letterhead .doc-header svg.logo { margin: 0 auto 2mm; }
+.layout-letterhead .lh-name { font-family: var(--heading-font); font-size: 1.7em; font-weight: bold;
+  color: var(--c-primary); letter-spacing: .03em; }
+.layout-letterhead .lh-line { color: var(--c-muted); }
+.layout-letterhead .title-row { display: flex; justify-content: space-between; align-items: flex-end;
+  margin: calc(var(--gap) * 1.2) 0 var(--gap); }
+.layout-letterhead .party { border: 1px solid var(--c-border); padding: 3mm; }
+.layout-letterhead .doc-footer { display: flex; gap: 6mm; text-align: left; }
+.layout-letterhead .doc-footer > div { flex: 1; }
+{% endblock %}
+
+{% block header %}
+  {{ logo_svg(issuer, theme, 38) }}
+  <div class="lh-name">{{ issuer.name }}</div>
+  {% if issuer.brand.tagline %}<div class="tagline">{{ issuer.brand.tagline }}</div>{% endif %}
+  <div class="lh-line">{{ issuer.address.lines() | join(' · ') }}</div>
+  {% if opts.show_contact %}<div class="lh-line">{{ [issuer.phone, issuer.email, issuer.website] | select | join(' · ') }}</div>{% endif %}
+{% endblock %}
+
+{% block meta %}
+<section class="title-row">
+  <h1>{{ title }}</h1>
+  {{ c.meta_table(meta_rows) }}
+</section>
+{% endblock %}
+
+{% block parties %}{{ c.parties_row(party_blocks, opts.show_contact) }}{% endblock %}
+
+{% block items %}{% if doc.items %}{{ c.line_table(doc.items, columns) }}{% endif %}{% endblock %}
+
+{% block summary %}
+<section class="summary">
+  <div>{% block summary_left %}{% endblock %}</div>
+  {% if doc.totals %}{{ c.totals_table(doc.totals) }}{% elif doc.summary %}{{ c.summary_table(doc.summary) }}{% endif %}
+</section>
+{% endblock %}
+
+{% block notes %}
+  {% if opts.show_notes %}{{ c.notes_block(doc.notes) }}{% endif %}
+  {% if opts.show_signature %}{{ c.signature_block() }}{% endif %}
+{% endblock %}
+
+{% block footer %}
+  <div>{% if ctext("footer") %}{{ ctext("footer") }}{% endif %}</div>
+  <div>{% if opts.show_bank and issuer.bank %}{% for k, v in issuer.bank.items() %}{{ t(k) }}: {{ v }}<br>{% endfor %}{% endif %}</div>
+  <div>{{ issuer.name }}{% if issuer.tax_id %}<br>{{ issuer.tax_id }}{% endif %}</div>
+{% endblock %}

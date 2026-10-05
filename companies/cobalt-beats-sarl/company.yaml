@@ -1,0 +1,65 @@
+slug: cobalt-beats-sarl
+locale: fr
+currency: EUR
+party:
+  name: Cobalt Beats SARL
+  address:
+    line1: 464, rue de la République
+    line2: ''
+    city: Bordeaux
+    region: ''
+    postal_code: '33000'
+    country: France
+  phone: +33 4 84 53 66 15
+  email: contact@cobaltbeats.fr
+  website: www.cobaltbeats.fr
+  tax_id: TVA FR85634115115
+  code: FR
+  bank:
+    bank_name: Banque Populaire du Centre
+    iban: FR96 4330 6907 6421 4554 6606
+    bic: COBAFR51
+sector: music
+brand:
+  initials: CB
+  color: '#78350f'
+  shape: rounded
+design:
+  default:
+    layout: sidebar
+    theme: warm
+colors:
+  primary: '#78350f'
+options:
+  show_contact: false
+  show_bank: true
+  show_discount: true
+numbering:
+  invoice: INV-{yyyy}-{key}
+  quote: CB-DEV-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: CB-BL-{key}
+  shipping_order: CB-EXP-{key}
+  goods_received_note: CB-REC-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Votre musique, votre rythme, en un clic.
+  about: Nous proposons un vaste catalogue de morceaux et d'albums numériques aux particuliers et professionnels
+    recherchant du son de qualité.
+  payment_instructions: Réglez vos factures par carte bancaire, PayPal ou virement SEPA dans les 15 jours suivant
+    la réception.
+  footer: Merci de faire confiance à Cobalt Beats SARL.
+  notes:
+  - Merci pour votre achat ; votre soutien permet de soutenir les artistes indépendants.
+  - Les téléchargements sont disponibles immédiatement après paiement, accessibles depuis votre compte.
+  - En raison de la nature numérique, les ventes sont définitives ; toutefois, nous aidons à résoudre les problèmes
+    de fichier.
+  - Les factures impayées au-delà de 10 jours entraînent une pénalité de 1,5 % par mois.
+  - Sauvegardez vos fichiers achetés sur un support externe pour éviter toute perte accidentelle.
+  - Pour une écoute optimale, utilisez des écouteurs ou haut-parleurs de bonne qualité et évitez la surcompression.

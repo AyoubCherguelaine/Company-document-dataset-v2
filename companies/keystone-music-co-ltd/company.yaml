@@ -1,0 +1,63 @@
+slug: keystone-music-co-ltd
+locale: en
+currency: GBP
+party:
+  name: Keystone Music & Co. Ltd
+  address:
+    line1: 413 Victoria Street
+    line2: Building B
+    city: Leeds
+    region: ''
+    postal_code: LS1 5AA
+    country: United Kingdom
+  phone: +44 20 3353564
+  email: contact@keystonemusic.co.uk
+  website: www.keystonemusic.co.uk
+  tax_id: VAT GB032321906
+  code: UK
+  bank:
+    bank_name: Crédit Régional
+    iban: GB24 7503 3895 4114 6634 5484
+    bic: KEYSGB25
+sector: music
+brand:
+  initials: KM
+  color: '#1e3a8a'
+  shape: square
+design:
+  default:
+    layout: classic
+    theme: plain
+colors:
+  primary: '#1e3a8a'
+options:
+  show_item_details: true
+  show_signature: false
+  show_discount: false
+numbering:
+  invoice: INV{key:07d}
+  quote: QT{key:06d}
+  credit_note: KM-CR-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: STM{key:06d}
+  inventory_report: STK{yy}{key:05d}
+  receipt: KM{yy}{key:06d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Musique instantanée, streaming sans frontières.
+  about: Boutique numérique vendant des titres et albums, accessible depuis n'importe quel appareil, en quelques
+    clics.
+  payment_instructions: Payez en ligne par carte ou PayPal avant la date d'échéance pour éviter les frais.
+  footer: Écoutez, téléchargez, appréciez – c'est tout.
+  notes:
+  - Merci pour votre achat, profitez de votre musique immédiatement.
+  - Téléchargement instantané après confirmation de paiement.
+  - Retours non applicables pour les fichiers numériques.
+  - 'Retard de paiement : 1,5 % d’intérêt par semaine.'
+  - 'Garantie : fichiers sans erreur, remplacement gratuit sous 48h.'
+  - 'Conseil : stockez vos chansons dans le cloud pour y accéder partout.'

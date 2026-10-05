@@ -1,0 +1,63 @@
+slug: quarry-entertainment-ltd
+locale: en
+currency: GBP
+party:
+  name: Quarry Entertainment Ltd
+  address:
+    line1: 15 Mill Lane
+    line2: ''
+    city: London
+    region: ''
+    postal_code: EC1A 1BB
+    country: United Kingdom
+  phone: +44 20 3320002
+  email: accounts@quarryentertainment.co.uk
+  website: www.quarryentertainment.co.uk
+  tax_id: VAT GB801016887
+  code: UK
+  bank:
+    bank_name: City Savings Bank
+    iban: GB76 6395 2705 7432 9189 7929
+    bic: QUARGB36
+sector: video
+brand:
+  initials: QE
+  color: '#1e3a8a'
+  shape: circle
+design:
+  default:
+    layout: classic
+    theme: fresh
+colors:
+  primary: '#1e3a8a'
+options:
+  show_tax_column: false
+  show_discount: true
+  show_bank: false
+numbering:
+  invoice: QE-{yy}{key:06d}
+  quote: Q-{yyyy}-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: QE-PO-{key}
+  packing_slip: QE-BL-{key}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GRN-{key}
+  account_statement: QE-REL-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: R-{key}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Bringing the cinema to your living room
+  about: We rent a wide selection of new releases and classic films to households and film enthusiasts across Greater
+    London.
+  payment_instructions: Settle your invoice via credit card, debit card, or bank transfer within 14 days of receipt.
+  footer: Thank you for choosing Quarry Entertainment Ltd.
+  notes:
+  - Thank you for renting with us; enjoy your movie night!
+  - Free home delivery on orders over £20, dispatched within 24 hours.
+  - Please return DVDs in their original cases within 7 days to avoid late fees.
+  - Overdue invoices incur a £2 admin fee plus 1.5% interest per month until paid.
+  - Handle discs by the edges, keep them clean, and store away from direct sunlight.
+  - If a disc is unplayable, return it for a free replacement or refund.

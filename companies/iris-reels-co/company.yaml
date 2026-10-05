@@ -1,0 +1,61 @@
+slug: iris-reels-co
+locale: en
+currency: USD
+party:
+  name: Iris Reels Co.
+  address:
+    line1: 264 Oak Street
+    line2: ''
+    city: Austin
+    region: TX
+    postal_code: '78701'
+    country: USA
+  phone: (618) 555-3634
+  email: billing@irisreels.com
+  website: www.irisreels.com
+  tax_id: EIN 48-0411633
+  code: US
+  bank:
+    bank_name: Banque Populaire du Centre
+    account: '3723575448'
+    routing: 034918022
+sector: video
+brand:
+  initials: IR
+  color: '#0f766e'
+  shape: rounded
+design:
+  default:
+    layout: sidebar
+    theme: warm
+colors: {}
+options:
+  show_item_details: false
+  show_signature: false
+  show_discount: false
+numbering:
+  invoice: '{yyyy}/{key}'
+  quote: QT{key:06d}
+  credit_note: IR-CR-{key}
+  purchase_order: IR-PO-{key}
+  packing_slip: IR-BL-{key}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Cinema on demand, from any screen.
+  about: Video rental store chain offering movies and media rentals to home viewers daily.
+  payment_instructions: Pay invoices via credit card online or bank draft.
+  footer: Enjoy unlimited streaming after your purchase.
+  notes:
+  - Rentals available through our website twenty-four hours.
+  - Staff assist with film selection every hour.
+  - Discounts apply for bulk weekly subscriptions.
+  - Refunds processed within five business days.
+  - Check eligibility for student member offers before renting.
+  - Digital copies delivered instantly upon successful payment.

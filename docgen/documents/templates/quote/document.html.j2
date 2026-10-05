@@ -1,0 +1,8 @@
+{#- Quotation: validity terms and an acceptance signature instead of payment details. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block summary_left %}
+  <p class="muted" style="margin:0 0 4mm">{{ doc.extra.validity }}</p>
+  {{ c.signature_block(t('accepted_by')) }}
+{% endblock %}

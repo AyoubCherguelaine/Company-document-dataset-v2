@@ -1,0 +1,62 @@
+slug: quarry-foods-plc
+locale: en
+currency: GBP
+party:
+  name: Quarry Foods PLC
+  address:
+    line1: 135 Station Road
+    line2: Suite 350
+    city: Manchester
+    region: ''
+    postal_code: M1 2AB
+    country: United Kingdom
+  phone: +44 20 7052475
+  email: sales@quarryfoods.co.uk
+  website: www.quarryfoods.co.uk
+  tax_id: VAT GB746461965
+  code: UK
+  bank:
+    bank_name: City Savings Bank
+    iban: GB81 1584 3582 8144 4735 9348
+    bic: QUARGB16
+sector: food
+brand:
+  initials: QF
+  color: '#9d174d'
+  shape: rounded
+design:
+  default:
+    layout: letterhead
+    theme: plain
+colors: {}
+options:
+  show_tax_column: true
+  show_contact: true
+  show_item_details: true
+numbering:
+  invoice: INV{key:07d}
+  quote: QT{key:06d}
+  credit_note: QF-CR-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: QF-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Quality Supplies, Fresh Taste, Every Time
+  about: Quarry Foods PLC distributes wholesale food and beverage products to shops and restaurants, ensuring fresh
+    ingredients daily.
+  payment_instructions: Please pay invoices via bank transfer within 14 days of receipt.
+  footer: Thank you for your continued partnership.
+  notes:
+  - Thank you for choosing Quarry Foods – your satisfaction is our priority.
+  - Free delivery on orders over £100, delivered straight to your premises.
+  - Returns accepted within 7 days for unopened items; contact us for pickup.
+  - Late payments incur a £20 administration fee after 30 days.
+  - All products come with a 12‑month quality guarantee from delivery.
+  - Store perishables at 4°C to maintain freshness – follow our guide.

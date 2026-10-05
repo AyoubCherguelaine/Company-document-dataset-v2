@@ -1,0 +1,63 @@
+slug: vantage-outdoor-sa
+locale: fr
+currency: EUR
+party:
+  name: Vantage Outdoor SA
+  address:
+    line1: 350, boulevard Voltaire
+    line2: Building C
+    city: Lille
+    region: ''
+    postal_code: '59000'
+    country: France
+  phone: +33 4 23 07 41 92
+  email: accounts@vantageoutdoor.fr
+  website: www.vantageoutdoor.fr
+  tax_id: TVA FR52390591608
+  code: FR
+  bank:
+    bank_name: Northern Trust Bank
+    iban: FR04 1739 1967 6297 8913 2865
+    bic: VANTFR76
+sector: bikes
+brand:
+  initials: VO
+  color: '#14532d'
+  shape: circle
+design:
+  default:
+    layout: sidebar
+    theme: warm
+colors:
+  primary: '#14532d'
+options:
+  show_discount: true
+  show_signature: false
+  show_bank: false
+numbering:
+  invoice: INV-{yyyy}-{key}
+  quote: QT{key:06d}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: VO-PO-{key}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: VO-EXP-{key}
+  goods_received_note: GR{yy}{key:06d}
+  account_statement: VO-REL-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: VO{yy}{key:06d}
+  work_order: VO-WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Vélo de qualité, livraison rapide
+  about: Nous fabriquons et distribuons des vélos et accessoires de cyclisme aux passionnés et professionnels en
+    région lilloise.
+  payment_instructions: Paiement par virement bancaire ou chèque dans les 30 jours suivant la facture.
+  footer: Merci de choisir notre partenaire cyclisme.
+  notes:
+  - Merci pour votre achat; votre nouveau vélo sera expédié sous 48 heures.
+  - Livraison gratuite pour les commandes supérieures à 150 €; adresse exacte requise.
+  - Retours acceptés sous 14 jours avec emballage d'origine; échange possible.
+  - Paiement tardif entraîne des pénalités de 2 % mensuel après la date d'échéance.
+  - Garantie 2 ans sur le cadre et les composants contre les défauts de fabrication.
+  - Service client du lundi au vendredi, 9 h–18 h, par téléphone ou email.

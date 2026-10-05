@@ -1,0 +1,11 @@
+{#- Goods received note: ordered vs received vs rejected; receiving and inspection signatures. -#}
+{% extends "layouts/" ~ layout ~ ".html.j2" %}
+{% import "components.html.j2" as c with context %}
+
+{% block summary_left %}{% endblock %}
+{% block notes %}
+  <section class="signatures">
+    {{ c.signature_block(t('received_by')) }}
+    {{ c.signature_block(t('inspected_by'), doc.extra.inspector) }}
+  </section>
+{% endblock %}

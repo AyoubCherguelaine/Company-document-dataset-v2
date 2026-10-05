@@ -1,0 +1,62 @@
+slug: tidewater-foods-sas
+locale: fr
+currency: EUR
+party:
+  name: Tidewater Foods SAS
+  address:
+    line1: 184, avenue Jean Jaurès
+    line2: ''
+    city: Paris
+    region: ''
+    postal_code: '75011'
+    country: France
+  phone: +33 4 42 03 98 94
+  email: accounts@tidewaterfoods.fr
+  website: www.tidewaterfoods.fr
+  tax_id: TVA FR66374443524
+  code: FR
+  bank:
+    bank_name: City Savings Bank
+    iban: FR71 4271 9534 6196 7377 7483
+    bic: TIDEFR84
+sector: food
+brand:
+  initials: TF
+  color: '#1f4e79'
+  shape: circle
+design:
+  default:
+    layout: classic
+    theme: warm
+colors:
+  primary: '#1f4e79'
+options:
+  show_item_details: false
+  show_bank: true
+  show_signature: false
+numbering:
+  invoice: TF-{yy}{key:06d}
+  quote: TF-DEV-{key}
+  credit_note: TF-CR-{key}
+  purchase_order: PO-{yyyy}-{key}
+  packing_slip: PS-{key}
+  shipping_order: TF-EXP-{key}
+  goods_received_note: TF-REC-{key}
+  account_statement: STM{key:06d}
+  inventory_report: STK{yy}{key:05d}
+  receipt: RCPT{key:07d}
+  work_order: WO-{key}
+  payslip: BP{yy}{key:05d}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: Des saveurs fraîches pour vos étals
+  about: Fournisseur en gros d’aliments et boissons pour commerces et restaurateurs.
+  payment_instructions: Paiement par virement sous 30 jours après facture.
+  footer: Avec nos salutations gourmandes.
+  notes:
+  - Merci de votre commande, expédition rapide prévue.
+  - Livraison offerte à partir de 600 €.
+  - Retours sous 10 jours, produits intacts requis.
+  - Intérêts de 1,5 %/mois après date d’échéance.
+  - Conservez au réfrigérateur selon indications emballage.
+  - Service client disponible pour toute question.

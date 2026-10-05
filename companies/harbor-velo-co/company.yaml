@@ -1,0 +1,64 @@
+slug: harbor-velo-co
+locale: en
+currency: USD
+party:
+  name: Harbor Velo Co.
+  address:
+    line1: 88 Elm Avenue
+    line2: Suite 817
+    city: Denver
+    region: CO
+    postal_code: '80202'
+    country: USA
+  phone: (407) 555-9878
+  email: billing@harborvelo.com
+  website: www.harborvelo.com
+  tax_id: EIN 75-6701454
+  code: US
+  bank:
+    bank_name: First Commerce Bank
+    account: '8205684419'
+    routing: '189925201'
+sector: bikes
+brand:
+  initials: HV
+  color: '#1e3a8a'
+  shape: square
+design:
+  default:
+    layout: modern
+    theme: corporate
+colors:
+  primary: '#1e3a8a'
+options:
+  show_item_details: true
+  show_discount: false
+  show_bank: false
+numbering:
+  invoice: INV{key:07d}
+  quote: Q-{yyyy}-{key}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+  shipping_order: SHP{key:07d}
+  goods_received_note: GRN-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: HV{yy}{key:06d}
+  work_order: OF{yy}{key:06d}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts:
+  tagline: Ride farther, live lighter with Harbor Velo.
+  about: We design and distribute high‑performance bicycles, parts, and accessories for cyclists of all levels across
+    the United States.
+  payment_instructions: Settle invoices via ACH, credit card, or check within 20 days of invoice date to avoid late
+    fees.
+  footer: Thank you for riding with Harbor Velo Co.
+  notes:
+  - Thanks for choosing Harbor Velo Co. – enjoy the ride!
+  - All bicycles ship fully assembled and are ready to ride upon arrival.
+  - Returns accepted within 30 days with original packaging; restocking fee may apply.
+  - Invoices unpaid after 25 days incur a 2% monthly late charge.
+  - We warranty frames for 5 years against manufacturing defects; components carry a 1‑year limited warranty.
+  - Keep your bike clean, lubricate the chain regularly, and store it indoors to prolong its life.

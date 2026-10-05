@@ -1,0 +1,50 @@
+slug: zenith-audio-plc
+locale: en
+currency: GBP
+party:
+  name: Zenith Audio PLC
+  address:
+    line1: 51 Victoria Street
+    line2: Suite 183
+    city: London
+    region: ''
+    postal_code: EC1A 1BB
+    country: United Kingdom
+  phone: +44 20 4069972
+  email: billing@zenithaudio.co.uk
+  website: www.zenithaudio.co.uk
+  tax_id: VAT GB651779130
+  code: UK
+  bank:
+    bank_name: First Commerce Bank
+    iban: GB57 6190 1190 8964 5816 7199
+    bic: ZENIGB39
+sector: music
+brand:
+  initials: ZA
+  color: '#1e3a8a'
+  shape: square
+design:
+  default:
+    layout: modern
+    theme: fresh
+colors: {}
+options:
+  show_bank: true
+  show_tax_column: false
+  show_signature: false
+numbering:
+  invoice: F{yy}-{key}
+  quote: QT{key:06d}
+  credit_note: CN-{yyyy}-{key}
+  purchase_order: PO{key:06d}
+  packing_slip: ZA-BL-{key}
+  shipping_order: ZA-EXP-{key}
+  goods_received_note: GRN-{key}
+  account_statement: ST-{yyyy}-{key}
+  inventory_report: STK{yy}{key:05d}
+  receipt: R-{key}
+  work_order: WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: ATT{yy}{key:05d}
+texts: {}

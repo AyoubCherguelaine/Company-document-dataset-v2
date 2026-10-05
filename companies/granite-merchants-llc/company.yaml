@@ -1,0 +1,52 @@
+slug: granite-merchants-llc
+locale: en
+currency: USD
+party:
+  name: Granite Merchants LLC
+  address:
+    line1: 150 Industrial Pkwy
+    line2: Suite 424
+    city: Boston
+    region: MA
+    postal_code: '02110'
+    country: USA
+  phone: (794) 555-6866
+  email: contact@granitemerchants.com
+  website: www.granitemerchants.com
+  tax_id: EIN 08-9120023
+  code: US
+  bank:
+    bank_name: Crédit Régional
+    account: '6977244861'
+    routing: '295642166'
+sector: food
+brand:
+  initials: GM
+  color: '#0f766e'
+  shape: square
+design:
+  default:
+    layout: sidebar
+    theme: mono
+colors: {}
+options:
+  show_contact: false
+  show_signature: false
+  show_item_details: true
+numbering:
+  invoice: '{yyyy}/{key}'
+  purchase_order: PO{key:06d}
+  packing_slip: DN{yy}{key:06d}
+texts:
+  tagline: Fresh stock, fast delivery
+  about: We distribute wholesale food and beverage products to restaurants and retailers throughout Boston and New
+    England.
+  payment_instructions: Net 30 terms unless otherwise agreed; pay by ACH, check, or credit card at your convenience.
+  footer: Granite Merchants — your supply chain partner.
+  notes:
+  - Thank you for your order — freshness guaranteed.
+  - Trucks deliver Monday through Friday, early morning slots available.
+  - Returns require prior authorization and must be within 14 days.
+  - Overdue balances charged 15% per month past due.
+  - Most products carry manufacturer freshness dating and storage guidelines.
+  - Keep refrigerated items below 40F until ready to use.

@@ -1,0 +1,62 @@
+slug: vantage-cinema-llc
+locale: en
+currency: USD
+party:
+  name: Vantage Cinema LLC
+  address:
+    line1: 346 5th Avenue
+    line2: Suite 282
+    city: Austin
+    region: TX
+    postal_code: '78701'
+    country: USA
+  phone: (849) 555-3730
+  email: billing@vantagecinema.com
+  website: www.vantagecinema.com
+  tax_id: EIN 19-7284569
+  code: US
+  bank:
+    bank_name: Crédit Régional
+    account: '4364253998'
+    routing: '885351207'
+sector: video
+brand:
+  initials: VC
+  color: '#7c2d12'
+  shape: rounded
+design:
+  default:
+    layout: classic
+    theme: plain
+colors:
+  primary: '#7c2d12'
+options:
+  show_signature: false
+  show_bank: false
+  show_contact: true
+numbering:
+  invoice: INV{key:07d}
+  quote: VC-DEV-{key}
+  credit_note: AV{yy}{key:06d}
+  purchase_order: PO{key:06d}
+  packing_slip: PS-{key}
+  shipping_order: SO-{yyyy}-{key}
+  goods_received_note: GRN-{key}
+  account_statement: STM{key:06d}
+  inventory_report: INV-RPT-{yyyy}-{key}
+  receipt: R-{key}
+  work_order: VC-WO-{key}
+  payslip: PAY-{yyyy}-{key}
+  employment_certificate: HR-{yyyy}-{key}
+texts:
+  tagline: 'Now Showing: Fresh Movies, Fast Rentals'
+  about: We rent movies to individuals and families seeking convenient home entertainment.
+  payment_instructions: Pay via credit card, PayPal, or bank transfer within 15 days of invoice date.
+  footer: Thank you for your business.
+  notes:
+  - Thank you for your rental; enjoy a weekend movie marathon.
+  - Free delivery on orders over $50; please provide a valid address.
+  - Returns accepted within 7 days with original receipt; damaged items replaced.
+  - Late payments incur a 2% monthly fee after the due date.
+  - All DVDs are covered by a 1-year warranty against manufacturing defects.
+  - Customer service available Monday‑Friday 9 am‑6 pm via phone or email.

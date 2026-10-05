@@ -53,7 +53,7 @@ and then runs every stage. Each stage is safe to rerun, and generation resumes w
 | `texts` | LLM company texts and product descriptions, if `OPENROUTER_API_KEY` is set (optional; only fills gaps) |
 | `generate` | render all document types, self-check, gold JSON, word boxes |
 | `augment` | degraded scan/photo page images for 30% of the documents |
-| `export` | CSV dataset (one row per PDF, PDFs + JSON alongside) + card in `dataset/v2`, split by company; `--format parquet` for the v1 parquet schema |
+| `export` | dataset + card in `dataset/v2`, split by company, laid out for the Hugging Face viewer (one subset per document type); `--format parquet` for the v1 parquet schema |
 | `test` | unit tests (with `--with-tests`) |
 
 ```bash
@@ -103,6 +103,17 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt
 > (`No module named 'yaml'`). Rebuild it with `python3 -m venv --clear venv` and reinstall.
 
 ### Data
+
+The source databases are **not in git** (about 140 MB, and `adventureworks.db` is over GitHub's 100 MB limit).
+One script downloads and builds them, so after a fresh clone:
+
+```bash
+python3 scripts/run_pipeline.py --stages venv download index   # venv + the four databases + indexes
+```
+
+or just the databases: `python3 scripts/download_sources.py` (skips those present; `--force` to re-download,
+`--only sakila chinook` for some). It needs only the standard library, plus `git` for AdventureWorks. License files
+are fetched too. `data/textbank/` (LLM texts) **is** versioned: it costs API quota to rebuild.
 
 | Path | Source |
 |---|---|
@@ -202,14 +213,43 @@ output/<run>/
   manifest.jsonl                   one row per planned document: ok | failed | error
   config.yaml                      the exact config used
 
-dataset/                           (export)
+dataset/                           (export, default csv format: what the Hugging Face viewer reads)
+  pdf/<type>/<split>/<doc_id>.pdf + metadata.csv     one row per PDF: paths, company, source, key fields,
+                                                     gold JSON, PDF text
+  json/<type>/<doc_id>.json                          gold fields of each PDF
+  scans/<type>/<split>/*.jpg + metadata.csv          degraded page images + gold boxes in pixels
+  README.md (card: subsets `all` + one per type), stats.json, licenses/
+
+dataset/                           (export --format parquet: the v1 schema)
   data/{train,validation,test}-*.parquet     v1 columns + v2 metadata, PDF bytes, boxes
   scans/{train,validation,test}-*.parquet    degraded page images
-  README.md, stats.json, licenses/
 ```
+
+On the Hub each document type is a subset (`load_dataset(repo, "invoice")`) with train/validation/test, and the
+viewer shows the PDFs. Scans are not a subset (the Hub picks one loader per repo, here the PDF one); they load
+with `load_dataset(repo, data_dir="scans")`.
 
 Splits are by issuing company, per sector: validation and test documents come from companies never seen in
 training.
+
+## Publish to Hugging Face
+
+[scripts/push_to_hf.py](scripts/push_to_hf.py) uploads an exported folder to a dataset repo. It is separate from the
+pipeline, so run it after `export`, on any machine that has the folder.
+
+```bash
+# .env: HF_TOKEN=<write token from https://huggingface.co/settings/tokens>, HF_REPO_ID=<user>/<name>
+# (or run `hf auth login` once and pass --repo)
+./venv/bin/python scripts/push_to_hf.py --dry-run                 # what would be sent
+./venv/bin/python scripts/push_to_hf.py                           # upload dataset/v2 (creates a private repo)
+./venv/bin/python scripts/push_to_hf.py --repo <user>/<name> --public
+./venv/bin/python scripts/push_to_hf.py --exclude "scans/*"       # skip the degraded scans
+```
+
+It commits 1,000 files at a time (`--batch`), so a 60k-file export stays within the Hub's per-commit limits.
+Interrupted? Rerun it: files already on the Hub with the same size are skipped. The card, `stats.json` and the
+`metadata.csv` files are compared by content and sent last, so the dataset viewer never points at missing files. The Hub allows 128 commits per repo per hour; if the script hits that, it stops and a later rerun resumes. `--folder` picks another
+export, `--revision` a branch, and `--delete-stale` removes remote files that are gone locally.
 
 ## Project layout
 
@@ -224,7 +264,7 @@ docgen/
   themes/  locales/    YAML
 companies/<slug>/      company.yaml (+ optional templates/ overriding the shared ones)
 configs/               run configs
-scripts/               data preparation, OpenRouter model picker
+scripts/               pipeline, data download/preparation, Hugging Face upload, OpenRouter model picker
 tests/                 unittest suite (every variant rendered and self-checked)
 ```
 

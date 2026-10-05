@@ -12,3 +12,4 @@ data/northwind.db
 data/northwind/
 data/company-documents/
 data
+logs

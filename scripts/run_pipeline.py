@@ -19,7 +19,8 @@ Stages, in order (every stage is safe to rerun):
     texts      LLM company texts + product descriptions (only if OPENROUTER_API_KEY is set; optional)
     generate   render every document (resumes an interrupted run)
     augment    degraded scan/photo page images for --augment-fraction of the documents
-    export     CSV dataset (one row per PDF) + card, split by company (--export-format parquet)
+    export     dataset + card, split by company, laid out for the Hugging Face viewer: one subset per
+               document type (--export-format parquet for the v1 schema)
     test       unit tests
 
 Output: --out (documents), --dataset (CSV or parquet), logs/pipeline-<time>.log

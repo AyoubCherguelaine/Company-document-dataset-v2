@@ -9,7 +9,7 @@ from datetime import date
 from decimal import Decimal
 from pathlib import Path
 
-from docgen import PACKAGE_DIR
+from docgen import PACKAGE_DIR, REPO_ROOT
 from docgen.core import registry
 from docgen.core.companies import SECTORS, create_companies
 from docgen.core.issuers import IssuerPool
@@ -136,13 +136,22 @@ class Pipeline(unittest.TestCase):
         run(self.cfg, log=lambda *_: None)
         out = self.tmp / "dataset"
         stats = export_run(self.tmp / "out", out, self.ws.companies, log=lambda *_: None)
-        rows = [r for f in sorted((out / "data").glob("*.csv")) for r in csv.DictReader(f.open(encoding="utf-8"))]
+        rows = []
+        for meta in sorted((out / "pdf").glob("*/*/metadata.csv")):      # pdf/<type>/<split>/metadata.csv
+            for row in csv.DictReader(meta.open(encoding="utf-8")):
+                self.assertEqual((meta.parent / row["file_name"]).relative_to(out).as_posix(), row["pdf_path"])
+                self.assertEqual(meta.parent.parts[-2:], (row["document_type"], row["split"]))
+                rows.append(row)
         self.assertEqual(len(rows), sum(stats["documents"].values()))
         self.assertTrue(rows)
+        card = (out / "README.md").read_text(encoding="utf-8")
+        for t in stats["by_type"]:
+            self.assertIn(f"config_name: {t}", card)
+        self.assertNotIn(str(REPO_ROOT), card)
         for row in rows:
-            self.assertTrue((out / row["file_name"]).exists())
+            self.assertTrue((out / row["pdf_path"]).exists())
             fields = json.loads(row["extracted_data"])
-            self.assertEqual(json.loads((out / row["json_file"]).read_text(encoding="utf-8")), fields)
+            self.assertEqual(json.loads((out / row["json_path"]).read_text(encoding="utf-8")), fields)
             self.assertEqual(row["number"], fields["number"])
             self.assertEqual(row["company_name"], self.ws.companies[row["company"]].party["name"])
         (out / "keep.txt").write_text("x")

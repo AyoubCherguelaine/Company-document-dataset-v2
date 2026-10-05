@@ -2,15 +2,15 @@
 
 Two formats share the same rows:
 
-csv (default): tabular, one CSV per split. Each row is a PDF with its gold JSON, the issuing company
-and the key document fields. The PDFs and one JSON file per PDF sit next to the CSVs, so
-`file_name` / `json_file` resolve relative to the dataset root.
+csv (default): the layout the Hugging Face viewer renders directly (pdffolder / imagefolder). Each
+type and split is a folder of PDFs with a metadata.csv: one row per PDF with its gold JSON, the
+issuing company and the key document fields. The card declares one subset per document type, plus
+`all` and `scans`. `pdf_path` / `json_path` / `image_path` resolve relative to the dataset root.
 
     dataset/
-      data/train.csv, validation.csv, test.csv  one row per PDF
-      pdf/<type>/<doc_id>.pdf                    the documents
-      json/<type>/<doc_id>.json                  extracted_data of each PDF
-      scans/train.csv ... + scans/<type>/*.jpg   degraded page images (if the run was augmented)
+      pdf/<type>/<split>/<doc_id>.pdf + metadata.csv     the documents, one row per PDF
+      json/<type>/<doc_id>.json                          extracted_data of each PDF
+      scans/<type>/<split>/<name>.jpg + metadata.csv     degraded page images (if the run was augmented)
       README.md, stats.json, licenses/
 
 parquet: the v1 CompanyDocuments schema (file_content, file_name, extracted_data, document_type,
@@ -37,6 +37,7 @@ import pymupdf
 import yaml
 
 from .. import REPO_ROOT
+from .env import env
 
 SYSTEM_PROMPT = ("You extract structured data from business documents. Return the document's fields as JSON "
                  "with the same keys as the example schema: doc_type, number, issue_date, parties, dates, refs, "
@@ -45,6 +46,7 @@ INTERNAL_EXTRA = {"doc_id", "source_lines", "status_key", "label_key", "product_
 FORMATS = ("csv", "parquet")
 ROWS_PER_SHARD = 5000
 SCAN_ROWS_PER_SHARD = 500           # images are large
+LANGUAGES = {"en": "English", "fr": "French", "ar": "Arabic"}
 DATASET_MARKER = "stats.json"       # an export directory has one; anything else is never deleted
 
 
@@ -155,8 +157,10 @@ class ShardWriter:
         return dict(self.files)
 
 
-class CsvWriter:
-    """One CSV per split, written row by row (memory stays flat). Same interface as ShardWriter."""
+class MetadataWriter:
+    """One metadata.csv per <type>/<split> folder, written row by row (memory stays flat). Same
+    interface as ShardWriter; `file_name` in each row is relative to its folder, as the Hugging Face
+    folder builders (pdffolder, imagefolder) expect."""
 
     def __init__(self, out_dir: Path, columns: list[str]):
         self.out_dir, self.columns = out_dir, columns
@@ -165,28 +169,33 @@ class CsvWriter:
         self.counts: collections.Counter = collections.Counter()
 
     def add(self, split: str, row: dict) -> None:
-        if split not in self.writers:
-            self.out_dir.mkdir(parents=True, exist_ok=True)
-            fh = (self.out_dir / f"{split}.csv").open("w", encoding="utf-8", newline="")
-            self.handles[split] = fh
-            self.writers[split] = csv.DictWriter(fh, self.columns, extrasaction="ignore")
-            self.writers[split].writeheader()
-        self.writers[split].writerow(row)
+        folder = f'{row["document_type"]}/{split}'
+        if folder not in self.writers:
+            (self.out_dir / folder).mkdir(parents=True, exist_ok=True)
+            fh = (self.out_dir / folder / "metadata.csv").open("w", encoding="utf-8", newline="")
+            self.handles[folder] = fh
+            self.writers[folder] = csv.DictWriter(fh, self.columns, extrasaction="ignore")
+            self.writers[folder].writeheader()
+        self.writers[folder].writerow(row)
         self.counts[split] += 1
 
     def close(self) -> dict[str, list[str]]:
         for fh in self.handles.values():
             fh.close()
-        return {split: [f"{split}.csv"] for split in self.handles}
+        files: dict[str, list[str]] = collections.defaultdict(list)
+        for folder in sorted(self.handles):
+            files[folder.split("/")[1]].append(f"{folder}/metadata.csv")
+        return dict(files)
 
 
 COMPANY_COLUMNS = ["company", "company_name", "company_sector", "company_country", "company_city",
                    "company_tax_id", "company_locale", "company_currency"]
 KEY_COLUMNS = ["number", "issue_date", "currency", "total", "items_count", "counterparty_role", "counterparty_name"]
-CSV_COLUMNS = (["doc_id", "split", "file_name", "json_file", "document_type", "source", "variant"] + COMPANY_COLUMNS
-               + KEY_COLUMNS + ["layout", "theme", "locale", "pages", "extracted_data", "file_content"])
-SCAN_CSV_COLUMNS = ["doc_id", "split", "document_type", "page", "profile", "image", "width", "height", "params",
-                    "boxes"]
+CSV_COLUMNS = (["file_name", "doc_id", "split", "document_type", "pdf_path", "json_path", "source", "variant"]
+               + COMPANY_COLUMNS + KEY_COLUMNS + ["layout", "theme", "locale", "pages", "extracted_data",
+                                                  "file_content"])
+SCAN_CSV_COLUMNS = ["file_name", "doc_id", "split", "document_type", "page", "profile", "image_path", "pdf_path",
+                    "json_path", "width", "height", "params", "boxes"]
 
 DOC_SCHEMA = pa.schema([
     ("file_content", pa.string()), ("file_name", pa.string()), ("extracted_data", pa.string()),
@@ -207,8 +216,9 @@ SCAN_SCHEMA = pa.schema([
 
 
 def export_run(run_dir: Path, out_dir: Path, companies: dict[str, Any], seed: int = 0,
-               embed_pdf: bool = True, log=print, fmt: str = "csv") -> dict:
-    """companies: slug -> core.companies.Company. embed_pdf: parquet embeds the bytes, csv copies the files."""
+               embed_pdf: bool = True, log=print, fmt: str = "csv", repo_id: str | None = None) -> dict:
+    """companies: slug -> core.companies.Company. embed_pdf: parquet embeds the bytes, csv copies the files.
+    repo_id: the Hugging Face repo named in the card's examples (default: HF_REPO_ID)."""
     if fmt not in FORMATS:
         raise ValueError(f"unknown format {fmt!r}; choose from {FORMATS}")
     rows = [json.loads(l) for l in (run_dir / "manifest.jsonl").open(encoding="utf-8")]
@@ -219,11 +229,13 @@ def export_run(run_dir: Path, out_dir: Path, companies: dict[str, Any], seed: in
     splits = company_splits({c: companies[c].sector for c in {r["company"] for r in rows}}, seed)
     reset_dir(out_dir)
     if fmt == "csv":
-        docs, scans = CsvWriter(out_dir / "data", CSV_COLUMNS), CsvWriter(out_dir / "scans", SCAN_CSV_COLUMNS)
+        docs, scans = MetadataWriter(out_dir / "pdf", CSV_COLUMNS), MetadataWriter(out_dir / "scans", SCAN_CSV_COLUMNS)
     else:
         docs = ShardWriter(out_dir / "data", DOC_SCHEMA, ROWS_PER_SHARD)
         scans = ShardWriter(out_dir / "scans", SCAN_SCHEMA, SCAN_ROWS_PER_SHARD)
     counters = {k: collections.Counter() for k in ("by_type", "by_source", "by_locale", "by_layout")}
+    by_type_split: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
+    by_type_source: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
     split_companies: dict[str, set] = collections.defaultdict(set)
     pages_total = 0
     for n, r in enumerate(rows, 1):
@@ -235,22 +247,24 @@ def export_run(run_dir: Path, out_dir: Path, companies: dict[str, Any], seed: in
         extracted = json.dumps(fields, ensure_ascii=False)
         split = splits[r["company"]]
         row = {
-            "doc_id": did, "split": split, "file_name": f"pdf/{t}/{did}.pdf" if fmt == "csv" else f"{t}/{did}.pdf",
-            "json_file": f"json/{t}/{did}.json", "document_type": t, "source": r["source"], "variant": r["variant"],
+            "doc_id": did, "split": split, "document_type": t, "source": r["source"], "variant": r["variant"],
             "company": r["company"], **company_info(companies[r["company"]]), **key_fields(gold["fields"]),
             "layout": r["layout"], "theme": r["theme"], "locale": r["locale"], "pages": gold.get("pages") or 0,
             "extracted_data": extracted, "file_content": text,
         }
         if fmt == "csv":
+            row |= {"file_name": f"{did}.pdf", "pdf_path": f"pdf/{t}/{split}/{did}.pdf",
+                    "json_path": f"json/{t}/{did}.json"}
             if embed_pdf:
-                place_file(pdf_path, out_dir / row["file_name"])
-            json_path = out_dir / row["json_file"]
+                place_file(pdf_path, out_dir / row["pdf_path"])
+            json_path = out_dir / row["json_path"]
             json_path.parent.mkdir(parents=True, exist_ok=True)
             json_path.write_text(json.dumps(fields, ensure_ascii=False, indent=1), encoding="utf-8")
         else:
             words_path = run_dir / "words" / t / f"{did}.json"
             row |= {
-                "chat_format": [{"content": SYSTEM_PROMPT, "role": "system"}, {"content": text, "role": "user"},
+                "file_name": f"{t}/{did}.pdf",
+                "chat_format":[{"content": SYSTEM_PROMPT, "role": "system"}, {"content": text, "role": "user"},
                                 {"content": extracted, "role": "assistant"}],
                 "total": str(row["total"]),
                 "options": json.dumps(gold["options"], ensure_ascii=False),
@@ -264,6 +278,8 @@ def export_run(run_dir: Path, out_dir: Path, companies: dict[str, Any], seed: in
         counters["by_source"][r["source"]] += 1
         counters["by_locale"][r["locale"]] += 1
         counters["by_layout"][f'{r["layout"]}/{r["theme"]}'] += 1
+        by_type_split[t][split] += 1
+        by_type_source[t][r["source"]] += 1
         split_companies[split].add(r["company"])
         pages_total += gold.get("pages") or 0
         scan_meta = run_dir / "scans" / t / f"{did}.json"
@@ -273,8 +289,10 @@ def export_run(run_dir: Path, out_dir: Path, companies: dict[str, Any], seed: in
                         "profile": page["profile"], "width": page["width"], "height": page["height"],
                         "params": json.dumps(page["params"]), "boxes": json.dumps(page["boxes"], ensure_ascii=False)}
                 if fmt == "csv":
-                    place_file(run_dir / page["image"], out_dir / page["image"])   # scans/<type>/<name>.jpg
-                    scan["image"] = page["image"]
+                    name = Path(page["image"]).name
+                    scan |= {"file_name": name, "image_path": f"scans/{t}/{split}/{name}",
+                             "pdf_path": row["pdf_path"], "json_path": row["json_path"]}
+                    place_file(run_dir / page["image"], out_dir / scan["image_path"])
                 else:
                     scan |= {"image": (run_dir / page["image"]).read_bytes(),
                              "words": json.dumps(page["words"], ensure_ascii=False)}
@@ -293,11 +311,14 @@ def export_run(run_dir: Path, out_dir: Path, companies: dict[str, Any], seed: in
         "format": fmt,
         "documents": dict(docs.counts), "scans": dict(scans.counts),
         **{k: dict(v) for k, v in counters.items()},
+        "by_type_split": {t: dict(c) for t, c in sorted(by_type_split.items())},
+        "by_type_source": {t: dict(c) for t, c in sorted(by_type_source.items())},
         "pages": pages_total,
         "companies": {s: sorted(v) for s, v in split_companies.items()},
     }
     (out_dir / DATASET_MARKER).write_text(json.dumps(stats, indent=1, ensure_ascii=False))
-    (out_dir / "README.md").write_text(dataset_card(stats, files, run_dir, fmt), encoding="utf-8")
+    repo_id = repo_id or env("HF_REPO_ID", "<user>/<dataset>")
+    (out_dir / "README.md").write_text(dataset_card(stats, files, run_dir, fmt, repo_id), encoding="utf-8")
     log(f"[export] {stats['documents']} documents, {stats['scans']} scan pages ({fmt}) -> {out_dir}")
     return stats
 
@@ -309,25 +330,50 @@ def size_category(n: int) -> str:
     return "n>1M"
 
 
+TYPE_INFO = {
+    "invoice": "sales invoice: line items, discounts, tax, totals, payment terms",
+    "quote": "price quotation with validity and lead time",
+    "credit_note": "credit against an invoice, with a reason (damaged, wrong item, price...)",
+    "packing_slip": "items packed for a shipment: ordered vs shipped quantities",
+    "shipping_order": "instruction to ship an order: items, weights, consignee, carrier",
+    "purchase_order": "order the issuer places with a vendor",
+    "goods_received_note": "delivery check against a purchase order: ordered, received, accepted, rejected",
+    "account_statement": "a customer's invoices and payments over a period, running balance and aging",
+    "receipt": "proof of a paid retail transaction (A5)",
+    "payslip": "employee pay for a period: earnings, deductions, net pay",
+    "employment_certificate": "letter certifying an employee's job title, department and hire date",
+    "work_order": "production order: routing operations, planned vs actual cost",
+    "inventory_report": "stock on hand per product, with value and reorder status",
+}
+
 COLUMNS_DOC = {
-    "csv": """## Columns (`default`, CSV)
+    "csv": """## Columns
 
-One row per PDF.
+One row per PDF (`all` and every document-type subset):
 
-- `doc_id`, `split`, `document_type`, `source`, `variant`
-- `file_name`: the PDF (`pdf/<type>/<doc_id>.pdf`); `json_file`: its gold JSON (`json/<type>/<doc_id>.json`)
-- `company` (slug), `company_name`, `company_sector`, `company_country`, `company_city`, `company_tax_id`,
-  `company_locale`, `company_currency`: the issuing company
-- `number`, `issue_date`, `currency`, `total`, `items_count`, `counterparty_role`, `counterparty_name`:
-  key gold values as plain columns
-- `layout`, `theme`, `locale`, `pages`
-- `extracted_data`: the gold fields (JSON), same content as `json_file`
-- `file_content`: text extracted from the PDF (reading order)
+| column | content |
+|---|---|
+| `pdf` | the PDF itself (the viewer shows its first page; `datasets` opens it with pdfplumber) |
+| `doc_id`, `split`, `document_type` | identifiers |
+| `pdf_path`, `json_path` | the PDF and its gold JSON in this repo (`pdf/<type>/<split>/<doc_id>.pdf`, `json/<type>/<doc_id>.json`) |
+| `source`, `variant` | source database and document variant (`<type>.<source>`) |
+| `company`, `company_name`, `company_sector`, `company_country`, `company_city`, `company_tax_id`, `company_locale`, `company_currency` | the issuing company |
+| `number`, `issue_date`, `currency`, `total`, `items_count`, `counterparty_role`, `counterparty_name` | key gold values as plain columns |
+| `layout`, `theme`, `locale`, `pages` | letterhead layout, color theme, language, page count |
+| `extracted_data` | all gold fields as JSON, same content as `json_path` |
+| `file_content` | text extracted from the PDF, in reading order |
 
-## Columns (`scans`, CSV)
+Scans (`data_dir="scans"`), one row per degraded page image (profiles `scan` and `photo`: skew, blur, noise,
+paper tint, lighting, JPEG):
 
-Degraded page images (profiles `scan` and `photo`: skew, blur, noise, paper tint, lighting, JPEG):
-`image` is the path of the JPEG, `boxes` the gold-field boxes in image pixels. Join to `default` on `doc_id`.
+| column | content |
+|---|---|
+| `image` | the page image |
+| `doc_id`, `split`, `document_type`, `page`, `profile` | identifiers; join to the documents on `doc_id` |
+| `image_path`, `pdf_path`, `json_path` | the image, its source PDF and gold JSON in this repo |
+| `width`, `height` | image size in pixels |
+| `params` | degradation parameters (JSON) |
+| `boxes` | gold-field boxes in image pixels (JSON: field path -> list of `[x0, y0, x1, y1]`) |
 """,
     "parquet": """## Columns (`default`)
 
@@ -349,25 +395,96 @@ Degraded page images (profiles `scan` and `photo`: skew, blur, noise, paper tint
 }
 
 
-def dataset_card(stats: dict, files: dict, run_dir: Path, fmt: str = "csv") -> str:
-    pattern = "{dir}/{split}.csv" if fmt == "csv" else "{dir}/{split}-*"
-    configs = [{"config_name": "default", "default": True,
-                "data_files": [{"split": s, "path": pattern.format(dir="data", split=s)} for s in sorted(files["data"])]}]
-    if files["scans"]:
-        configs.append({"config_name": "scans",
-                        "data_files": [{"split": s, "path": pattern.format(dir="scans", split=s)}
-                                       for s in sorted(files["scans"])]})
+def dataset_card(stats: dict, files: dict, run_dir: Path, fmt: str = "csv", repo_id: str = "<user>/<dataset>") -> str:
+    splits = [s for s in ("train", "validation", "test") if s in files["data"]]
+    if fmt == "csv":
+        def subset(name, folder, types="*"):
+            return {"config_name": name,
+                    "data_files": [{"split": s, "path": f"{folder}/{types}/{s}/*"} for s in splits]}
+        configs = [subset("all", "pdf") | {"default": True}]
+        configs += [subset(t, "pdf", t) for t in sorted(stats["by_type"])]
+        # no `scans` subset: the Hub picks one builder per repo (pdffolder here), so the page images load
+        # with data_dir="scans" (imagefolder) instead
+    else:
+        configs = [{"config_name": "default", "default": True,
+                    "data_files": [{"split": s, "path": f"data/{s}-*"} for s in splits]}]
+        if files["scans"]:
+            configs.append({"config_name": "scans",
+                            "data_files": [{"split": s, "path": f"scans/{s}-*"} for s in sorted(files["scans"])]})
     total = sum(stats["documents"].values())
     header = {
-        "language": sorted({l for l in stats["by_locale"]}), "license": "apache-2.0",
+        "language": sorted(stats["by_locale"]), "license": "apache-2.0",
         "size_categories": [size_category(total)],
-        "task_categories": ["text-classification", "token-classification", "image-to-text", "feature-extraction",
-                            "text-generation"],
-        "pretty_name": "Company Documents v2", "tags": ["finance", "document-ai", "synthetic", "invoices", "tabular"],
+        "task_categories": ["document-question-answering", "image-to-text", "token-classification",
+                            "text-classification", "text-generation"],
+        "pretty_name": "Company Documents v2",
+        "tags": ["finance", "document-ai", "synthetic", "invoices", "pdf", "ocr", "key-information-extraction"],
         "configs": configs,
     }
     table = lambda d: "\n".join(f"| {k} | {v:,} |" for k, v in sorted(d.items(), key=lambda kv: -kv[1]))  # noqa: E731
     run_cfg = (run_dir / "config.yaml").read_text() if (run_dir / "config.yaml").exists() else ""
+    run_cfg = run_cfg.replace(f"{REPO_ROOT}/", "").replace(str(REPO_ROOT), ".")   # no local paths in the card
+    n_companies = sum(len(v) for v in stats["companies"].values())
+    split_rows = "\n".join(f"| {s} | {stats['documents'].get(s, 0):,} | {len(stats['companies'].get(s, [])):,} "
+                           f"| {stats['scans'].get(s, 0):,} |" for s in splits)
+    if fmt == "csv":
+        type_rows = "\n".join(
+            f"| `{t}` | {TYPE_INFO.get(t, '')} | {n:,} | "
+            + " | ".join(f"{stats['by_type_split'][t].get(s, 0):,}" for s in splits)
+            + " | " + ", ".join(sorted(stats["by_type_source"][t])) + " |"
+            for t, n in sorted(stats["by_type"].items()))
+        scans_doc = f"""
+## Scans
+
+{sum(stats['scans'].values()):,} degraded page images (scan and photo profiles) of a sample of the documents, with the
+gold-field boxes moved into image pixels. They live in `scans/` and load as images:
+
+```python
+scans = load_dataset("{repo_id}", data_dir="scans", split="test")
+scans[0]["image"], scans[0]["boxes"], scans[0]["pdf_path"]
+```
+""" if files["scans"] else ""
+        intro = f"""## Subsets
+
+Pick a document type, or `all`. Each subset has the same train / validation / test split.
+
+| subset | document | documents | {' | '.join(splits)} | sources |
+|---|---|---|{'---|' * len(splits)}---|
+| `all` (default) | every type below | {total:,} | {' | '.join(f"{stats['documents'].get(s, 0):,}" for s in splits)} | all four |
+{type_rows}
+
+## Quick start
+
+```python
+import json
+from datasets import load_dataset
+
+invoices = load_dataset("{repo_id}", "invoice", split="train")
+row = invoices[0]
+row["pdf"]                            # pdfplumber.PDF
+json.loads(row["extracted_data"])     # the gold fields
+row["pdf_path"], row["json_path"]     # the same files in this repo
+```
+{scans_doc}
+## Files
+
+```
+pdf/<type>/<split>/<doc_id>.pdf      the documents
+pdf/<type>/<split>/metadata.csv      one row per PDF (the columns below)
+json/<type>/<doc_id>.json            gold fields of each PDF
+scans/<type>/<split>/*.jpg           degraded page images
+scans/<type>/<split>/metadata.csv    one row per image
+stats.json                           counts per split, type, source, locale, layout; companies per split
+licenses/                            source database licenses
+```
+"""
+    else:
+        intro = f"""## Document types
+
+| type | documents |
+|---|---|
+{table(stats['by_type'])}
+"""
     return f"""---
 {yaml.safe_dump(header, sort_keys=False, allow_unicode=True).strip()}
 ---
@@ -375,24 +492,22 @@ def dataset_card(stats: dict, files: dict, run_dir: Path, fmt: str = "csv") -> s
 # Company Documents v2
 
 Synthetic, born-digital business documents rendered from four open sample databases, with exact gold
-labels. {total:,} documents ({stats['pages']:,} pages) of {len(stats['by_type'])} types,
-issued by {sum(len(v) for v in stats['companies'].values())} synthetic companies with their own letterheads.
+labels: {total:,} PDFs ({stats['pages']:,} pages) of {len(stats['by_type'])} document types in
+{' and '.join(LANGUAGES.get(l, l) for l in sorted(stats['by_locale']))}, issued by {n_companies} synthetic companies,
+each with its own letterhead, numbering and wording. Successor of
+[CompanyDocuments](https://huggingface.co/datasets/AyoubChLin/CompanyDocuments) (2,677 PDFs, 4 types).
 
+{intro}
 ## Splits
 
-Splits are **by issuing company** (per sector): validation and test documents come from companies
-whose letterhead, numbering and wording never appear in training.
+Splits are **by issuing company** (per sector): validation and test documents come from companies whose
+letterhead, numbering and wording never appear in training.
 
-| split | documents |
-|---|---|
-{table(stats['documents'])}
+| split | documents | companies | scan pages |
+|---|---|---|---|
+{split_rows}
 
-## Document types
-
-| type | documents |
-|---|---|
-{table(stats['by_type'])}
-
+{COLUMNS_DOC[fmt]}
 ## Sources
 
 | source | documents |
@@ -403,7 +518,10 @@ Northwind (food wholesale), AdventureWorks (bicycle manufacturer: sales, purchas
 Chinook (online music store), Sakila (video rental, dates shifted +19 years). Issuers are synthetic;
 counterparties, products, quantities and prices come from the databases.
 
-{COLUMNS_DOC[fmt]}
+| language | documents |
+|---|---|
+{table({LANGUAGES.get(k, k): v for k, v in stats['by_locale'].items()})}
+
 ## Guarantees
 
 Every document passed a self-check: the checked gold values are present in the PDF text and the arithmetic
@@ -416,6 +534,8 @@ Code and generated documents: Apache-2.0. Source data: Northwind (MIT), Adventur
 Chinook (MIT), Sakila (BSD-2); see `licenses/`.
 
 ## Reproduce
+
+Generated with the CompanyDocuments v2 generator (`docgen`) and this run config:
 
 ```yaml
 {run_cfg.strip()}

@@ -211,7 +211,7 @@ def cmd_export(args):
 
     ws = Workspace(_cfg(args))
     stats = export_run(Path(args.run).resolve(), Path(args.out).resolve(), ws.companies, args.seed,
-                       not args.no_pdf, fmt=args.format)
+                       not args.no_pdf, fmt=args.format, repo_id=args.repo_id)
     return 0 if stats["documents"] else 1
 
 
@@ -282,9 +282,11 @@ def main(argv=None):
     e.add_argument("run", help="a generate out_dir")
     e.add_argument("out", help="dataset directory (replaced if it is a previous export)")
     e.add_argument("--format", choices=["csv", "parquet"], default="csv",
-                   help="csv: one row per PDF, PDFs and JSON files alongside (default); parquet: v1 schema + boxes")
+                   help="csv: PDF folders per type/split with metadata.csv, as the Hub viewer reads them (default); "
+                        "parquet: v1 schema + boxes")
     e.add_argument("--seed", type=int, default=0)
     e.add_argument("--no-pdf", action="store_true", help="don't copy (csv) or embed (parquet) the PDFs")
+    e.add_argument("--repo-id", help="Hugging Face repo named in the card (default: HF_REPO_ID)")
     e.set_defaults(fn=cmd_export)
 
     args = ap.parse_args(argv)

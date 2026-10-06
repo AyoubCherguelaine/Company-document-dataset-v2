@@ -128,8 +128,6 @@ class Pipeline(unittest.TestCase):
 
 
     def test_csv_export_one_row_per_pdf(self):
-        import csv
-
         from docgen.core.export import export_run
         from docgen.core.pipeline import run
 
@@ -137,8 +135,8 @@ class Pipeline(unittest.TestCase):
         out = self.tmp / "dataset"
         stats = export_run(self.tmp / "out", out, self.ws.companies, log=lambda *_: None)
         rows = []
-        for meta in sorted((out / "pdf").glob("*/*/metadata.csv")):      # pdf/<type>/<split>/metadata.csv
-            for row in csv.DictReader(meta.open(encoding="utf-8")):
+        for meta in sorted((out / "pdf").glob("*/*/metadata.jsonl")):      # pdf/<type>/<split>/metadata.jsonl
+            for row in map(json.loads, meta.open(encoding="utf-8")):
                 self.assertEqual((meta.parent / row["file_name"]).relative_to(out).as_posix(), row["pdf_path"])
                 self.assertEqual(meta.parent.parts[-2:], (row["document_type"], row["split"]))
                 rows.append(row)
@@ -159,6 +157,37 @@ class Pipeline(unittest.TestCase):
         with self.assertRaises(SystemExit):                                          # never deletes anything else
             export_run(self.tmp / "out", self.tmp / "companies", self.ws.companies, log=lambda *_: None)
 
+
+    def test_parquet_export_in_parts(self):
+        import pyarrow.parquet as pq
+
+        from docgen.core.export import dataset_card, export_run, merge_stats
+        from docgen.core.pipeline import run
+
+        run(self.cfg, log=lambda *_: None)
+        whole = export_run(self.tmp / "out", self.tmp / "pq", self.ws.companies, fmt="parquet", log=lambda *_: None)
+        shards = sorted((self.tmp / "pq" / "data").glob("*/*.parquet"))           # data/<type>/<split>-NNNNN
+        self.assertTrue(shards)
+        table = pq.read_table(shards[0])
+        self.assertIn(b'"pdf": {"_type": "Pdf"}', table.schema.metadata[b"huggingface"])
+        row = table.slice(0, 1).to_pylist()[0]
+        self.assertTrue(row["pdf"]["bytes"].startswith(b"%PDF"))
+        self.assertEqual(shards[0].parent.name, row["document_type"])
+        self.assertTrue(shards[0].name.startswith(row["split"] + "-"))
+        self.assertEqual(sum(pq.read_metadata(f).num_rows for f in shards), sum(whole["documents"].values()))
+
+        # one part per type gives the same splits and, merged, the same stats as one export
+        parts = []
+        for t in whole["by_type"]:
+            part = self.tmp / f"part-{t}"
+            shutil.copytree(self.tmp / "out", part, ignore=shutil.ignore_patterns("manifest.jsonl"))
+            rows = [l for l in (self.tmp / "out" / "manifest.jsonl").open() if json.loads(l)["type"] == t]
+            (part / "manifest.jsonl").write_text("".join(rows))
+            parts.append(export_run(part, self.tmp / f"pq-{t}", self.ws.companies, fmt="parquet", log=lambda *_: None))
+        merged = merge_stats(parts)
+        for key in ("documents", "by_type", "by_source", "by_type_split", "pages", "companies"):
+            self.assertEqual(merged[key], whole[key], key)
+        self.assertEqual(dataset_card(merged), dataset_card(whole))
 
 class BoxLocation(unittest.TestCase):
     @staticmethod

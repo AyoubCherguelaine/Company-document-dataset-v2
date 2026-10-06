@@ -7,13 +7,14 @@ Independent of the pipeline: run it after `export`, on any machine that has the 
     ./venv/bin/python scripts/push_to_hf.py --repo <user>/<name> --public          # create it public
     ./venv/bin/python scripts/push_to_hf.py --repo <user>/<name> --dry-run         # list what would be sent
     ./venv/bin/python scripts/push_to_hf.py --repo <user>/<name> --exclude "scans/*"
+    ./venv/bin/python scripts/push_to_hf.py --folder <card dir> --delete-stale --keep "data/*"   # card only
 
 Token: HF_TOKEN (environment or .env), else the one saved by `hf auth login`. It needs write access.
 Repo: --repo, else HF_REPO_ID. A missing repo is created (private unless --public).
 
 Files go up in commits of --batch files, so a 60k-file export doesn't hit the per-commit limits.
 Resumable: files already on the Hub with the same size are skipped, so an interrupted push just
-reruns. The card, stats and metadata.csv files are compared by content and sent last. Remote files that no longer
+reruns. The card, stats and metadata files are compared by content and sent last. Remote files that no longer
 exist locally are kept; pass --delete-stale to remove them.
 """
 
@@ -29,7 +30,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DELETE_BATCH = 10_000
-ALWAYS_SEND = ["README.md", "stats.json", "*.csv"]          # card, stats, metadata.csv: change between runs
+ALWAYS_SEND = ["README.md", "stats.json", "*.csv", "*.jsonl"]          # card, stats, folder metadata: change between runs
 
 
 def log(msg: str) -> None:
@@ -66,6 +67,25 @@ def remote_sizes(api, repo: str, revision: str | None) -> dict[str, int]:
         return {f.path: f.size for f in tree if getattr(f, "size", None) is not None}
     except (RepositoryNotFoundError, RevisionNotFoundError):
         return {}
+
+
+def deletion_paths(remote: dict[str, int], stale: list[str]) -> list[str]:
+    """Collapse fully stale folders without removing any retained remote file."""
+    protected = set()
+    for rel in set(remote) - set(stale):
+        parts = rel.split("/")
+        protected.update("/".join(parts[:i]) for i in range(1, len(parts)))
+    deletions = set()
+    for rel in stale:
+        parts = rel.split("/")
+        for i in range(1, len(parts)):
+            folder = "/".join(parts[:i])
+            if folder not in protected:
+                deletions.add(folder + "/")
+                break
+        else:
+            deletions.add(rel)
+    return sorted(deletions)
 
 
 def unchanged_on_hub(api, repo: str, revision: str | None, files: dict[str, Path], paths: list[str]) -> set[str]:
@@ -120,6 +140,8 @@ def main() -> int:
     ap.add_argument("--exclude", nargs="*", default=[], help='glob patterns to skip, e.g. "scans/*"')
     ap.add_argument("--batch", type=int, default=1000, help="files uploaded per commit (default: 1000)")
     ap.add_argument("--delete-stale", action="store_true", help="delete remote files missing locally")
+    ap.add_argument("--keep", nargs="*", default=[],
+                    help='with --delete-stale: remote files matching these globs are never deleted, e.g. "data/*"')
     ap.add_argument("--dry-run", action="store_true", help="show what would be uploaded, change nothing")
     args = ap.parse_args()
 
@@ -150,7 +172,8 @@ def main() -> int:
     same = unchanged_on_hub(api, args.repo, args.revision, files, [rel for rel in always if rel in remote])
     todo = [rel for rel, path in files.items()
             if rel not in same and (rel in always or remote.get(rel) != path.stat().st_size)]
-    stale = sorted(set(remote) - set(files) - {".gitattributes"}) if args.delete_stale else []
+    stale = sorted(rel for rel in set(remote) - set(files) - {".gitattributes"}
+                   if not any(fnmatch.fnmatch(rel, pat) for pat in args.keep)) if args.delete_stale else []
     size = sum(files[rel].stat().st_size for rel in todo)
     log(f"{len(files):,} local files, {len(remote):,} on the Hub: "
         f"{len(todo):,} to upload ({human(size)}), {len(files) - len(todo):,} already there"
@@ -181,12 +204,13 @@ def main() -> int:
             return 1
         log(f"batch {n}/{len(batches)}: {len(batch):,} files")
 
-    # deletes carry no data: big batches keep the commit count (128 per hour) low
-    for i in range(0, len(stale), DELETE_BATCH):
-        ops = [CommitOperationDelete(path_in_repo=rel) for rel in stale[i:i + DELETE_BATCH]]
+    # Delete fully stale folders in one operation; retained Parquet shards protect their ancestors.
+    deletions = deletion_paths(remote, stale)
+    for i in range(0, len(deletions), DELETE_BATCH):
+        ops = [CommitOperationDelete(path_in_repo=rel) for rel in deletions[i:i + DELETE_BATCH]]
         if not commit(api, args, ops, "Remove files no longer in the export", "delete"):
             return 1
-        log(f"deleted {min(i + DELETE_BATCH, len(stale)):,}/{len(stale):,} stale files")
+        log(f"deleted {min(i + DELETE_BATCH, len(deletions)):,}/{len(deletions):,} stale files/folders")
 
     log(f"done: https://huggingface.co/datasets/{args.repo}")
     return 0

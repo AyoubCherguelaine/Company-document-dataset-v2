@@ -30,9 +30,9 @@ Developer guide (architecture, adding document types, sources and layouts): [doc
 | Companies (60, 15 per sector), per-company templates | done |
 | LLM texts (OpenRouter, free models) | 44 of 60 companies, 20 of 77 product descriptions; the pipeline's `texts` stage fills the rest |
 | Planner: balanced counts, no repeats, `count: all` | done |
-| Noise stage (`augment`) and parquet export (`export`) | done, tested end to end (boxes verified on rotated/scaled scans; export streams shards) |
+| Noise stage (`augment`) and export (`export`: folder layout or Parquet shards) | done, tested end to end (boxes verified on rotated/scaled scans; export streams shards) |
 | One-command pipeline (`scripts/run_pipeline.py`) | done; download step tested against all four upstream sources |
-| Full dataset run | **pending** |
+| Full dataset run (every record, `scripts/run_in_parts.py`) | **running** |
 | Arabic (RTL) | deferred: PDF text extraction reorders mixed Arabic/Latin text, so the self-check isn't reliable yet |
 
 ## One command
@@ -53,7 +53,7 @@ and then runs every stage. Each stage is safe to rerun, and generation resumes w
 | `texts` | LLM company texts and product descriptions, if `OPENROUTER_API_KEY` is set (optional; only fills gaps) |
 | `generate` | render all document types, self-check, gold JSON, word boxes |
 | `augment` | degraded scan/photo page images for 30% of the documents |
-| `export` | dataset + card in `dataset/v2`, split by company, laid out for the Hugging Face viewer (one subset per document type); `--format parquet` for the v1 parquet schema |
+| `export` | dataset + card in `dataset/v2`, split by company, laid out for the Hugging Face viewer (one subset per document type); `--format parquet` for Parquet shards (large runs) |
 | `test` | unit tests (with `--with-tests`) |
 
 ```bash
@@ -80,6 +80,25 @@ For `--everything` on a small disk, put `--out`/`--dataset` on a bigger drive, o
 | `--augment-fraction 0.05` | ~29 GB |
 | `--augment-fraction 0` | ~21 GB |
 | `--augment-fraction 0 --no-pdf` (PDFs only in `--out`, not in the parquet) | ~15 GB |
+
+**The full dataset on a small disk.** [scripts/run_in_parts.py](scripts/run_in_parts.py) generates every record
+and publishes it one document type at a time: generate, augment, export to Parquet, push, delete the local files.
+The disk only holds one type at a time (~9 GB at most, for `purchase_order`). After each type is uploaded, it
+merges the completed parts' stats, updates the card and viewer, and removes the previous folder export from the
+Hub while preserving the Parquet shards. Completed parts are immediately available in the default `all` subset;
+the card lists the remaining types until the run finishes. Rerun the same command
+after an interruption: pushed types are skipped and generation resumes.
+
+```bash
+python3 scripts/run_in_parts.py                       # every record of every type -> HF_REPO_ID
+python3 scripts/run_in_parts.py --status              # types done / left
+python3 scripts/run_in_parts.py --publish-only        # update the card/viewer from already-pushed parts
+python3 scripts/run_in_parts.py --types payslip --no-push   # trial: export one type, publish nothing
+```
+
+The full dataset is Parquet because the Hub allows at most 10k files per folder and recommends under 100k per
+repo, which one-file-per-PDF can't meet at 354k documents. Splits are computed over all companies with seed 0,
+so every part splits the same way, and the same as the published 2k dataset.
 
 Scans can be added later on their own: `python3 scripts/run_pipeline.py --stages augment export --augment-fraction 0.1`.
 
@@ -214,20 +233,23 @@ output/<run>/
   config.yaml                      the exact config used
 
 dataset/                           (export, default csv format: what the Hugging Face viewer reads)
-  pdf/<type>/<split>/<doc_id>.pdf + metadata.csv     one row per PDF: paths, company, source, key fields,
+  pdf/<type>/<split>/<doc_id>.pdf + metadata.jsonl     one row per PDF: paths, company, source, key fields,
                                                      gold JSON, PDF text
   json/<type>/<doc_id>.json                          gold fields of each PDF
-  scans/<type>/<split>/*.jpg + metadata.csv          degraded page images + gold boxes in pixels
+  scans/<type>/<split>/*.jpg + metadata.jsonl          degraded page images + gold boxes in pixels
   README.md (card: subsets `all` + one per type), stats.json, licenses/
 
-dataset/                           (export --format parquet: the v1 schema)
-  data/{train,validation,test}-*.parquet     v1 columns + v2 metadata, PDF bytes, boxes
-  scans/{train,validation,test}-*.parquet    degraded page images
+dataset/                           (export --format parquet: large runs, the Hub's limits)
+  data/<type>/<split>-NNNNN.parquet          one row per PDF: the PDF (Pdf feature), the columns above,
+                                             options, printed values, gold-field and word boxes
+  scans/<type>/<split>-NNNNN.parquet         degraded page images (Image feature) + boxes in pixels
+  README.md (card: `all`, one subset per type, `scans`), stats.json, licenses/
 ```
 
 On the Hub each document type is a subset (`load_dataset(repo, "invoice")`) with train/validation/test, and the
-viewer shows the PDFs. Scans are not a subset (the Hub picks one loader per repo, here the PDF one); they load
-with `load_dataset(repo, data_dir="scans")`.
+viewer shows the PDFs. In the folder layout scans are not a subset (the Hub picks one loader per repo, there the
+PDF one) and load with `load_dataset(repo, data_dir="scans")`; Parquet carries its own types, so there `scans`
+is a subset like the others. The folder layout suits runs up to ~10k documents per type and split.
 
 Splits are by issuing company, per sector: validation and test documents come from companies never seen in
 training.
@@ -248,7 +270,7 @@ pipeline, so run it after `export`, on any machine that has the folder.
 
 It commits 1,000 files at a time (`--batch`), so a 60k-file export stays within the Hub's per-commit limits.
 Interrupted? Rerun it: files already on the Hub with the same size are skipped. The card, `stats.json` and the
-`metadata.csv` files are compared by content and sent last, so the dataset viewer never points at missing files. The Hub allows 128 commits per repo per hour; if the script hits that, it stops and a later rerun resumes. `--folder` picks another
+`metadata.jsonl` files are compared by content and sent last, so the dataset viewer never points at missing files. The Hub allows 128 commits per repo per hour; if the script hits that, it stops and a later rerun resumes. `--folder` picks another
 export, `--revision` a branch, and `--delete-stale` removes remote files that are gone locally.
 
 ## Project layout

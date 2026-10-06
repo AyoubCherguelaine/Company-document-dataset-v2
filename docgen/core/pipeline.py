@@ -272,7 +272,8 @@ def run(cfg: RunConfig, log=print) -> dict:
 
     counts: dict[str, int] = {}
     per_variant: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
-    with (out / "manifest.jsonl").open("w", encoding="utf-8") as fh:
+    tmp = out / "manifest.jsonl.tmp"            # written aside, then renamed: never left half-written
+    with tmp.open("w", encoding="utf-8") as fh:
         for r in results:
             counts[r["status"]] = counts.get(r["status"], 0) + 1
             per_variant[r["variant"]][r["status"]] += 1
@@ -280,6 +281,7 @@ def run(cfg: RunConfig, log=print) -> dict:
             if r["status"] != "ok":
                 log(f"[{r['status']}] {r['variant']} key={r['key']} "
                     f"{r.get('error') or r.get('missing') or r.get('arithmetic')}")
+    tmp.replace(out / "manifest.jsonl")
     for variant, c in sorted(per_variant.items()):
         log(f"  {variant:<36} " + " ".join(f"{k}={v}" for k, v in sorted(c.items())))
     log(f"[done] {counts} in {time.time() - started:.1f}s")

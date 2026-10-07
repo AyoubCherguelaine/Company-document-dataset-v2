@@ -121,6 +121,11 @@ def finish(types: list[str], args) -> None:
         card = STATE / "README.md"
         card.write_text(card.read_text(encoding="utf-8").replace(
             "# Company Documents v2\n\n", "# Company Documents v2\n\n" + notice), encoding="utf-8")
+    else:
+        card = STATE / "README.md"
+        notice = f"**Generation complete:** all {len(types)} document types have completed export and upload checkpoints.\n\n"
+        card.write_text(card.read_text(encoding="utf-8").replace(
+            "# Company Documents v2\n\n", "# Company Documents v2\n\n" + notice), encoding="utf-8")
     if not args.no_push:
         push("--folder", STATE, "--exclude", "parts/*", "--delete-stale", "--keep", "data/*.parquet", "scans/*.parquet")
     rp.say(f"card: {STATE.relative_to(REPO_ROOT)}/README.md")

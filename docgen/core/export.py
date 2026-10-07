@@ -544,6 +544,14 @@ scans[0]["image"], json.loads(scans[0]["boxes"])
 ```
 """ if has_scans else ""
     example_type = "invoice" if "invoice" in stats["by_type"] else sorted(stats["by_type"])[0]
+    cfg = yaml.safe_load(run_cfg) if run_cfg.strip() else None
+    full_run = isinstance(cfg, dict) and cfg.get("run_name") == "full"
+    reproduction = "python3 scripts/run_pipeline.py"
+    if full_run:
+        reproduction = f"""# Generate all source records and their scans locally.
+python3 scripts/run_pipeline.py --all-records --stages venv download index companies texts generate augment --seed {cfg.get('seed', 42)} --workers {cfg.get('workers', 8)} --augment-fraction 0.3
+# Export with the published dataset's company split seed.
+./venv/bin/python -m docgen export output/v2 dataset/full-local --format parquet --seed 0"""
     return f"""---
 {yaml.safe_dump(header, sort_keys=False, allow_unicode=True).strip()}
 ---
@@ -555,6 +563,26 @@ labels: {total:,} PDFs ({stats['pages']:,} pages) of {len(stats['by_type'])} doc
 {' and '.join(LANGUAGES.get(l, l) for l in sorted(stats['by_locale']))}, issued by {n_companies} synthetic companies,
 each with its own letterhead, numbering and wording. Successor of
 [CompanyDocuments](https://huggingface.co/datasets/AyoubChLin/CompanyDocuments) (2,677 PDFs, 4 types).
+
+## Dataset overview
+
+| property | value |
+|---|---|
+| PDF documents | {total:,} |
+| PDF pages | {stats['pages']:,} |
+| Document types | {len(stats['by_type'])} |
+| Synthetic issuing companies | {n_companies} |
+| Languages | {' / '.join(LANGUAGES.get(l, l) for l in sorted(stats['by_locale']))} |
+| Degraded scan/photo page images | {n_scans:,} |
+| Export format | {fmt} |
+| Split unit | issuing company, grouped by sector |
+
+## Intended uses
+
+Document classification, OCR evaluation, key information extraction, layout-aware field extraction,
+and document question answering using the gold fields to construct task-specific examples.
+The dataset provides document text, structured fields and coordinates; it does not include a separate
+set of question-answer pairs.
 
 ## Subsets
 
@@ -576,6 +604,9 @@ row = documents[0]
 row["pdf"]                            # pdfplumber.PDF
 json.loads(row["extracted_data"])     # the gold fields
 {paths}```
+
+Use `"all"` to load every document type. For a large subset, pass `streaming=True` to
+`load_dataset` and read examples with `next(iter(documents))` to avoid downloading the entire subset.
 {scans_doc}
 ## Files
 
@@ -584,7 +615,8 @@ json.loads(row["extracted_data"])     # the gold fields
 ## Splits
 
 Splits are **by issuing company** (per sector): validation and test documents come from companies whose
-letterhead, numbering and wording never appear in training.
+issuing company is absent from training. Source databases, products, counterparties, layout families
+and themes can occur across splits; this is an issuer-held-out split, not a source-held-out split.
 
 | split | documents | companies | scan pages |
 |---|---|---|---|
@@ -611,12 +643,49 @@ Every document passed a self-check: the checked gold values are present in the P
 holds (line totals, tax, totals, running balances, aging, payroll, received vs accepted). Money is computed
 with Decimal and half-up rounding; currencies are converted once from the source (USD).
 
+## Limitations
+
+- These are synthetic documents derived from sample databases. Their layouts, wording and simulated
+  degradation do not cover the full variety of real business documents or camera captures.
+- Document types are imbalanced; use the per-type counts when selecting training data and reporting
+  evaluation results. Some types contain only a small number of examples.
+- Scan rows represent pages of sampled PDFs, not additional independent business transactions.
+  Keep scans with their parent document's split when constructing an evaluation dataset.
+- Gold fields and word boxes come from the generation and PDF extraction pipeline. Arithmetic and
+  text checks do not establish that every annotation or reading-order decision is error-free.
+- The same underlying source records can support multiple document types. Holding out issuing
+  companies does not guarantee that all business entities or transaction content are unseen.
+
 ## Licenses
 
 Code and generated documents: Apache-2.0. Source data: Northwind (MIT), AdventureWorks (MIT),
 Chinook (MIT), Sakila (BSD-2); see `licenses/`.
 
+## Citation
+
+Created by **Cherguelaine Ayoub**. If you use this dataset, please cite:
+
+```bibtex
+@misc{{cherguelaine2026companydocumentsv2,
+  author = {{Cherguelaine, Ayoub}},
+  title = {{Company Documents v2: Synthetic Business Documents}},
+  year = {{2026}},
+  url = {{https://github.com/AyoubCherguelaine/Company-document-dataset-v2}}
+}}
+```
+
 ## Reproduce
+
+Generator source code: [Company-document-dataset-v2](https://github.com/AyoubCherguelaine/Company-document-dataset-v2).
+To generate the content locally from a Git checkout:
+
+```bash
+git clone https://github.com/AyoubCherguelaine/Company-document-dataset-v2.git
+cd Company-document-dataset-v2
+{reproduction}
+```
+
+See the [repository README](https://github.com/AyoubCherguelaine/Company-document-dataset-v2#readme) for setup, configuration and full-dataset generation options.
 
 Generated with the CompanyDocuments v2 generator (`docgen`) and this run config:
 
